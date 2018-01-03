@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Scripts/Block.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31, 31 )
+
+[node name="Block" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Label" type="Label" parent="."]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -32.0
+margin/top = -32.0
+margin/right = 0.0
+margin/bottom = 0.0
+text = "3"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Neighbors" type="Node2D" parent="."]
+
+[node name="Up" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 0, -16 )
+enabled = true
+cast_to = Vector2( 0, -32 )
+layer_mask = 1
+type_mask = 31
+
+[node name="Right" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 16, 0 )
+enabled = true
+cast_to = Vector2( 32, 0 )
+layer_mask = 1
+type_mask = 31
+
+[node name="Down" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 0, 16 )
+enabled = true
+cast_to = Vector2( 0, 32 )
+layer_mask = 1
+type_mask = 31
+
+[node name="Left" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( -16, 0 )
+enabled = true
+cast_to = Vector2( -32, 0 )
+layer_mask = 1
+type_mask = 31
+
+[connection signal="input_event" from="." to="." method="_input"]
+
+
