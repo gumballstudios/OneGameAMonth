@@ -10,4 +10,43 @@ script/script = ExtResource( 1 )
 
 transform/pos = Vector2( 76, 524 )
 
+[node name="LevelChangeTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+[node name="LevelDisplay" type="Label" parent="."]
+
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+rect/scale = Vector2( 4, 4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 768.0
+margin/bottom = 450.0
+text = "Round 1"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ValidCheckTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="LevelChangeTimer" to="." method="_on_level_change_timeout"]
+
+[connection signal="timeout" from="ValidCheckTimer" to="." method="_on_valid_check_timeout"]
+
 
