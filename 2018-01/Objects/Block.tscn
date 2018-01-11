@@ -1,11 +1,39 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/Block.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/fish_green.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/fish_red.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/fish_yellow.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/fish_blue.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 31, 31 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Yellow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Blue",
+"speed": 5.0
+} ]
 
 [node name="Block" type="Area2D"]
 
@@ -22,7 +50,10 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Animation" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "Red"
 
 [node name="Label" type="Label" parent="."]
 
@@ -31,11 +62,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = -32.0
-margin/top = -32.0
+margin/left = -24.0
+margin/top = -24.0
 margin/right = 0.0
 margin/bottom = 0.0
-text = "3"
 align = 1
 valign = 1
 percent_visible = 1.0

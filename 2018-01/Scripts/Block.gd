@@ -1,30 +1,13 @@
 extends Area2D
 
+
 signal clicked
 signal destroyed
 
-var type 
-var strength setget set_strength
-
-var block_type_textures = { 
-	"Red": "res://Sprites/block_red.png",
-	"Green": "res://Sprites/block_green.png",
-	"Blue": "res://Sprites/block_blue.png",
-	"Yellow": "res://Sprites/block_yellow.png",
-	"Orange": "res://Sprites/block_orange.png",
-	"Pink": "res://Sprites/block_pink.png",
-	"White": "res://Sprites/block_white.png",
-	"Black": "res://Sprites/block_black.png"
-}
+var type setget set_type
 
 
 func _ready():
-	if type:
-		add_to_group(type)
-		var sprite = get_node("Sprite")
-		var texture = load(block_type_textures[type])
-		sprite.set_texture(texture)
-	
 	for ray in get_node("Neighbors").get_children():
 		ray.add_exception(self)
 
@@ -34,14 +17,16 @@ func _input(viewport, event, shape_idx):
 		emit_signal("clicked", self)
 
 
-func set_strength(value):
-	strength = value
-	get_node("Label").set_text(str(strength))
+func set_type(value):
+	type = value
 	
-	if strength < 1:
-		get_parent().remove_child(self)
-		queue_free()
-		emit_signal("destroyed")
+	for group in get_groups():
+		remove_from_group(group)
+	
+	add_to_group(value)
+	
+	var anim = get_node("Animation")
+	anim.play(value)
 
 
 func get_neighbor_matches():
