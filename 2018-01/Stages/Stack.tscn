@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 48, 288 )
+extents = Vector2( 32, 288 )
 
 [node name="Stack" type="Node"]
 
@@ -32,7 +32,7 @@ autostart = true
 
 [node name="EndZone" type="Area2D" parent="."]
 
-transform/pos = Vector2( 992, 288 )
+transform/pos = Vector2( 960, 288 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -41,6 +41,9 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Collision" type="CollisionShape2D" parent="EndZone"]
 

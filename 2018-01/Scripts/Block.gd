@@ -26,7 +26,10 @@ func set_type(value):
 	add_to_group(value)
 	
 	var anim = get_node("Animation")
-	anim.play(value)
+	anim.set_animation(value)
+	var frame = randi() % anim.get_sprite_frames().get_frame_count(value)
+	anim.set_frame(frame)
+	anim.play()
 
 
 func get_neighbor_matches():

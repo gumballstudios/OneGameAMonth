@@ -65,6 +65,7 @@ func is_game_over():
 		print("Lines: ", lines)
 		print("Score: ", score)
 		game_grid.queue_free()
+		print(movement_handler.get_child_count())
 		get_node("FillTimer").stop()
 		result = true
 	
