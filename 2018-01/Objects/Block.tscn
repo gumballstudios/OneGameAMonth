@@ -1,10 +1,38 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=36 format=1]
 
 [ext_resource path="res://Scripts/Block.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/fish_green.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/fish_red.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/fish_yellow.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/fish_blue.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Fish/Green/gf1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Fish/Green/gf2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Fish/Green/gf3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Fish/Green/gf4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Fish/Green/gf5.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Fish/Green/gf6.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Fish/Green/gf7.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Fish/Green/gf8.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Fish/Red/rf1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Fish/Red/rf2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Fish/Red/rf3.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Fish/Red/rf4.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Fish/Red/rf5.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Fish/Red/rf6.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Fish/Red/rf7.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Fish/Red/rf8.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Fish/Yellow/yf1.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Fish/Yellow/yf2.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Fish/Yellow/yf3.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Fish/Yellow/yf4.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Fish/Yellow/yf5.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Fish/Yellow/yf6.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Fish/Yellow/yf7.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Fish/Yellow/yf8.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Fish/Blue/bf1.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Fish/Blue/bf2.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Fish/Blue/bf3.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Fish/Blue/bf4.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/Fish/Blue/bf5.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/Fish/Blue/bf6.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Fish/Blue/bf7.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/Fish/Blue/bf8.png" type="Texture" id=33]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,25 +42,25 @@ extents = Vector2( 31, 31 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "Green",
-"speed": 5.0
+"speed": 6.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "Red",
-"speed": 5.0
+"speed": 6.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "Yellow",
-"speed": 5.0
+"speed": 6.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "Blue",
-"speed": 5.0
+"speed": 6.0
 } ]
 
 [node name="Block" type="Area2D"]

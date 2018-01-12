@@ -52,9 +52,13 @@ func rand_int_range(min_range, max_range):
 func create_mover(target, from_pos, to_pos):
 	var mover = Tween.new()
 	mover.interpolate_property(target, "transform/pos", from_pos, to_pos, 0.2, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-	mover.connect("tween_complete", mover, "queue_free")
+	mover.connect("tween_complete", self, "dispose_mover", [mover])
 	movement_handler.add_child(mover)
 	mover.start()
+
+
+func dispose_mover(object, key, mover):
+	mover.queue_free()
 
 
 func is_game_over():
