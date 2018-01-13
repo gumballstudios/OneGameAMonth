@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Scripts/GroundSection.gd" type="Script" id=1]
+[ext_resource path="res://Objects/GroundSpriteHigh.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/GroundSpriteLow.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="GroundSection" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -16, -16 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="AccentContainer" type="Node2D" parent="."]
+
+[node name="GroundContainer" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="GroundSpriteHigh" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -32, -32 )
+
+[node name="GroundSpriteHigh1" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -160, -32 )
+
+[node name="GroundSpriteHigh2" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -288, -32 )
+
+[node name="GroundSpriteHigh3" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -416, -32 )
+
+[node name="GroundSpriteHigh4" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -544, -32 )
+
+[node name="GroundSpriteHigh5" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -672, -32 )
+
+[node name="GroundSpriteHigh6" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -800, -32 )
+
+[node name="GroundSpriteHigh7" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -928, -32 )
+
+[node name="GroundSpriteHigh8" parent="GroundContainer" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -1056, -32 )
+
+[node name="GroundSpriteLow" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -96, -32 )
+
+[node name="GroundSpriteLow1" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -224, -32 )
+
+[node name="GroundSpriteLow2" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -352, -32 )
+
+[node name="GroundSpriteLow3" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -480, -32 )
+
+[node name="GroundSpriteLow4" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -608, -32 )
+
+[node name="GroundSpriteLow5" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -736, -32 )
+
+[node name="GroundSpriteLow6" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -864, -32 )
+
+[node name="GroundSpriteLow7" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -992, -32 )
+
+[node name="GroundSpriteLow8" parent="GroundContainer" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -1120, -32 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -16, -16 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Visibility" type="VisibilityNotifier2D" parent="."]
+
+transform/pos = Vector2( -1152, -32 )
+rect = Rect2( -10, -10, 20, 20 )
+
+

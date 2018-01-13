@@ -3,7 +3,7 @@ extends Node2D
 
 onready var container = get_node("Container")
 
-var segment_scene = preload("res://Objects/GroundSegment.tscn")
+var segment_scene = preload("res://Objects/GroundSection.tscn")
 
 
 func _ready():
