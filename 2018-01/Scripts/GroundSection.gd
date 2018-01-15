@@ -24,11 +24,10 @@ func _on_visibility_exit_screen():
 
 
 func add_accents():
-	var count = (randi() % 10) + 1
-	for index in range(count):
+	for point in get_node("Accents").get_children():
 		var accent = accent_scene.instance()
-		var x = (randi() % (16 * 64)) + 64
-		var y = 64 + 12 + (randi() % 12)
-		accent.set_pos(Vector2(-x, -y))
+		var x = (randi() % (2 * 64))
+		var y = randi() % 12
 		container.add_child(accent)
-	
+		accent.set_pos(point.get_pos() + Vector2(x, y))
+

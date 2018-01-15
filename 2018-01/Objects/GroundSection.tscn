@@ -20,6 +20,9 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AccentContainer" type="Node2D" parent="."]
 
@@ -110,5 +113,31 @@ _update_shape_index = 0
 
 transform/pos = Vector2( -1152, -32 )
 rect = Rect2( -10, -10, 20, 20 )
+
+[node name="Accents" type="Node2D" parent="."]
+
+[node name="AccentPosition1" type="Position2D" parent="Accents"]
+
+transform/pos = Vector2( -160, -88 )
+
+[node name="AccentPosition2" type="Position2D" parent="Accents"]
+
+transform/pos = Vector2( -352, -88 )
+
+[node name="AccentPosition3" type="Position2D" parent="Accents"]
+
+transform/pos = Vector2( -544, -88 )
+
+[node name="AccentPosition4" type="Position2D" parent="Accents"]
+
+transform/pos = Vector2( -736, -88 )
+
+[node name="AccentPosition5" type="Position2D" parent="Accents"]
+
+transform/pos = Vector2( -928, -88 )
+
+[node name="AccentPosition6" type="Position2D" parent="Accents"]
+
+transform/pos = Vector2( -1120, -88 )
 
 

@@ -10,6 +10,7 @@ extents = Vector2( 16, 16 )
 
 [node name="Ground" type="Node2D"]
 
+transform/pos = Vector2( 1024, 576 )
 script/script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
