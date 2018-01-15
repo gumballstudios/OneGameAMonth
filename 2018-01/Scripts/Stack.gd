@@ -22,9 +22,10 @@ var lines = 0
 onready var game_grid = get_node("GameGrid")
 onready var movement_handler = get_node("MovementHandler")
 onready var fill_timer = get_node("FillTimer")
+onready var clicked_container = get_node("ClickedContainer")
+onready var bubble_container = get_node("BubbleContainer")
 
 var block_scene = preload("res://Objects/Block.tscn")
-
 
 
 # ***************
@@ -51,7 +52,7 @@ func rand_int_range(min_range, max_range):
 
 func create_mover(target, from_pos, to_pos):
 	var mover = Tween.new()
-	mover.interpolate_property(target, "transform/pos", from_pos, to_pos, 0.2, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	mover.interpolate_property(target, "transform/pos", from_pos, to_pos, 0.6, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	mover.connect("tween_complete", self, "dispose_mover", [mover])
 	movement_handler.add_child(mover)
 	mover.start()
@@ -69,7 +70,7 @@ func is_game_over():
 		print("Lines: ", lines)
 		print("Score: ", score)
 		game_grid.queue_free()
-		print(movement_handler.get_child_count())
+		print(clicked_container.get_child_count())
 		get_node("FillTimer").stop()
 		result = true
 	
@@ -163,7 +164,7 @@ func column_move_items(column):
 	for item in column.get_children():
 		var index = child_count - (item.get_index() + 1)
 		var to_pos = Vector2(index * block_size.x, 0)
-		create_mover(item, item.get_pos(), to_pos)
+		item.move(to_pos)
 
 
 
@@ -196,8 +197,11 @@ func _on_block_clicked(block):
 		return
 	
 	for block in block_list:
+		var global_pos = block.get_global_pos()
 		block.get_parent().remove_child(block)
-		block.queue_free()
+		block.set_pos(global_pos)
+		clicked_container.add_child(block)
+		block.escape()
 		score += 1
 	
 	grid_collapse()

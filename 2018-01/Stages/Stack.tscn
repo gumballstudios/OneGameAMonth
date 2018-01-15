@@ -25,6 +25,7 @@ transform/pos = Vector2( 1024, 608 )
 
 [node name="GameGrid" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 48, 48 )
 
 [node name="HalfTop" type="Node2D" parent="GameGrid"]
@@ -35,6 +36,8 @@ transform/pos = Vector2( 0, 192 )
 
 transform/pos = Vector2( 0, 256 )
 
+[node name="ClickedContainer" type="Node" parent="."]
+
 [node name="FillTimer" type="Timer" parent="."]
 
 process_mode = 1
@@ -44,6 +47,7 @@ autostart = true
 
 [node name="EndZone" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 960, 288 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
