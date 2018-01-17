@@ -7,7 +7,9 @@ signal destroyed
 var type setget set_type
 var active = true
 
+
 func _ready():
+	randomize()
 	for ray in get_node("Neighbors").get_children():
 		ray.add_exception(self)
 
@@ -64,8 +66,31 @@ func _on_particle_timer_timeout():
 
 func _on_escape_tween_complete( object, key ):
 	get_node("ParticleTrail").set_emitting(false)
-	get_node("LifeTimer").start()
+	var timer = get_node("LifeTimer")
+	timer.set_wait_time(0.75)
+	timer.start()
 
 
 func _on_life_timeout():
 	queue_free()
+
+
+func _on_area_enter( area ):
+	if !area.is_in_group("Sharks"):
+		return
+	
+	var anim = get_node("Animation")
+	anim.set_animation(type + "Bones")
+	active = false
+	
+	var death_time = 2
+	var tween = get_node("DieAnimation")
+	tween.interpolate_property(self, "transform/pos", get_pos(), get_pos() + Vector2(64, 8), death_time + rand_range(1, 3), Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(self, "transform/rot", get_rot(), get_rot() + rand_range(-60, 60), death_time + rand_range(1, 3), Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(self, "visibility/opacity", 1, 0, death_time + rand_range(1, 3), Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.start()
+	
+	var timer = get_node("LifeTimer")
+	timer.set_wait_time(5)
+	timer.start()
+

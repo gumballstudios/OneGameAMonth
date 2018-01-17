@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=1]
+[gd_scene load_steps=42 format=1]
 
 [ext_resource path="res://Scripts/Block.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/bubble.png" type="Texture" id=2]
@@ -34,6 +34,10 @@
 [ext_resource path="res://Sprites/Fish/Red/rf6.png" type="Texture" id=32]
 [ext_resource path="res://Sprites/Fish/Red/rf7.png" type="Texture" id=33]
 [ext_resource path="res://Sprites/Fish/Red/rf8.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/Fish/Blue/blue_bones.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/Fish/Red/red_bones.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/Fish/Green/green_bones.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/Fish/Yellow/yellow_bones.png" type="Texture" id=38]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -67,6 +71,26 @@ animations = [ {
 "loop": true,
 "name": "Red",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 35 ) ],
+"loop": false,
+"name": "BlueBones",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 36 ) ],
+"loop": false,
+"name": "RedBones",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ) ],
+"loop": false,
+"name": "GreenBones",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": false,
+"name": "YellowBones",
+"speed": 5.0
 } ]
 
 [node name="Block" type="Area2D"]
@@ -196,12 +220,21 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[node name="DieAnimation" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [node name="LifeTimer" type="Timer" parent="."]
 
 process_mode = 1
 wait_time = 0.75
 one_shot = true
 autostart = false
+
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
 
 [connection signal="input_event" from="." to="." method="_input"]
 

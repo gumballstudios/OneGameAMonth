@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/Stack.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/background.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Sharks.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -68,6 +69,10 @@ trigger = false
 _update_shape_index = 0
 
 [node name="MovementHandler" type="Node" parent="."]
+
+[node name="Sharks" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1216, 288 )
 
 [connection signal="timeout" from="FillTimer" to="." method="_on_fill_timeout"]
 

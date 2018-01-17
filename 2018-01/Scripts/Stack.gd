@@ -18,6 +18,7 @@ var block_types = [
 var score = 0
 var speed = 0.70
 var lines = 0
+var active = true
 
 onready var game_grid = get_node("GameGrid")
 onready var movement_handler = get_node("MovementHandler")
@@ -37,6 +38,7 @@ func _ready():
 	randomize()
 	grid_initialize()
 	fill_timer.set_wait_time(speed * grid_size.y)
+	fill_timer.start()
 
 
 
@@ -69,9 +71,9 @@ func is_game_over():
 		print("*** GAME OVER ***")
 		print("Lines: ", lines)
 		print("Score: ", score)
-		game_grid.queue_free()
-		print(clicked_container.get_child_count())
 		get_node("FillTimer").stop()
+		active = false;
+		get_node("Sharks").travel = true
 		result = true
 	
 	return result
@@ -182,6 +184,9 @@ func block_create():
 
 
 func _on_block_clicked(block):
+	if !active:
+		return
+	
 	var block_list = [block]
 	var neighbor_list = block.get_neighbor_matches()
 	
