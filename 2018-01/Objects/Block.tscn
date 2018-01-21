@@ -111,7 +111,7 @@ __meta__ = {
 [node name="ParticleTrail" type="Particles2D" parent="."]
 
 transform/pos = Vector2( 16, 0 )
-config/amount = 16
+config/amount = 32
 config/lifetime = 0.5
 config/emitting = false
 config/process_mode = 1

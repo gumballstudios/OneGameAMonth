@@ -46,16 +46,18 @@ func get_neighbor_matches():
 				matches.append(neighbor)
 	return matches
 
-func move(to_pos):
+
+func move(to_pos, speed):
 	var tween = get_node("MoveAnimation")
-	tween.interpolate_property(self, "transform/pos", get_pos(), to_pos, 0.6, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "transform/pos", get_pos(), to_pos, speed, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()
 
-func escape():
+
+func escape(speed):
 	active = false
 	get_node("MoveAnimation").stop_all()
 	var tween = get_node("EscapeAnimation")
-	tween.interpolate_property(self, "transform/pos", get_pos(), get_pos() - Vector2(960, 0), 0.6, Tween.TRANS_BACK, Tween.EASE_IN)
+	tween.interpolate_property(self, "transform/pos", get_pos(), get_pos() - Vector2(960, 0), speed, Tween.TRANS_BACK, Tween.EASE_IN)
 	tween.start()
 	get_node("ParticleTimer").start()
 
@@ -83,7 +85,7 @@ func _on_area_enter( area ):
 	anim.set_animation(type + "Bones")
 	active = false
 	
-	var death_time = 2
+	var death_time = 0
 	var tween = get_node("DieAnimation")
 	tween.interpolate_property(self, "transform/pos", get_pos(), get_pos() + Vector2(64, 8), death_time + rand_range(1, 3), Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.interpolate_property(self, "transform/rot", get_rot(), get_rot() + rand_range(-60, 60), death_time + rand_range(1, 3), Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -91,6 +93,6 @@ func _on_area_enter( area ):
 	tween.start()
 	
 	var timer = get_node("LifeTimer")
-	timer.set_wait_time(5)
+	timer.set_wait_time(4)
 	timer.start()
 

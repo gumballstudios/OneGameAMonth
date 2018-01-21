@@ -4,7 +4,7 @@ extends Node
 const grid_size = Vector2(4, 8)
 const block_size = Vector2(64, 64)
 const lines_per_level = 5
-const speed_increase = 0.01
+const increase_percentage = 0.925
 
 var block_types = [
 	"Red",
@@ -17,6 +17,7 @@ var block_types = [
 
 var score = 0
 var speed = 0.70
+var move_speed = 0.4
 var lines = 0
 var active = true
 
@@ -24,7 +25,6 @@ onready var game_grid = get_node("GameGrid")
 onready var movement_handler = get_node("MovementHandler")
 onready var fill_timer = get_node("FillTimer")
 onready var clicked_container = get_node("ClickedContainer")
-onready var bubble_container = get_node("BubbleContainer")
 
 var block_scene = preload("res://Objects/Block.tscn")
 
@@ -54,7 +54,7 @@ func rand_int_range(min_range, max_range):
 
 func create_mover(target, from_pos, to_pos):
 	var mover = Tween.new()
-	mover.interpolate_property(target, "transform/pos", from_pos, to_pos, 0.6, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	mover.interpolate_property(target, "transform/pos", from_pos, to_pos, move_speed, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	mover.connect("tween_complete", self, "dispose_mover", [mover])
 	movement_handler.add_child(mover)
 	mover.start()
@@ -68,15 +68,15 @@ func is_game_over():
 	var result = false
 	var end_zone = get_node("EndZone")
 	if end_zone.get_overlapping_areas().size() > 0:
-		print("*** GAME OVER ***")
-		print("Lines: ", lines)
-		print("Score: ", score)
 		get_node("FillTimer").stop()
 		active = false;
-		get_node("Sharks").travel = true
+		get_node("Sharks").set_process(true)
+		get_node("Ground").stop();
 		result = true
 	
 	return result
+
+
 
 # ***************
 # GRID FUNCTIONS
@@ -135,7 +135,7 @@ func _on_fill_timeout():
 	
 	lines += 1
 	if lines % lines_per_level == 0:
-		speed -= speed_increase
+		speed = speed * increase_percentage
 		fill_timer.set_wait_time(speed * grid_size.y)
 		print("speed up ", speed)
 	
@@ -166,7 +166,7 @@ func column_move_items(column):
 	for item in column.get_children():
 		var index = child_count - (item.get_index() + 1)
 		var to_pos = Vector2(index * block_size.x, 0)
-		item.move(to_pos)
+		item.move(to_pos, move_speed)
 
 
 
@@ -206,8 +206,39 @@ func _on_block_clicked(block):
 		block.get_parent().remove_child(block)
 		block.set_pos(global_pos)
 		clicked_container.add_child(block)
-		block.escape()
+		block.escape(move_speed)
 		score += 1
 	
 	grid_collapse()
 
+
+
+# ***************
+# UI FUNCTIONS
+# functions dealling with game over UI
+# ***************
+
+
+func _on_sharks_exit_tree():
+	var score_panel = get_node("GameOver/ScorePanel")
+	score_panel.get_node("ScoreAlignment/ScoreValue").set_text(str(score))
+	
+	get_node("GameOver/ScorePanel/Particles").set_emitting(true)
+	
+	var anim = get_node("GameOver/Animation")
+	anim.interpolate_property(score_panel, "rect/pos", score_panel.get_pos(), Vector2(320, 256), 1, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
+	anim.interpolate_property(get_node("GameOver/Title"), "visibility/opacity", 0, 1, 1.5, Tween.TRANS_QUART, Tween.EASE_IN)
+	anim.start()
+
+
+func _on_animation_tween_complete( object, key ):
+	get_node("GameOver/ButtonExit").show()
+	get_node("GameOver/ScorePanel/Particles").set_emitting(false)
+
+
+func _on_button_retry_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_button_exit_pressed():
+	get_tree().quit()

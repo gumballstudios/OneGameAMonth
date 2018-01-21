@@ -1,14 +1,29 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://Scripts/Stack.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/background.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Ground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Sharks.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/PWBubbles_96.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Sprites/blue_panel.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/Walibi_32.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://Sprites/UI/button_retry.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/button_retry_pressed.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/button_menu.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/button_menu_pressed.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/bubble.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/button_exit.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/button_exit_pressed.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 272 )
+
+[sub_resource type="ColorRamp" id=2]
+
+offsets = FloatArray( 0, 1 )
+colors = ColorArray( 1, 1, 1, 0.501961, 1, 1, 1, 0 )
 
 [node name="Stack" type="Node"]
 
@@ -39,6 +54,8 @@ transform/pos = Vector2( 0, 256 )
 
 [node name="ClickedContainer" type="Node" parent="."]
 
+[node name="MovementHandler" type="Node" parent="."]
+
 [node name="FillTimer" type="Timer" parent="."]
 
 process_mode = 1
@@ -68,12 +85,215 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="MovementHandler" type="Node" parent="."]
-
 [node name="Sharks" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1216, 288 )
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Animation" type="Tween" parent="GameOver"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Title" type="Label" parent="GameOver"]
+
+visibility/opacity = 0.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 160.0
+margin/top = 96.0
+margin/right = 864.0
+margin/bottom = 224.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "GAME OVER"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ScorePanel" type="Patch9Frame" parent="GameOver"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = -256.0
+margin/right = 704.0
+margin/bottom = -64.0
+texture = ExtResource( 6 )
+patch_margin/left = 32
+patch_margin/top = 32
+patch_margin/right = 32
+patch_margin/bottom = 32
+
+[node name="ScoreAlignment" type="HBoxContainer" parent="GameOver/ScorePanel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 32.0
+margin/right = 384.0
+margin/bottom = 68.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="ScoreTitle" type="Label" parent="GameOver/ScorePanel/ScoreAlignment"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 54.0
+margin/top = 0.0
+margin/right = 153.0
+margin/bottom = 36.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 0.788235, 0.054902, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.498039, 0.152941, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "Score"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ScoreValue" type="Label" parent="GameOver/ScorePanel/ScoreAlignment"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 185.0
+margin/top = 0.0
+margin/right = 329.0
+margin/bottom = 36.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 0.788235, 0.054902, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.498039, 0.152941, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "1234567"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ButtonRetry" type="TextureButton" parent="GameOver/ScorePanel"]
+
+hint/tooltip = "Retry"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 96.0
+margin/top = 96.0
+margin/right = 160.0
+margin/bottom = 160.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="ButtonMenu" type="TextureButton" parent="GameOver/ScorePanel"]
+
+hint/tooltip = "Menu"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 224.0
+margin/top = 96.0
+margin/right = 288.0
+margin/bottom = 160.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 10 )
+textures/pressed = ExtResource( 11 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Particles" type="Particles2D" parent="GameOver/ScorePanel"]
+
+transform/pos = Vector2( 192, 192 )
+config/amount = 1024
+config/lifetime = 2.0
+config/emitting = false
+config/process_mode = 1
+config/half_extents = Vector2( 224, 0 )
+config/local_space = false
+config/texture = ExtResource( 12 )
+params/direction = 180.0
+params/spread = 45.0
+params/linear_velocity = 25.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color_ramp = SubResource( 2 )
+
+[node name="ButtonExit" type="TextureButton" parent="GameOver"]
+
+visibility/visible = false
+hint/tooltip = "Exit"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 928.0
+margin/top = 480.0
+margin/right = 992.0
+margin/bottom = 544.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+textures/pressed = ExtResource( 14 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
 [connection signal="timeout" from="FillTimer" to="." method="_on_fill_timeout"]
+
+[connection signal="exit_tree" from="Sharks" to="." method="_on_sharks_exit_tree"]
+
+[connection signal="tween_complete" from="GameOver/Animation" to="." method="_on_animation_tween_complete"]
+
+[connection signal="pressed" from="GameOver/ScorePanel/ButtonRetry" to="." method="_on_button_retry_pressed"]
+
+[connection signal="pressed" from="GameOver/ButtonExit" to="." method="_on_button_exit_pressed"]
 
 

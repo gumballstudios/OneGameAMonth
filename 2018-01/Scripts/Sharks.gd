@@ -1,18 +1,10 @@
 extends Area2D
 
 
-var speed = 250
-var travel = false
-
-
-func _ready():
-	set_process(true)
+var speed = 500
 
 
 func _process(delta):
-	if !travel:
-		return
-	
 	var offset = Vector2(speed * delta, 0)
 	set_pos(get_pos() - offset)
 
