@@ -11,8 +11,6 @@ var block_types = [
 	"Green",
 	"Blue",
 	"Yellow",
-	"Orange",
-	"Black"
 ]
 
 var score = 0
