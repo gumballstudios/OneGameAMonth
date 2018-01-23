@@ -1,9 +1,6 @@
 extends Node
 
 
-var bubble_direction = 64
-
-
 func _ready():
 	get_node("GroundSection").set_process(false)
 	
@@ -22,3 +19,7 @@ func _on_title_tween_complete(object, key):
 
 func _on_button_exit_pressed():
 	get_tree().quit()
+
+
+func _on_button_play_pressed():
+	StageManager.change_stage(StageManager.STAGE_GAME)

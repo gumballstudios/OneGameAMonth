@@ -100,14 +100,15 @@ autoplay = ""
 
 [node name="Title" type="Label" parent="."]
 
+visibility/opacity = 0.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 64.0
-margin/top = 608.0
+margin/top = 256.0
 margin/right = 960.0
-margin/bottom = 736.0
+margin/bottom = 384.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0.25098, 0.25098, 0.25098, 1 )
 custom_constants/shadow_as_outline = 2
@@ -195,6 +196,8 @@ params/stretch_mode = 0
 [connection signal="timeout" from="Timer" to="." method="_on_start_timer_timeout"]
 
 [connection signal="tween_complete" from="Tween" to="." method="_on_title_tween_complete"]
+
+[connection signal="pressed" from="Buttons/ButtonPlay" to="." method="_on_button_play_pressed"]
 
 [connection signal="pressed" from="Buttons/ButtonExit" to="." method="_on_button_exit_pressed"]
 

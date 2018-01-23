@@ -135,7 +135,6 @@ func _on_fill_timeout():
 	if lines % lines_per_level == 0:
 		speed = speed * increase_percentage
 		fill_timer.set_wait_time(speed * grid_size.y)
-		print("speed up ", speed)
 	
 	for grid_part in game_grid.get_children():
 		for column in grid_part.get_children():
@@ -240,3 +239,7 @@ func _on_button_retry_pressed():
 
 func _on_button_exit_pressed():
 	get_tree().quit()
+
+
+func _on_button_menu_pressed():
+	StageManager.change_stage(StageManager.STAGE_MENU)

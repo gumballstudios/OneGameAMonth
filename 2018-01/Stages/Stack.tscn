@@ -294,6 +294,8 @@ params/stretch_mode = 0
 
 [connection signal="pressed" from="GameOver/ScorePanel/ButtonRetry" to="." method="_on_button_retry_pressed"]
 
+[connection signal="pressed" from="GameOver/ScorePanel/ButtonMenu" to="." method="_on_button_menu_pressed"]
+
 [connection signal="pressed" from="GameOver/ButtonExit" to="." method="_on_button_exit_pressed"]
 
 
