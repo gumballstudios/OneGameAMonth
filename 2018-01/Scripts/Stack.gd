@@ -234,7 +234,8 @@ func _on_animation_tween_complete( object, key ):
 
 
 func _on_button_retry_pressed():
-	get_tree().reload_current_scene()
+	SceneSwitch.change_scene(SceneSwitch.SCENE_GAME)
+	#get_tree().reload_current_scene()
 
 
 func _on_button_exit_pressed():
@@ -242,4 +243,5 @@ func _on_button_exit_pressed():
 
 
 func _on_button_menu_pressed():
-	StageManager.change_stage(StageManager.STAGE_MENU)
+	SceneSwitch.change_scene(SceneSwitch.SCENE_MENU)
+	#get_tree().change_scene("res://Stages/TitleScreen.tscn")
