@@ -15,6 +15,7 @@ var block_types = [
 
 var score = 0
 var speed = 0.70
+var line_tick = 0
 var move_speed = 0.4
 var lines = 0
 var active = true
@@ -35,7 +36,7 @@ var block_scene = preload("res://Objects/Block.tscn")
 func _ready():
 	randomize()
 	grid_initialize()
-	fill_timer.set_wait_time(speed * grid_size.y)
+	fill_timer.set_wait_time(speed)
 	fill_timer.start()
 
 
@@ -71,6 +72,7 @@ func is_game_over():
 		get_node("Sharks").set_process(true)
 		get_node("Ground").stop();
 		result = true
+		get_node("SoundEffects").play("steel_sharks")
 	
 	return result
 
@@ -128,13 +130,25 @@ func grid_move_columns(grid_part, direction):
 
 
 func _on_fill_timeout():
+	line_tick += 1
+	
+	get_node("SoundEffects").play("line_shake")
+	
+	if line_tick < grid_size.y:
+		return
+	
+	line_tick = 0
+	
 	if is_game_over():
 		return
+	
+	var sound = "steel_line01"
 	
 	lines += 1
 	if lines % lines_per_level == 0:
 		speed = speed * increase_percentage
-		fill_timer.set_wait_time(speed * grid_size.y)
+		fill_timer.set_wait_time(speed)
+		sound = "steel_line02"
 	
 	for grid_part in game_grid.get_children():
 		for column in grid_part.get_children():
@@ -142,6 +156,8 @@ func _on_fill_timeout():
 			block.set_pos(Vector2(-(block_size.x * 2), 0))
 			column.add_child(block)
 			column_move_items(column)
+	
+	get_node("SoundEffects").play(sound)
 
 
 
@@ -195,7 +211,8 @@ func _on_block_clicked(block):
 				new_neighbors += neighbor.get_neighbor_matches()
 		neighbor_list = new_neighbors
 	
-	if block_list.size() < 3:
+	var block_count = block_list.size()
+	if block_count < 3:
 		return
 	
 	for block in block_list:
@@ -205,6 +222,9 @@ func _on_block_clicked(block):
 		clicked_container.add_child(block)
 		block.escape(move_speed)
 		score += 1
+	
+	var sound_index = min(3, floor(block_count / 3))
+	get_node("SoundEffects").play("steel_fish0" + str(sound_index))
 	
 	grid_collapse()
 
@@ -226,6 +246,7 @@ func _on_sharks_exit_tree():
 	anim.interpolate_property(score_panel, "rect/pos", score_panel.get_pos(), Vector2(320, 256), 1, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	anim.interpolate_property(get_node("GameOver/Title"), "visibility/opacity", 0, 1, 1.5, Tween.TRANS_QUART, Tween.EASE_IN)
 	anim.start()
+	get_node("SoundEffects").play("bubble_end")
 
 
 func _on_animation_tween_complete( object, key ):
@@ -234,14 +255,15 @@ func _on_animation_tween_complete( object, key ):
 
 
 func _on_button_retry_pressed():
+	get_node("SoundEffects").play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_GAME)
-	#get_tree().reload_current_scene()
 
 
 func _on_button_exit_pressed():
+	get_node("SoundEffects").play("button_click")
 	get_tree().quit()
 
 
 func _on_button_menu_pressed():
+	get_node("SoundEffects").play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_MENU)
-	#get_tree().change_scene("res://Stages/TitleScreen.tscn")

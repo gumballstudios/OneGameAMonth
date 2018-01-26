@@ -10,46 +10,46 @@
 [ext_resource path="res://Sprites/Fish/Green/gf6.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Fish/Green/gf7.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Fish/Green/gf8.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Fish/Blue/bf1.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Fish/Blue/bf2.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Fish/Blue/bf3.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Fish/Blue/bf4.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Fish/Blue/bf5.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Fish/Blue/bf6.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Fish/Blue/bf7.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Fish/Blue/bf8.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Fish/Yellow/yf1.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Fish/Yellow/yf2.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Fish/Yellow/yf3.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Fish/Yellow/yf4.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Fish/Yellow/yf5.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/Fish/Yellow/yf6.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/Fish/Yellow/yf7.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Fish/Yellow/yf8.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/Fish/Red/rf1.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Fish/Red/rf2.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Fish/Red/rf3.png" type="Texture" id=29]
-[ext_resource path="res://Sprites/Fish/Red/rf4.png" type="Texture" id=30]
-[ext_resource path="res://Sprites/Fish/Red/rf5.png" type="Texture" id=31]
-[ext_resource path="res://Sprites/Fish/Red/rf6.png" type="Texture" id=32]
-[ext_resource path="res://Sprites/Fish/Red/rf7.png" type="Texture" id=33]
-[ext_resource path="res://Sprites/Fish/Red/rf8.png" type="Texture" id=34]
-[ext_resource path="res://Sprites/Fish/Blue/blue_bones.png" type="Texture" id=35]
-[ext_resource path="res://Sprites/Fish/Red/red_bones.png" type="Texture" id=36]
-[ext_resource path="res://Sprites/Fish/Green/green_bones.png" type="Texture" id=37]
-[ext_resource path="res://Sprites/Fish/Yellow/yellow_bones.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/Fish/Yellow/yf1.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Fish/Yellow/yf2.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Fish/Yellow/yf3.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Fish/Yellow/yf4.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Fish/Yellow/yf5.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Fish/Yellow/yf6.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Fish/Yellow/yf7.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Fish/Yellow/yf8.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Fish/Red/red_bones.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Fish/Blue/bf1.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Fish/Blue/bf2.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Fish/Blue/bf3.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Fish/Blue/bf4.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Fish/Blue/bf5.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Fish/Blue/bf6.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Fish/Blue/bf7.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Fish/Blue/bf8.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Fish/Green/green_bones.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Fish/Red/rf1.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/Fish/Red/rf2.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/Fish/Red/rf3.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Fish/Red/rf4.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/Fish/Red/rf5.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/Fish/Red/rf6.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/Fish/Red/rf7.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/Fish/Red/rf8.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/Fish/Yellow/yellow_bones.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/Fish/Blue/blue_bones.png" type="Texture" id=38]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 31, 31 )
 
-[sub_resource type="ColorRamp" id=3]
+[sub_resource type="ColorRamp" id=2]
 
 offsets = FloatArray( 0.00584795, 1 )
 colors = ColorArray( 1, 1, 1, 0.501961, 1, 1, 1, 0 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
@@ -59,37 +59,37 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "Blue",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": true,
 "name": "Yellow",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "Red",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 35 ) ],
-"loop": false,
-"name": "BlueBones",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 36 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": false,
 "name": "RedBones",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 37 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "Blue",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 28 ) ],
 "loop": false,
 "name": "GreenBones",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 38 ) ],
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "Red",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 37 ) ],
 "loop": false,
 "name": "YellowBones",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": false,
+"name": "BlueBones",
 "speed": 5.0
 } ]
 
@@ -133,7 +133,7 @@ params/final_size = 1.0
 params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
-color/color_ramp = SubResource( 3 )
+color/color_ramp = SubResource( 2 )
 
 [node name="ParticleTimer" type="Timer" parent="."]
 
@@ -144,7 +144,7 @@ autostart = false
 
 [node name="Animation" type="AnimatedSprite" parent="."]
 
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "Red"
 
 [node name="Label" type="Label" parent="."]

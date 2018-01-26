@@ -11,6 +11,7 @@ func _ready():
 	title_anim.start()
 	
 	get_node("Bubbles/AnimationPlayer").play("Move")
+	get_node("SoundEffects").play("bubble_title")
 
 
 func _on_title_tween_complete(object, key):
@@ -18,10 +19,12 @@ func _on_title_tween_complete(object, key):
 
 
 func _on_button_exit_pressed():
+	get_node("SoundEffects").play("button_click")
 	get_tree().quit()
 
 
+
 func _on_button_play_pressed():
+	get_node("SoundEffects").play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_GAME)
-	#get_tree().change_scene("res://Stages/Stack.tscn")
 
