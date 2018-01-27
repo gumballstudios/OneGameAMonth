@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://Scripts/Bomb.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Fish/Blow/bl1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Fish/Blow/bl2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Fish/Blow/bl3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Fish/Blow/bl4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Fish/Blow/bl5.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/bubble.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31, 31 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="ColorRamp" id=3]
+
+offsets = FloatArray( 0, 1 )
+colors = ColorArray( 1, 1, 1, 0.501961, 1, 1, 1, 0 )
+
+[node name="Bomb" type="Area2D" groups=[
+"Bomb",
+]]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "default"
+frame = 7
+playing = true
+
+[node name="ParticleExplosion" type="Particles2D" parent="."]
+
+config/amount = 64
+config/lifetime = 0.3
+config/time_scale = 2.0
+config/emit_timeout = 0.4
+config/emitting = false
+config/process_mode = 1
+config/explosiveness = 0.0
+config/texture = ExtResource( 7 )
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 250.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color_ramp = SubResource( 3 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Neighbors" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Up" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 0, -16 )
+enabled = true
+cast_to = Vector2( 0, -32 )
+layer_mask = 1
+type_mask = 16
+
+[node name="UpRight" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 16, -16 )
+enabled = true
+cast_to = Vector2( 32, -32 )
+layer_mask = 1
+type_mask = 16
+
+[node name="Right" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 16, 0 )
+enabled = true
+cast_to = Vector2( 32, 0 )
+layer_mask = 1
+type_mask = 16
+
+[node name="RightDown" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 16, 16 )
+enabled = true
+cast_to = Vector2( 32, 32 )
+layer_mask = 1
+type_mask = 16
+
+[node name="Down" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( 0, 16 )
+enabled = true
+cast_to = Vector2( 0, 32 )
+layer_mask = 1
+type_mask = 16
+
+[node name="DownLeft" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( -16, 16 )
+enabled = true
+cast_to = Vector2( -32, 32 )
+layer_mask = 1
+type_mask = 16
+
+[node name="Left" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( -16, 0 )
+enabled = true
+cast_to = Vector2( -32, 0 )
+layer_mask = 1
+type_mask = 16
+
+[node name="LeftUp" type="RayCast2D" parent="Neighbors"]
+
+transform/pos = Vector2( -16, -16 )
+enabled = true
+cast_to = Vector2( -32, -32 )
+layer_mask = 1
+type_mask = 16
+
+[node name="MoveAnimation" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="EscapeAnimation" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
+
+[connection signal="input_event" from="." to="." method="_input"]
+
+[connection signal="tween_complete" from="EscapeAnimation" to="." method="_on_escape_tween_complete"]
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timeout"]
+
+

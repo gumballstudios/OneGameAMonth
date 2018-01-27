@@ -3,6 +3,8 @@ extends Node
 
 const grid_size = Vector2(4, 8)
 const block_size = Vector2(64, 64)
+const fish_per_bomb = 100
+const bomb_chance = 8
 const lines_per_level = 5
 const increase_percentage = 0.925
 
@@ -15,6 +17,8 @@ var block_types = [
 
 var score = 0
 var base_score = 3
+var fish_count = 0
+var bomb_count = 0
 var speed = 0.70
 var line_tick = 0
 var move_speed = 0.4
@@ -27,6 +31,7 @@ onready var fill_timer = get_node("FillTimer")
 onready var clicked_container = get_node("ClickedContainer")
 
 var block_scene = preload("res://Objects/Block.tscn")
+var bomb_scene = preload("res://Objects/Bomb.tscn")
 
 
 # ***************
@@ -153,9 +158,14 @@ func _on_fill_timeout():
 	
 	for grid_part in game_grid.get_children():
 		for column in grid_part.get_children():
-			var block = block_create()
-			block.set_pos(Vector2(-(block_size.x * 2), 0))
-			column.add_child(block)
+			var new_item
+			if bomb_count > 0 && randi() % bomb_chance == 0:
+				bomb_count -= 1
+				new_item = bomb_create()
+			else:
+				new_item = block_create()
+			new_item.set_pos(Vector2(-(block_size.x * 2), 0))
+			column.add_child(new_item)
 			column_move_items(column)
 	
 	get_node("SoundEffects").play(sound)
@@ -212,9 +222,42 @@ func _on_block_clicked(block):
 				new_neighbors += neighbor.get_neighbor_matches()
 		neighbor_list = new_neighbors
 	
-	var block_count = block_list.size()
-	if block_count < 3:
+	if block_list.size() < 3:
 		return
+	
+	var sound_index = min(3, floor(block_list.size() / 3))
+	var sound = "steel_fish0" + str(sound_index)
+	
+	dispose_blocks(block_list, sound)
+
+
+func bomb_create():
+	var bomb = bomb_scene.instance()
+	bomb.connect("clicked", self, "_on_bomb_clicked")
+	return bomb
+
+
+func _on_bomb_clicked(bomb):
+	if !active:
+		return
+	
+	var block_list = [bomb]
+	var neighbor_list = bomb.get_neighbor_matches()
+	
+	while neighbor_list.size() > 0:
+		var new_neighbors = []
+		for neighbor in neighbor_list:
+			if !block_list.has(neighbor):
+				block_list.append(neighbor)
+				if neighbor.is_in_group("Bomb"):
+					new_neighbors += neighbor.get_neighbor_matches()
+		neighbor_list = new_neighbors
+	
+	dispose_blocks(block_list, "steel_line03")
+
+
+func dispose_blocks(block_list, sound):
+	var block_count = block_list.size()
 	
 	for block in block_list:
 		var global_pos = block.get_global_pos()
@@ -226,11 +269,14 @@ func _on_block_clicked(block):
 	var multiplier = (block_count - 3) + 1
 	score += base_score * multiplier
 	
-	var sound_index = min(3, floor(block_count / 3))
-	get_node("SoundEffects").play("steel_fish0" + str(sound_index))
+	fish_count += block_count
+	if fish_count >= fish_per_bomb:
+		fish_count -= fish_per_bomb
+		bomb_count += 1
+	
+	get_node("SoundEffects").play(sound)
 	
 	grid_collapse()
-
 
 
 # ***************

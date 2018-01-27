@@ -2,7 +2,7 @@ extends Area2D
 
 
 signal clicked
-signal destroyed
+
 
 var type setget set_type
 var active = true
@@ -77,7 +77,7 @@ func _on_life_timeout():
 	queue_free()
 
 
-func _on_area_enter( area ):
+func _on_area_enter(area):
 	if !area.is_in_group("Sharks"):
 		return
 	
