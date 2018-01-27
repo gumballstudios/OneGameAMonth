@@ -14,6 +14,7 @@ var block_types = [
 ]
 
 var score = 0
+var base_score = 3
 var speed = 0.70
 var line_tick = 0
 var move_speed = 0.4
@@ -221,7 +222,9 @@ func _on_block_clicked(block):
 		block.set_pos(global_pos)
 		clicked_container.add_child(block)
 		block.escape(move_speed)
-		score += 1
+	
+	var multiplier = (block_count - 3) + 1
+	score += base_score * multiplier
 	
 	var sound_index = min(3, floor(block_count / 3))
 	get_node("SoundEffects").play("steel_fish0" + str(sound_index))
@@ -238,7 +241,7 @@ func _on_block_clicked(block):
 
 func _on_sharks_exit_tree():
 	var score_panel = get_node("GameOver/ScorePanel")
-	score_panel.get_node("ScoreAlignment/ScoreValue").set_text(str(score))
+	score_panel.get_node("ScoreValue").set_text(str(score))
 	
 	get_node("GameOver/ScorePanel/Particles").set_emitting(true)
 	
@@ -252,6 +255,18 @@ func _on_sharks_exit_tree():
 func _on_animation_tween_complete( object, key ):
 	get_node("GameOver/ButtonExit").show()
 	get_node("GameOver/ScorePanel/Particles").set_emitting(false)
+	get_node("GameOver/ScoreCheck").start()
+
+
+func _on_score_check_timeout():
+	if score > Settings.high_score:
+		Settings.high_score = score
+		get_node("SoundEffects").play("steel_high_score")
+		var score_icon = get_node("GameOver/ScorePanel/HighScore")
+		score_icon.show()
+		var anim = get_node("GameOver/ScorePanel/HighScore/Animation")
+		anim.interpolate_property(score_icon, "transform/scale", Vector2(0, 0), Vector2(1, 1), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+		anim.start()
 
 
 func _on_button_retry_pressed():
@@ -267,3 +282,5 @@ func _on_button_exit_pressed():
 func _on_button_menu_pressed():
 	get_node("SoundEffects").play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_MENU)
+
+

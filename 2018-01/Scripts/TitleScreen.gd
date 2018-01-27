@@ -6,16 +6,20 @@ func _ready():
 	
 	var title_anim = get_node("Tween")
 	var title = get_node("Title")
-	title_anim.interpolate_property(title, "rect/pos", title.get_pos(), Vector2(64, 128), 3, Tween.TRANS_SINE, Tween.EASE_OUT)
+	title_anim.interpolate_property(title, "rect/pos", title.get_pos(), Vector2(64, 64), 3, Tween.TRANS_SINE, Tween.EASE_OUT)
 	title_anim.interpolate_property(get_node("Title"), "visibility/opacity", 0, 1, 3, Tween.TRANS_QUINT, Tween.EASE_IN)
 	title_anim.start()
 	
 	get_node("Bubbles/AnimationPlayer").play("Move")
 	get_node("SoundEffects").play("bubble_title")
+	
+	if Settings.high_score > 0:
+		get_node("Buttons/ScorePanel").show()
+		get_node("Buttons/ScorePanel/HighScore").set_text(str(Settings.high_score))
 
 
 func _on_title_tween_complete(object, key):
-	get_node("Buttons").show()
+	get_node("Buttons/Animation").play("button fade")
 
 
 func _on_button_exit_pressed():
