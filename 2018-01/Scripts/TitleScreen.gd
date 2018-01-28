@@ -1,6 +1,12 @@
 extends Node
 
 
+var sound_sprite = preload("res://Sprites/UI/button_sound.png")
+var sound_pressed_sprite = preload("res://Sprites/UI/button_sound_pressed.png")
+var mute_sprite = preload("res://Sprites/UI/button_mute.png")
+var mute_pressed_sprite = preload("res://Sprites/UI/button_mute_pressed.png")
+
+
 func _ready():
 	get_node("GroundSection").set_process(false)
 	
@@ -12,6 +18,8 @@ func _ready():
 	
 	get_node("Bubbles/AnimationPlayer").play("Move")
 	get_node("SoundEffects").play("bubble_title")
+	
+	set_sound_button_textures()
 	
 	if Settings.high_score > 0:
 		get_node("Buttons/ScorePanel").show()
@@ -28,7 +36,6 @@ func _on_button_exit_pressed():
 	get_tree().quit()
 
 
-
 func _on_button_play_pressed():
 	get_node("SoundEffects").play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_GAME)
@@ -37,3 +44,20 @@ func _on_button_play_pressed():
 func _on_button_help_pressed():
 	get_node("SoundEffects").play("button_click")
 	get_node("Instructions").show()
+
+
+func _on_button_sound_pressed():
+	Settings.audio = !Settings.audio
+	set_sound_button_textures()
+	get_node("SoundEffects").play("button_click")
+
+
+func set_sound_button_textures():
+	var button = get_node("Buttons/ButtonSound")
+	if Settings.audio:
+		button.set_normal_texture(sound_sprite)
+		button.set_pressed_texture(sound_pressed_sprite)
+	else:
+		button.set_normal_texture(mute_sprite)
+		button.set_pressed_texture(mute_pressed_sprite)
+		
