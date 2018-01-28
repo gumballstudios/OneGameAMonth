@@ -48,7 +48,7 @@ __meta__ = {
 
 frames = SubResource( 2 )
 animation = "default"
-frame = 7
+frame = 6
 playing = true
 
 [node name="ParticleExplosion" type="Particles2D" parent="."]

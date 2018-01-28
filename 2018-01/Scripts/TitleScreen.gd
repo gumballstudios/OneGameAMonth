@@ -19,6 +19,7 @@ func _ready():
 
 
 func _on_title_tween_complete(object, key):
+	get_node("Buttons").show()
 	get_node("Buttons/Animation").play("button fade")
 
 
@@ -32,3 +33,7 @@ func _on_button_play_pressed():
 	get_node("SoundEffects").play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_GAME)
 
+
+func _on_button_help_pressed():
+	get_node("SoundEffects").play("button_click")
+	get_node("Instructions").show()
