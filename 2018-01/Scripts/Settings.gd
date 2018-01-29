@@ -1,6 +1,6 @@
 extends Node
 
-const config_path = "res://schooled.cfg"
+const config_path = "user://schooled.cfg"
 
 var config_file = ConfigFile.new()
 var high_score = 0 setget set_high_score, get_high_score

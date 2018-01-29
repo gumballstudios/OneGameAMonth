@@ -109,7 +109,6 @@ colors = ColorArray( 1, 1, 1, 0.501961, 1, 1, 1, 0 )
 
 [node name="Stack" type="Node"]
 
-editor/display_folded = true
 script/script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]

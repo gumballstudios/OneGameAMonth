@@ -13,7 +13,7 @@ func _ready():
 
 func set_timer():
 	var timer = get_node("FishTimer")
-	timer.set_wait_time(base_fish_time + rand_range(-1, 1))
+	timer.set_wait_time(base_fish_time + rand_range(-2, 1))
 	timer.start()
 
 

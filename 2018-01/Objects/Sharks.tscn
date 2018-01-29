@@ -36,10 +36,6 @@ _update_shape_index = 0
 transform/pos = Vector2( -21.9184, 172.652 )
 texture = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Container"]
-
-texture = ExtResource( 2 )
-
 [node name="Sprite2" type="Sprite" parent="Container"]
 
 transform/pos = Vector2( -18.9037, -115.25 )
@@ -50,14 +46,14 @@ texture = ExtResource( 2 )
 transform/pos = Vector2( 32.3458, -169.514 )
 texture = ExtResource( 2 )
 
-[node name="Sprite7" type="Sprite" parent="Container"]
-
-transform/pos = Vector2( 15.7651, -228.3 )
-texture = ExtResource( 2 )
-
 [node name="Sprite8" type="Sprite" parent="Container"]
 
 transform/pos = Vector2( 67.0146, -302.16 )
+texture = ExtResource( 2 )
+
+[node name="Sprite7" type="Sprite" parent="Container/Sprite8"]
+
+transform/pos = Vector2( -51.2495, 73.86 )
 texture = ExtResource( 2 )
 
 [node name="Sprite9" type="Sprite" parent="Container"]
@@ -65,14 +61,18 @@ texture = ExtResource( 2 )
 transform/pos = Vector2( 35.3605, 238.976 )
 texture = ExtResource( 2 )
 
-[node name="Sprite1" type="Sprite" parent="Container"]
-
-transform/pos = Vector2( 45.9119, -67.0147 )
-texture = ExtResource( 2 )
-
 [node name="Sprite4" type="Sprite" parent="Container"]
 
 transform/pos = Vector2( 11.2431, 52.0652 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Container"]
+
+texture = ExtResource( 2 )
+
+[node name="Sprite1" type="Sprite" parent="Container"]
+
+transform/pos = Vector2( 45.9119, -67.0147 )
 texture = ExtResource( 2 )
 
 [node name="Sprite5" type="Sprite" parent="Container"]
