@@ -8,12 +8,6 @@ const bomb_chance = 8
 const lines_per_level = 5
 const increase_percentage = 0.925
 
-var block_types = [
-	"Red",
-	"Green",
-	"Blue",
-	"Yellow",
-]
 
 var score = 0
 var base_score = 3
@@ -202,7 +196,7 @@ func column_move_items(column):
 func block_create():
 	var block_index = rand_int_range(0, 3)
 	var block = block_scene.instance()
-	block.type = block_types[block_index]
+	block.type = block.block_types[block_index]
 	block.connect("clicked", self, "_on_block_clicked")
 	return block
 

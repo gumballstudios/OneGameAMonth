@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Scripts/FishGenerator.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 288 )
+
+[node name="FishGenerator" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="FishTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="FishCatcher" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -96, 288 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 1 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 1120, 288 )
+shapes/1/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionLeft" type="CollisionShape2D" parent="FishCatcher"]
+
+transform/pos = Vector2( -96, 288 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="CollisionRight" type="CollisionShape2D" parent="FishCatcher"]
+
+transform/pos = Vector2( 1120, 288 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 1
+
+[node name="StartZones" type="Node" parent="."]
+
+[node name="Zone1" type="Node2D" parent="StartZones"]
+
+transform/pos = Vector2( 1056, 0 )
+
+[node name="Start" type="Position2D" parent="StartZones/Zone1"]
+
+transform/pos = Vector2( 0, 32 )
+
+[node name="End" type="Position2D" parent="StartZones/Zone1"]
+
+transform/pos = Vector2( 0, 480 )
+
+[node name="Zone2" type="Node2D" parent="StartZones"]
+
+transform/pos = Vector2( -32, 0 )
+
+[node name="Start" type="Position2D" parent="StartZones/Zone2"]
+
+transform/pos = Vector2( 0, 32 )
+
+[node name="End" type="Position2D" parent="StartZones/Zone2"]
+
+transform/pos = Vector2( 0, 480 )
+
+[connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]
+
+

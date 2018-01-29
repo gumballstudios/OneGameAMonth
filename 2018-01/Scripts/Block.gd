@@ -3,6 +3,12 @@ extends Area2D
 
 signal clicked
 
+var block_types = [
+	"Red",
+	"Green",
+	"Blue",
+	"Yellow",
+]
 
 var type setget set_type
 var active = true
@@ -47,9 +53,9 @@ func get_neighbor_matches():
 	return matches
 
 
-func move(to_pos, speed):
+func move(to_pos, speed, transition = Tween.TRANS_QUAD):
 	var tween = get_node("MoveAnimation")
-	tween.interpolate_property(self, "transform/pos", get_pos(), to_pos, speed, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "transform/pos", get_pos(), to_pos, speed, transition, Tween.EASE_IN_OUT)
 	tween.start()
 
 

@@ -60,4 +60,4 @@ func set_sound_button_textures():
 	else:
 		button.set_normal_texture(mute_sprite)
 		button.set_pressed_texture(mute_pressed_sprite)
-		
+

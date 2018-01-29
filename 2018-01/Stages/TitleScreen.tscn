@@ -1,25 +1,26 @@
-[gd_scene load_steps=25 format=1]
+[gd_scene load_steps=26 format=1]
 
 [ext_resource path="res://Scripts/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/background.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/bubble.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/PWBubbles_128.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://Objects/GroundSection.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Sprites/UI/button_play.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/UI/button_play_pressed.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/UI/button_help.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/UI/button_help_pressed.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/UI/button_sound.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/UI/button_sound_pressed.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/UI/button_exit.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/UI/button_exit_pressed.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/blue_panel.png" type="Texture" id=14]
-[ext_resource path="res://Fonts/Walibi_32.fnt" type="BitmapFont" id=15]
-[ext_resource path="res://Sprites/high_score.png" type="Texture" id=16]
-[ext_resource path="res://Music/title_loop.ogg" type="AudioStream" id=17]
-[ext_resource path="res://Sounds/bubble_title.wav" type="Sample" id=18]
-[ext_resource path="res://Sounds/button_click.wav" type="Sample" id=19]
-[ext_resource path="res://Objects/Instructions.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Objects/FishGenerator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/PWBubbles_128.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Objects/GroundSection.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/UI/button_play.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/button_play_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/button_help.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/button_help_pressed.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/button_sound.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/button_sound_pressed.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/button_exit.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/button_exit_pressed.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/blue_panel.png" type="Texture" id=15]
+[ext_resource path="res://Fonts/Walibi_32.fnt" type="BitmapFont" id=16]
+[ext_resource path="res://Sprites/high_score.png" type="Texture" id=17]
+[ext_resource path="res://Music/title_loop.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Sounds/bubble_title.wav" type="Sample" id=19]
+[ext_resource path="res://Sounds/button_click.wav" type="Sample" id=20]
+[ext_resource path="res://Objects/Instructions.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ColorRamp" id=1]
 
@@ -66,13 +67,13 @@ samples/bubble_title = {
 "db": 2.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 18 )
+"sample": ExtResource( 19 )
 }
 samples/button_click = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 19 )
+"sample": ExtResource( 20 )
 }
 
 [node name="TitleScreen" type="Node"]
@@ -131,6 +132,8 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="FishGenerator" parent="." instance=ExtResource( 4 )]
+
 [node name="FishContainer" type="Node" parent="."]
 
 [node name="Title" type="Label" parent="."]
@@ -144,7 +147,7 @@ margin/left = 64.0
 margin/top = 256.0
 margin/right = 960.0
 margin/bottom = 396.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0.25098, 0.25098, 0.25098, 1 )
 custom_constants/shadow_as_outline = 2
 text = "Schooled"
@@ -154,7 +157,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="GroundSection" parent="." instance=ExtResource( 5 )]
+[node name="GroundSection" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1056, 608 )
 
@@ -186,8 +189,8 @@ margin/bottom = 320.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
-textures/pressed = ExtResource( 7 )
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 8 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -206,8 +209,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -225,8 +228,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 10 )
-textures/pressed = ExtResource( 11 )
+textures/normal = ExtResource( 11 )
+textures/pressed = ExtResource( 12 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -245,8 +248,8 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 12 )
-textures/pressed = ExtResource( 13 )
+textures/normal = ExtResource( 13 )
+textures/pressed = ExtResource( 14 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -261,7 +264,7 @@ margin/left = 384.0
 margin/top = 384.0
 margin/right = 640.0
 margin/bottom = 480.0
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 patch_margin/left = 32
 patch_margin/top = 32
 patch_margin/right = 32
@@ -277,7 +280,7 @@ margin/left = 64.0
 margin/top = 0.0
 margin/right = 224.0
 margin/bottom = 96.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 0.784314, 0.054902, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.494118, 0.14902, 1 )
 custom_constants/shadow_offset_x = 1
@@ -293,7 +296,7 @@ max_lines_visible = -1
 [node name="Icon" type="Sprite" parent="Buttons/ScorePanel"]
 
 transform/pos = Vector2( 32, 32 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 centered = false
 
 [node name="Animation" type="AnimationPlayer" parent="Buttons"]
@@ -309,7 +312,7 @@ autoplay = ""
 
 [node name="MusicPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 17 )
+stream/stream = ExtResource( 18 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -5.0
@@ -335,7 +338,7 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
-[node name="Instructions" parent="." instance=ExtResource( 20 )]
+[node name="Instructions" parent="." instance=ExtResource( 21 )]
 
 visibility/visible = false
 
