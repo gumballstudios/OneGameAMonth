@@ -33,7 +33,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 272 )
 
-[sub_resource type="SampleLibrary" id=3]
+[sub_resource type="SampleLibrary" id=2]
 
 samples/bubble_end = {
 "db": 0.0,
@@ -102,7 +102,7 @@ samples/steel_sharks = {
 "sample": ExtResource( 15 )
 }
 
-[sub_resource type="ColorRamp" id=2]
+[sub_resource type="ColorRamp" id=3]
 
 offsets = FloatArray( 0, 1 )
 colors = ColorArray( 1, 1, 1, 0.501961, 1, 1, 1, 0 )
@@ -174,7 +174,7 @@ transform/pos = Vector2( 1216, 288 )
 [node name="SoundEffects" type="SamplePlayer" parent="."]
 
 config/polyphony = 6
-config/samples = SubResource( 3 )
+config/samples = SubResource( 2 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -190,7 +190,6 @@ default/chorus_send = 0.0
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -366,7 +365,7 @@ params/final_size = 1.0
 params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
-color/color_ramp = SubResource( 2 )
+color/color_ramp = SubResource( 3 )
 
 [node name="ButtonExit" type="TextureButton" parent="GameOver"]
 

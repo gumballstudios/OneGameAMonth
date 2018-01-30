@@ -72,7 +72,8 @@ func is_game_over():
 		get_node("Sharks").set_process(true)
 		get_node("Ground").stop();
 		result = true
-		get_node("SoundEffects").play("steel_sharks")
+		#get_node("SoundEffects").play("steel_sharks")
+		SoundEffects.play("steel_sharks")
 	
 	return result
 
@@ -132,7 +133,8 @@ func grid_move_columns(grid_part, direction):
 func _on_fill_timeout():
 	line_tick += 1
 	
-	get_node("SoundEffects").play("line_shake")
+	#get_node("SoundEffects").play("line_shake")
+	SoundEffects.play("line_shake")
 	
 	if line_tick < grid_size.y:
 		return
@@ -162,7 +164,8 @@ func _on_fill_timeout():
 			column.add_child(new_item)
 			column_move_items(column)
 	
-	get_node("SoundEffects").play(sound)
+	#get_node("SoundEffects").play(sound)
+	SoundEffects.play(sound)
 
 
 
@@ -268,7 +271,8 @@ func dispose_blocks(block_list, sound):
 		fish_count -= fish_per_bomb
 		bomb_count += 1
 	
-	get_node("SoundEffects").play(sound)
+	#get_node("SoundEffects").play(sound)
+	SoundEffects.play(sound)
 	
 	grid_collapse()
 
@@ -289,7 +293,8 @@ func _on_sharks_exit_tree():
 	anim.interpolate_property(score_panel, "rect/pos", score_panel.get_pos(), Vector2(320, 256), 1, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	anim.interpolate_property(get_node("GameOver/Title"), "visibility/opacity", 0, 1, 1.5, Tween.TRANS_QUART, Tween.EASE_IN)
 	anim.start()
-	get_node("SoundEffects").play("bubble_end")
+	#get_node("SoundEffects").play("")
+	SoundEffects.play("bubble_end")
 
 
 func _on_animation_tween_complete( object, key ):
@@ -301,7 +306,8 @@ func _on_animation_tween_complete( object, key ):
 func _on_score_check_timeout():
 	if score > Settings.high_score:
 		Settings.high_score = score
-		get_node("SoundEffects").play("steel_high_score")
+		#get_node("SoundEffects").play("steel_high_score")
+		SoundEffects.play("steel_high_score")
 		var score_icon = get_node("GameOver/ScorePanel/HighScore")
 		score_icon.show()
 		var anim = get_node("GameOver/ScorePanel/HighScore/Animation")
@@ -310,17 +316,20 @@ func _on_score_check_timeout():
 
 
 func _on_button_retry_pressed():
-	get_node("SoundEffects").play("button_click")
+	#get_node("SoundEffects").play("button_click")
+	SoundEffects.play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_GAME)
 
 
 func _on_button_exit_pressed():
-	get_node("SoundEffects").play("button_click")
+	#get_node("SoundEffects").play("button_click")
+	SoundEffects.play("button_click")
 	get_tree().quit()
 
 
 func _on_button_menu_pressed():
-	get_node("SoundEffects").play("button_click")
+	#get_node("SoundEffects").play("button_click")
+	SoundEffects.play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_MENU)
 
 

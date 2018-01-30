@@ -30,19 +30,22 @@ func display_frame():
 
 
 func _on_previous_pressed():
-	get_node("SoundEffects").play("help_flip")
+	#get_node("SoundEffects").play("help_flip")
+	SoundEffects.play("help_flip")
 	current_frame -= 1
 	display_frame()
 
 
 func _on_next_pressed():
-	get_node("SoundEffects").play("help_flip")
+	#get_node("SoundEffects").play("help_flip")
+	SoundEffects.play("help_flip")
 	current_frame += 1
 	display_frame()
 
 
 func _on_exit_pressed():
-	get_node("SoundEffects").play("help_close")
+	#get_node("SoundEffects").play("help_close")
+	SoundEffects.play("help_close")
 	hide()
 	current_frame = 0
 	display_frame()

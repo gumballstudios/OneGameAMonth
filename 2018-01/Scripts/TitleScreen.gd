@@ -17,7 +17,8 @@ func _ready():
 	title_anim.start()
 	
 	get_node("Bubbles/AnimationPlayer").play("Move")
-	get_node("SoundEffects").play("bubble_title")
+	#get_node("SoundEffects").play("bubble_title")
+	SoundEffects.play("bubble_title")
 	
 	set_sound_button_textures()
 	
@@ -32,24 +33,28 @@ func _on_title_tween_complete(object, key):
 
 
 func _on_button_exit_pressed():
-	get_node("SoundEffects").play("button_click")
+	#get_node("SoundEffects").play("button_click")
+	SoundEffects.play("button_click")
 	get_tree().quit()
 
 
 func _on_button_play_pressed():
-	get_node("SoundEffects").play("button_click")
+	#get_node("SoundEffects").play("button_click")
+	SoundEffects.play("button_click")
 	SceneSwitch.change_scene(SceneSwitch.SCENE_GAME)
 
 
 func _on_button_help_pressed():
-	get_node("SoundEffects").play("button_click")
+	#get_node("SoundEffects").play("button_click")
+	SoundEffects.play("button_click")
 	get_node("Instructions").show()
 
 
 func _on_button_sound_pressed():
 	Settings.audio = !Settings.audio
 	set_sound_button_textures()
-	get_node("SoundEffects").play("button_click")
+	#get_node("SoundEffects").play("button_click")
+	SoundEffects.play("button_click")
 
 
 func set_sound_button_textures():
