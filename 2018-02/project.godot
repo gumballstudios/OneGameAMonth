@@ -13,6 +13,16 @@ config_version=3
 config/name="2018-02"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=360
+window/size/height=640
+
+[input]
+
+fire=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
