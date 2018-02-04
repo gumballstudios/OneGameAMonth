@@ -1,21 +1,20 @@
 extends Node
 
 
-
-
 func _ready():
-	RunRound()
-
-func RunRound():
-	$Grid.ProcessRound()
-	$MoveTimer.start()
+	for i in range(3):
+		$Grid.ProcessRound()
+		$MoveTimer.start()
+		yield($MoveTimer, "timeout")
+	
+	$Launcher.set_process_input(true)
+	$MoveTimer.connect("timeout", self, "_on_move_timeout")
 
 
 func _on_move_timeout():
-	$Ball.set_process_input(true)
+	$Launcher.set_process_input(true)
 
 
-func _on_ball_grounded():
+func _on_attack_complete():
 	$Grid.ProcessRound()
 	$MoveTimer.start()
-

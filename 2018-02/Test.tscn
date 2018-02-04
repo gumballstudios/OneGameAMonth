@@ -3,7 +3,7 @@
 [ext_resource path="res://Test.gd" type="Script" id=1]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Grid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Launcher.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,19 +13,12 @@ extents = Vector2( 180, 16 )
 [node name="Test" type="Node" index="0"]
 
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ],
-"_edit_vertical_guides_": [  ]
-}
 
 [node name="Wall" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="Grid" parent="." index="1" instance=ExtResource( 3 )]
 
-[node name="Ball" parent="." index="2" instance=ExtResource( 4 )]
-
-position = Vector2( 180, 632 )
-_sections_unfolded = [ "Collision", "Transform" ]
+[node name="Launcher" parent="." index="2" instance=ExtResource( 4 )]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="3" groups=[
 "Ground",
@@ -54,8 +47,6 @@ wait_time = 0.7
 one_shot = true
 autostart = false
 
-[connection signal="grounded" from="Ball" to="." method="_on_ball_grounded"]
-
-[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timeout"]
+[connection signal="attack_complete" from="Launcher" to="." method="_on_attack_complete"]
 
 

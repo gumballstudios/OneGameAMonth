@@ -9,18 +9,7 @@ var velocity = Vector2()
 
 
 func _ready():
-	set_process_input(false)
 	set_physics_process(false)
-
-
-func _input(event):
-	if event.is_action("fire") && event.is_pressed():
-		var a = global_position
-		var b = get_global_mouse_position()
-		var direction = b - a
-		velocity = direction.normalized() * SPEED
-		set_process_input(false)
-		set_physics_process(true)
 
 
 func _physics_process(delta):
@@ -31,8 +20,7 @@ func _physics_process(delta):
 	if collision:
 		set_physics_process(false)
 		if collision.collider.is_in_group("Ground"):
-			set_process_input(true)
-			emit_signal("grounded")
+			emit_signal("grounded", self)
 			return
 		elif collision.collider.is_in_group("Block"):
 			collision.collider.queue_free()
@@ -44,3 +32,9 @@ func _physics_process(delta):
 
 func _on_attack_timeout():
 	set_physics_process(true)
+
+
+func MoveTo(new_position):
+	$Mover.interpolate_property(self, "position", position, new_position, 0.2, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$Mover.start()
+
