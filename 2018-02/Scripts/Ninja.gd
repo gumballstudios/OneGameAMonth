@@ -19,19 +19,15 @@ func _physics_process(delta):
 	# move the ball and get any remaining motion after a collision
 	var collision = move_and_collide(motion)
 	
-	var bounce = true;
 	if collision:
 		set_physics_process(false)
 		if collision.collider.is_in_group("Ground"):
 			emit_signal("returned", self)
 			return
 		elif collision.collider.is_in_group("Enemy"):
-			var enemy = collision.collider
-			bounce = strength < enemy.strength
-			enemy.Hit(strength)
+			collision.collider.Hit(strength)
 		
-		if bounce:
-			velocity = velocity.bounce(collision.normal)
+		velocity = velocity.bounce(collision.normal)
 		$AttackTimer.start()
 
 

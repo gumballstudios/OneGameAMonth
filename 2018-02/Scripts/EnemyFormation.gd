@@ -26,11 +26,14 @@ func DeployNewEnemies():
 	var enemyChance = [2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6]
 	var enemyCount = enemyChance[randi() % enemyChance.size()]
 	var giveItem = (randf() <= 0.75)
+	if deployRound == 1:
+		print("always give")
+		giveItem = true
 	var columns = GetRandomColumns(enemyCount, giveItem)
 	for i in range(enemyCount):
 		var enemy = enemyScene.instance()
 		var strength = deployRound
-		if randf() <= 0.25:
+		if randf() <= 0.1:
 			strength *= 2
 		enemy.position = $EnemySpawn.position
 		$EnemyContainer.add_child(enemy)
