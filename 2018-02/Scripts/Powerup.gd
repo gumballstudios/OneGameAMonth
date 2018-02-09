@@ -7,7 +7,9 @@ var size = Vector2(38, 38)
 func _on_body_entered(body):
 	if body.is_in_group("Ninja"):
 		body.PowerUp()
+		#disconnect("body_entered", self, "_on_body_entered")
 		queue_free()
+
 
 func Deploy(column):
 	position = Vector2((size.x * column), 0)

@@ -23,14 +23,18 @@ func EnemyMarch():
 
 func DeployNewEnemies():
 	deployRound += 1
-	var enemyCount = (randi() % 4) + 1
+	var enemyChance = [2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6]
+	var enemyCount = enemyChance[randi() % enemyChance.size()]
 	var giveItem = (randf() <= 0.75)
 	var columns = GetRandomColumns(enemyCount, giveItem)
 	for i in range(enemyCount):
 		var enemy = enemyScene.instance()
+		var strength = deployRound
+		if randf() <= 0.25:
+			strength *= 2
 		enemy.position = $EnemySpawn.position
 		$EnemyContainer.add_child(enemy)
-		enemy.Deploy(columns[i], deployRound)
+		enemy.Deploy(columns[i], strength)
 	
 	if giveItem:
 		var powerup = powerUpScene.instance()

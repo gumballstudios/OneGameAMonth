@@ -19,6 +19,29 @@ wait_time = 0.4
 one_shot = true
 autostart = false
 
+[node name="Label" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -180.0
+margin_top = -632.0
+margin_right = 180.0
+margin_bottom = -596.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "1"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
 [connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timeout"]
 
 

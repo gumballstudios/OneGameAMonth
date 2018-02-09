@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 
 signal returned
+signal power_up
 
 const SPEED = 2500
 
@@ -18,15 +19,19 @@ func _physics_process(delta):
 	# move the ball and get any remaining motion after a collision
 	var collision = move_and_collide(motion)
 	
+	var bounce = true;
 	if collision:
 		set_physics_process(false)
 		if collision.collider.is_in_group("Ground"):
 			emit_signal("returned", self)
 			return
 		elif collision.collider.is_in_group("Enemy"):
-			collision.collider.Hit(strength)
+			var enemy = collision.collider
+			bounce = strength < enemy.strength
+			enemy.Hit(strength)
 		
-		velocity = velocity.bounce(collision.normal)
+		if bounce:
+			velocity = velocity.bounce(collision.normal)
 		$AttackTimer.start()
 
 
@@ -40,5 +45,6 @@ func MoveTo(new_position):
 
 
 func PowerUp():
-	strength += 1
-	$Label.text = str(strength)
+	emit_signal("power_up")
+	#strength += 1
+	#$Label.text = str(strength)

@@ -7,6 +7,9 @@ var ninjaIndex = 0
 var ninjaReturned = 0
 var startPosition
 var direction
+var recruitCount = 0
+
+var ninjaScene = preload("res://Objects/Ninja.tscn")
 
 
 func _ready():
@@ -17,6 +20,7 @@ func _ready():
 func RecruitNinja(ninja_roster):
 	for ninja in ninja_roster:
 		ninja.connect("returned", self, "_on_ninja_returned")
+		ninja.connect("power_up", self, "_on_power_up")
 		$NinjaHideout.add_child(ninja)
 
 
@@ -52,5 +56,17 @@ func _on_ninja_returned(ninja):
 	
 	ninjaReturned += 1
 	if ninjaReturned == $NinjaHideout.get_child_count():
+		if recruitCount > 0:
+			for i in range(recruitCount):
+				var ninjaRecruit = ninjaScene.instance()
+				ninjaRecruit.connect("returned", self, "_on_ninja_returned")
+				ninjaRecruit.connect("power_up", self, "_on_power_up")
+				ninjaRecruit.position = startPosition
+				$NinjaHideout.add_child(ninjaRecruit)
+				$Label.text = str($NinjaHideout.get_child_count())
+			recruitCount = 0
 		emit_signal("attack_complete")
 
+
+func _on_power_up():
+	recruitCount += 1
