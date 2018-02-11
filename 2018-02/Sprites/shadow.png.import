@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ninja.png-f5c94cf33546198ed27c5a0d806d5562.stex"
+path="res://.import/shadow.png-bbcdb9fc69648a3209a8b47b533ef9a3.stex"
 
 [deps]
 
-source_file="res://Sprites/ninja.png"
-source_md5="e3e981ee65104525206876420a65d2ec"
+source_file="res://Sprites/shadow.png"
+source_md5="216e72774aaea0674c69934a9fa6f5d8"
 
-dest_files=[ "res://.import/ninja.png-f5c94cf33546198ed27c5a0d806d5562.stex" ]
-dest_md5="0313ecfff4af43153b1536956f657194"
+dest_files=[ "res://.import/shadow.png-bbcdb9fc69648a3209a8b47b533ef9a3.stex" ]
+dest_md5="6ef2d305a05bb01d6c792bc2f9dd1318"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

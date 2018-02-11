@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/powerup.png-2ba8151fa99e0a9a4a8c28c870792570.stex"
+path="res://.import/ninja.png-96f1a6e860a1a5c1e015ef7da5540b8a.stex"
 
 [deps]
 
-source_file="res://Sprites/powerup.png"
-source_md5="788b48f40e1f5bf1f91abda5254e89fd"
+source_file="res://Sprites/Ninjas/ninja.png"
+source_md5="b9444a5d765e602f707efabb1cabf7ec"
 
-dest_files=[ "res://.import/powerup.png-2ba8151fa99e0a9a4a8c28c870792570.stex" ]
-dest_md5="18e2bc3168063b30811b4bce9529121f"
+dest_files=[ "res://.import/ninja.png-96f1a6e860a1a5c1e015ef7da5540b8a.stex" ]
+dest_md5="d0c0e67e39713547c10c89947a69d66b"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

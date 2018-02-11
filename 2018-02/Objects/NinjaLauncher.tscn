@@ -15,7 +15,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="LaunchTimer" type="Timer" parent="." index="1"]
 
 process_mode = 1
-wait_time = 0.4
+wait_time = 0.1
 one_shot = true
 autostart = false
 
@@ -41,6 +41,11 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
+
+[node name="YSort" type="YSort" parent="." index="3"]
+
+sort_enabled = true
+_sections_unfolded = [ "Sort" ]
 
 [connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timeout"]
 
