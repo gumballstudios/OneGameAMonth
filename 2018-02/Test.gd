@@ -1,12 +1,13 @@
 extends Node
 
-var ninjaScene = preload("res://Objects/Ninja.tscn")
+var factoryScene = preload("res://Objects/Ninjas/NinjaFactory.tscn")
 
 
 func _ready():
 	$MoveTimer.connect("timeout", self, "_on_move_timeout")
 	
-	$NinjaLauncher.RecruitNinja([ ninjaScene.instance() ])
+	var factory = factoryScene.instance()
+	$NinjaLauncher.RecruitNinja([ factory.GetNinja() ])
 	$NinjaLauncher.set_process_input(true)
 	
 	$EnemyFormation.ProcessRound()

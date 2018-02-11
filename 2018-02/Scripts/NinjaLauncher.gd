@@ -8,11 +8,13 @@ var ninjaReturned = 0
 var startPosition
 var direction
 var recruitCount = 0
+var factory
 
-var ninjaScene = preload("res://Objects/Ninja.tscn")
+var factoryScene = preload("res://Objects/Ninjas/NinjaFactory.tscn")
 
 
 func _ready():
+	factory = factoryScene.instance()
 	startPosition = $NinjaHideout.position
 	set_process_input(false)
 
@@ -58,7 +60,7 @@ func _on_ninja_returned(ninja):
 	if ninjaReturned == $NinjaHideout.get_child_count():
 		if recruitCount > 0:
 			for i in range(recruitCount):
-				var ninjaRecruit = ninjaScene.instance()
+				var ninjaRecruit = factory.GetNinja()
 				ninjaRecruit.connect("returned", self, "_on_ninja_returned")
 				ninjaRecruit.connect("power_up", self, "_on_power_up")
 				ninjaRecruit.position = startPosition

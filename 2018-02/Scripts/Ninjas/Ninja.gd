@@ -4,10 +4,10 @@ extends KinematicBody2D
 signal returned
 signal power_up
 
-const SPEED = 2500
+const SPEED = 1750
 
 var velocity = Vector2()
-var strength = 1
+export(int) var strength = 1
 
 
 func _ready():
@@ -26,6 +26,7 @@ func _physics_process(delta):
 			return
 		elif collision.collider.is_in_group("Enemy"):
 			collision.collider.Hit(strength)
+			$CollisionSound.play()
 		
 		velocity = velocity.bounce(collision.normal)
 		$AttackTimer.start()

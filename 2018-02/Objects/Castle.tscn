@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/walls.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 320 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 180, 16 )
+
+[node name="Castle" type="Node"]
+
+[node name="Grass" type="Sprite" parent="." index="0"]
+
+position = Vector2( 31, 36 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 298, 604 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="Walls" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="Collider" type="StaticBody2D" parent="." index="2"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="ShapeLeft" type="CollisionShape2D" parent="Collider" index="0"]
+
+position = Vector2( 39, 320 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ShapeRight" type="CollisionShape2D" parent="Collider" index="1"]
+
+position = Vector2( 321, 320 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ShapeTop" type="CollisionShape2D" parent="Collider" index="2"]
+
+position = Vector2( 180, 92 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+

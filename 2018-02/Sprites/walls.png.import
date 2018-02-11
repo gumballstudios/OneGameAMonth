@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall.png-e3261c66ad83b71f524576fb4f3c7b5b.stex"
+path="res://.import/walls.png-b4f06cd25e4dc0538944057515f986a6.stex"
 
 [deps]
 
-source_file="res://wall.png"
-source_md5="34cd9deff1b85ad9b06b8ca9bbcc0d2d"
+source_file="res://Sprites/walls.png"
+source_md5="e7f999f28e08892bd0b5310b90b13026"
 
-dest_files=[ "res://.import/wall.png-e3261c66ad83b71f524576fb4f3c7b5b.stex" ]
-dest_md5="29d1bc690dfc410add213a41fac89171"
+dest_files=[ "res://.import/walls.png-b4f06cd25e4dc0538944057515f986a6.stex" ]
+dest_md5="5ceb192d6fe1428c933897e3a513bb44"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

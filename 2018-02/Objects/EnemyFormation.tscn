@@ -4,7 +4,7 @@
 
 [node name="EnemyFormation" type="Node2D"]
 
-position = Vector2( 66, 153 )
+position = Vector2( 66, 165 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 

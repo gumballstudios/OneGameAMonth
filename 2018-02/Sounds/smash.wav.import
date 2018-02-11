@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smash.wav-571396d13f6816723ed3810a0e0999b2.sample"
+
+[deps]
+
+source_file="res://Sounds/smash.wav"
+source_md5="ec8345c476e432978ca4ee171ec8a8d2"
+
+dest_files=[ "res://.import/smash.wav-571396d13f6816723ed3810a0e0999b2.sample" ]
+dest_md5="55590bc8f86b36a84a08a9d4f63ee6ac"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
