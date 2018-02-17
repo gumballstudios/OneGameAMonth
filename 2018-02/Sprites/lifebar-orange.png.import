@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/block.png-4bf18e79854e51ee6cdd2c74ee5b61f3.stex"
+path="res://.import/lifebar-orange.png-6429968c9ecea44dfee39912974baafb.stex"
 
 [deps]
 
-source_file="res://Sprites/block.png"
-source_md5="9da0dd2d43b7e0b79fd21a12da861bf9"
+source_file="res://Sprites/lifebar-orange.png"
+source_md5="5d02bbfcc2dcb9a6e3197eef7d6ddf81"
 
-dest_files=[ "res://.import/block.png-4bf18e79854e51ee6cdd2c74ee5b61f3.stex" ]
-dest_md5="44728bb12d0d50b76d65e05dd1dce227"
+dest_files=[ "res://.import/lifebar-orange.png-6429968c9ecea44dfee39912974baafb.stex" ]
+dest_md5="6e1fc1e1cd434a0d0bd50ee38eee51d2"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

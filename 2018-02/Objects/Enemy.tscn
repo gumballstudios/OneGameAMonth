@@ -1,12 +1,45 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/block.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemy/ogre.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/grave.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Enemy/enemy.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/life-container.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/lifebar-red.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/lifebar-green.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/lifebar-orange.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/lifebar-blue.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/lifebar-yellow.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/lifebar-purple.png" type="Texture" id=11]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "ogre",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "grave",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "normal",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
+extents = Vector2( 16, 15 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15, 14 )
 
 [node name="Enemy" type="StaticBody2D" groups=[
 "Enemy",
@@ -20,39 +53,20 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Visibility" ]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
+animation = "normal"
 
-[node name="Label" type="Label" parent="." index="1"]
+[node name="Collision" type="CollisionShape2D" parent="." index="1"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "1"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Grow Direction", "Rect" ]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Collision" type="CollisionShape2D" parent="." index="2"]
-
-shape = SubResource( 1 )
-
-[node name="Mover" type="Tween" parent="." index="3"]
+[node name="Mover" type="Tween" parent="." index="2"]
 
 repeat = false
 playback_process_mode = 1
@@ -60,5 +74,212 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="EndDetect" type="Area2D" parent="." index="3" groups=[
+"End",
+]]
+
+position = Vector2( 0, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+collision_mask = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="Collision" type="CollisionShape2D" parent="EndDetect" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Hud" type="Control" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 15.0
+margin_right = 25.0
+margin_bottom = 55.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LifeBar01" type="TextureProgress" parent="Hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 25.0
+step = 1.0
+page = 0.0
+value = 1.0
+exp_edit = false
+rounded = false
+texture_under = ExtResource( 5 )
+texture_over = null
+texture_progress = ExtResource( 6 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="LifeBar04" type="TextureProgress" parent="Hud" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 50.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 7 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="LifeBar02" type="TextureProgress" parent="Hud" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 75.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 8 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="LifeBar05" type="TextureProgress" parent="Hud" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 9 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="LifeBar03" type="TextureProgress" parent="Hud" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 125.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 10 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="LifeBar06" type="TextureProgress" parent="Hud" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 150.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 11 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[connection signal="tween_completed" from="Mover" to="." method="_on_Mover_tween_completed"]
 
 

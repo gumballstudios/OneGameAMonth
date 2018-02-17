@@ -2,6 +2,7 @@ extends Node2D
 
 
 var deployRound = 0
+var kills = 0
 
 var enemyScene = preload("res://Objects/Enemy.tscn")
 var powerUpScene = preload("res://Objects/Powerup.tscn")
@@ -11,9 +12,15 @@ func _ready():
 	randomize()
 
 
+func _on_enemy_killed():
+	kills += 1
+	$Hud/Kills.text = str(kills)
+
+
 func ProcessRound():
 	EnemyMarch()
 	DeployNewEnemies()
+	$Hud/Round.text = str(deployRound)
 
 
 func EnemyMarch():
@@ -27,17 +34,14 @@ func DeployNewEnemies():
 	var enemyCount = enemyChance[randi() % enemyChance.size()]
 	var giveItem = (randf() <= 0.75)
 	if deployRound == 1:
-		print("always give")
 		giveItem = true
 	var columns = GetRandomColumns(enemyCount, giveItem)
 	for i in range(enemyCount):
 		var enemy = enemyScene.instance()
-		var strength = deployRound
-		if randf() <= 0.1:
-			strength *= 2
+		enemy.connect("killed", self, "_on_enemy_killed")
 		enemy.position = $EnemySpawn.position
 		$EnemyContainer.add_child(enemy)
-		enemy.Deploy(columns[i], strength)
+		enemy.Deploy(columns[i], deployRound, randf() <= 0.1)
 	
 	if giveItem:
 		var powerup = powerUpScene.instance()

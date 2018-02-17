@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ninja.png-96f1a6e860a1a5c1e015ef7da5540b8a.stex"
+path="res://.import/lifebar-yellow.png-9d88a8425652729619db459ed3bc836a.stex"
 
 [deps]
 
-source_file="res://Sprites/Ninjas/ninja.png"
-source_md5="0840bf83fb2a6ede0d8a814fceb152c1"
+source_file="res://Sprites/lifebar-yellow.png"
+source_md5="ec7bb8b18ed1b49273d2ee141d2e67a7"
 
-dest_files=[ "res://.import/ninja.png-96f1a6e860a1a5c1e015ef7da5540b8a.stex" ]
-dest_md5="fb378fadb27b473c28392a7c07437ae2"
+dest_files=[ "res://.import/lifebar-yellow.png-9d88a8425652729619db459ed3bc836a.stex" ]
+dest_md5="7e7f74a820a37ab079f65da866f3966d"
 
 [params]
 

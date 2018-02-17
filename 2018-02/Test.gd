@@ -1,5 +1,8 @@
 extends Node
 
+
+var gameOver = false
+
 var factoryScene = preload("res://Objects/Ninjas/NinjaFactory.tscn")
 
 
@@ -15,9 +18,15 @@ func _ready():
 
 
 func _on_move_timeout():
-	$NinjaLauncher.set_process_input(true)
+	if !gameOver:
+		$NinjaLauncher.set_process_input(true)
 
 
 func _on_attack_complete():
 	$EnemyFormation.ProcessRound()
 	$MoveTimer.start()
+
+
+func _on_zone_entered(area):
+	print("game over")
+	gameOver = true

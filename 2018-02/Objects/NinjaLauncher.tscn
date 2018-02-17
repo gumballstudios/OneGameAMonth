@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/NinjaLauncher.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Ninjas/ninja.png" type="Texture" id=2]
 
 [node name="NinjaLauncher" type="Node2D"]
 
@@ -19,7 +20,12 @@ wait_time = 0.1
 one_shot = true
 autostart = false
 
-[node name="Label" type="Label" parent="." index="2"]
+[node name="YSort" type="YSort" parent="." index="2"]
+
+sort_enabled = true
+_sections_unfolded = [ "Sort" ]
+
+[node name="Hud" type="Control" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -27,25 +33,57 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -180.0
 margin_top = -632.0
-margin_right = 180.0
+margin_right = -140.0
 margin_bottom = -596.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 9.0
+margin_right = 32.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+stretch_mode = 3
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme" ]
+
+[node name="Label" type="Label" parent="Hud" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_right = 48.0
+margin_bottom = 36.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 text = "1"
-align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect" ]
-
-[node name="YSort" type="YSort" parent="." index="3"]
-
-sort_enabled = true
-_sections_unfolded = [ "Sort" ]
+_sections_unfolded = [ "Margin", "Rect" ]
 
 [connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timeout"]
 

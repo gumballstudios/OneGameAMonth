@@ -65,7 +65,7 @@ func _on_ninja_returned(ninja):
 				ninjaRecruit.connect("power_up", self, "_on_power_up")
 				ninjaRecruit.position = startPosition
 				$NinjaHideout.add_child(ninjaRecruit)
-				$Label.text = str($NinjaHideout.get_child_count())
+				$Hud/Label.text = str($NinjaHideout.get_child_count())
 			recruitCount = 0
 		emit_signal("attack_complete")
 
