@@ -20,6 +20,8 @@ func _ready():
 func _on_move_timeout():
 	if !gameOver:
 		$NinjaLauncher.set_process_input(true)
+	else:
+		$GameOver.show()
 
 
 func _on_attack_complete():
@@ -28,5 +30,28 @@ func _on_attack_complete():
 
 
 func _on_zone_entered(area):
-	print("game over")
 	gameOver = true
+
+
+func _on_retry_mouse_entered():
+	$GameOver/Action.text = "retry"
+
+
+func _on_retry_mouse_exited():
+	$GameOver/Action.text = ""
+
+
+func _on_menu_mouse_entered():
+	$GameOver/Action.text = "menu"
+
+
+func _on_menu_mouse_exited():
+	$GameOver/Action.text = ""
+
+
+func _on_retry_pressed():
+	SceneSwitch.ChangeScene(SceneSwitch.SCENE_GAME)
+
+
+func _on_menu_pressed():
+	SceneSwitch.ChangeScene(SceneSwitch.SCENE_MENU)
