@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Test.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Castle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/EnemyFormation.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/NinjaLauncher.tscn" type="PackedScene" id=4]
@@ -10,7 +10,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 180, 16 )
 
-[node name="Test" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 

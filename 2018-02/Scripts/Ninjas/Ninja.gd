@@ -46,3 +46,7 @@ func PowerUp():
 	emit_signal("power_up")
 	#strength += 1
 	#$Label.text = str(strength)
+
+
+func _on_screen_exited():
+	queue_free()

@@ -55,6 +55,18 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
+[node name="Visibility" type="VisibilityEnabler2D" parent="." index="5"]
+
+rect = Rect2( -7, -6, 14, 14 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timeout"]
+
+[connection signal="screen_exited" from="Visibility" to="." method="_on_screen_exited"]
 
 

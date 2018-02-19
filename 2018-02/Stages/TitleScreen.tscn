@@ -1,0 +1,267 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/title-bg.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Kenney Blocks.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Fonts/Karate.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Sprites/UI/button_play.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/button_pressed_play.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 320 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 180, 16 )
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 80
+use_mipmaps = false
+use_filter = false
+extra_spacing_char = 5
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 112
+use_mipmaps = false
+use_filter = false
+extra_spacing_char = 5
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="TitleScreen" type="Node" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Background" type="Node" parent="." index="0"]
+
+[node name="Ground" type="Sprite" parent="Background" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 360, 640 )
+_sections_unfolded = [ "Mouse", "Offset", "Rect", "Region" ]
+
+[node name="Walls" type="StaticBody2D" parent="Background" index="1"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="Background/Walls" index="0"]
+
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="ShapeLeft" type="CollisionShape2D" parent="Background/Walls" index="1"]
+
+position = Vector2( 8, 320 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ShapeRight" type="CollisionShape2D" parent="Background/Walls" index="2"]
+
+position = Vector2( 352, 320 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ShapeTop" type="CollisionShape2D" parent="Background/Walls" index="3"]
+
+position = Vector2( 180, 48 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Launcher" type="Node" parent="." index="1"]
+
+[node name="Container" type="Node" parent="Launcher" index="0"]
+
+[node name="Timer" type="Timer" parent="Launcher" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Title" type="CanvasLayer" parent="." index="2"]
+
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Many" type="Label" parent="Title" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 371.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_constants/shadow_as_outline = 5
+text = "many"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Mini" type="Label" parent="Title" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 85.0
+margin_right = 371.0
+margin_bottom = 205.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_constants/shadow_as_outline = 5
+text = "mini"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Ninja" type="Label" parent="Title" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 155.0
+margin_right = 360.0
+margin_bottom = 255.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.501961, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 1
+text = "ninja"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Buttons" type="CanvasLayer" parent="." index="3"]
+
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="ButtonPlay" type="TextureButton" parent="Buttons" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 148.0
+margin_top = 300.0
+margin_right = 212.0
+margin_bottom = 364.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+_sections_unfolded = [ "Mouse", "Rect", "Textures" ]
+
+[node name="Action" type="Label" parent="Buttons" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 364.0
+margin_right = 360.0
+margin_bottom = 428.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.501961, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[connection signal="timeout" from="Launcher/Timer" to="." method="_on_launch_timeout"]
+
+[connection signal="mouse_entered" from="Buttons/ButtonPlay" to="." method="_on_play_mouse_entered"]
+
+[connection signal="mouse_exited" from="Buttons/ButtonPlay" to="." method="_on_play_mouse_exited"]
+
+[connection signal="pressed" from="Buttons/ButtonPlay" to="." method="_on_play_pressed"]
+
+
