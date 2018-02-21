@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/march08.wav-247370a91ba196ad5c2bf22a8c778f8b.sample"
+
+[deps]
+
+source_file="res://Sounds/march08.wav"
+source_md5="fd171f4151cd6845f5536d8fa795a271"
+
+dest_files=[ "res://.import/march08.wav-247370a91ba196ad5c2bf22a8c778f8b.sample" ]
+dest_md5="ac208dc3c8109d5f476c70f8bf2e8b69"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

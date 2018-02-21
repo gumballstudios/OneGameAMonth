@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 signal returned
 signal power_up
+signal attack
 
 const SPEED = 750
 
@@ -27,14 +28,9 @@ func _physics_process(delta):
 			return
 		elif collision.collider.is_in_group("Enemy"):
 			collision.collider.Hit(strength)
-			#$CollisionSound.play()
+			emit_signal("attack")
 		
 		velocity = velocity.bounce(collision.normal)
-		#$AttackTimer.start()
-
-
-func _on_attack_timeout():
-	set_physics_process(true)
 
 
 func MoveTo(new_position):

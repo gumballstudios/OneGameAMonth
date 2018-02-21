@@ -9,6 +9,7 @@ var startPosition
 var direction
 var recruitCount = 0
 var factory
+var soundBuffer = true
 
 var factoryScene = preload("res://Objects/Ninjas/NinjaFactory.tscn")
 
@@ -23,6 +24,7 @@ func RecruitNinja(ninja_roster):
 	for ninja in ninja_roster:
 		ninja.connect("returned", self, "_on_ninja_returned")
 		ninja.connect("power_up", self, "_on_power_up")
+		ninja.connect("attack", self, "_on_ninja_attack")
 		$NinjaHideout.add_child(ninja)
 
 
@@ -63,6 +65,7 @@ func _on_ninja_returned(ninja):
 				var ninjaRecruit = factory.GetNinja()
 				ninjaRecruit.connect("returned", self, "_on_ninja_returned")
 				ninjaRecruit.connect("power_up", self, "_on_power_up")
+				ninjaRecruit.connect("attack", self, "_on_ninja_attack")
 				ninjaRecruit.position = startPosition
 				$NinjaHideout.add_child(ninjaRecruit)
 				$Hud/Label.text = str($NinjaHideout.get_child_count())
@@ -72,3 +75,22 @@ func _on_ninja_returned(ninja):
 
 func _on_power_up():
 	recruitCount += 1
+
+
+func _on_ninja_attack():
+	if !soundBuffer:
+		return
+	
+	var i = 0
+	while i < $SoundEffects.get_child_count():
+		var sound = $SoundEffects.get_child(i)
+		if !sound.playing:
+			sound.play()
+			soundBuffer = false
+			$SoundTimer.start()
+			return
+		i += 1
+
+
+func _on_sound_timeout():
+	soundBuffer = true

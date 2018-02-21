@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Enemy/ogre.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemy/enemy.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/grave.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Enemy/enemy.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Enemy/ogre.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/life-container.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/lifebar-red.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/lifebar-green.png" type="Texture" id=7]
@@ -17,7 +17,7 @@
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "ogre",
+"name": "normal",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -27,7 +27,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
-"name": "normal",
+"name": "ogre",
 "speed": 5.0
 } ]
 
@@ -79,6 +79,7 @@ playback/speed = 1.0
 "End",
 ]]
 
+editor/display_folded = true
 position = Vector2( 0, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -97,6 +98,7 @@ shape = SubResource( 3 )
 
 [node name="Hud" type="Control" parent="." index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

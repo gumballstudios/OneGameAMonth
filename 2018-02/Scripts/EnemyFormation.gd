@@ -21,6 +21,8 @@ func ProcessRound():
 	EnemyMarch()
 	DeployNewEnemies()
 	$Hud/Round.text = str(deployRound)
+	var sound_index = deployRound % $SoundEffects.get_child_count()
+	$SoundEffects.get_child(sound_index).play()
 
 
 func EnemyMarch():

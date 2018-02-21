@@ -17,6 +17,7 @@ func _on_body_entered(body):
 		modulate = Color(1, 1, 1, 0.6)
 		$Mover.interpolate_property(self, "position", position, position + Vector2(0, 640), 0.6, Tween.TRANS_CUBIC, Tween.EASE_IN)
 		$Mover.start()
+		$SoundEffect.play()
 
 
 func Deploy(column):

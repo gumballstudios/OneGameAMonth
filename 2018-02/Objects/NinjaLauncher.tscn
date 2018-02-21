@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/NinjaLauncher.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Ninjas/ninja.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/punch1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/punch2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/punch3.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/punch4.wav" type="AudioStream" id=6]
 
-[node name="NinjaLauncher" type="Node2D"]
+[node name="NinjaLauncher" type="Node2D" index="0"]
 
 position = Vector2( 180, 632 )
 script = ExtResource( 1 )
@@ -16,7 +20,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="LaunchTimer" type="Timer" parent="." index="1"]
 
 process_mode = 1
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 autostart = false
 
@@ -85,6 +89,64 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Rect" ]
 
+[node name="SoundEffects" type="Node2D" parent="." index="4"]
+
+position = Vector2( 0, -312 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Punch1" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
+
+position = Vector2( 180, 632 )
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Punch2" type="AudioStreamPlayer2D" parent="SoundEffects" index="1"]
+
+position = Vector2( 180, 632 )
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Punch3" type="AudioStreamPlayer2D" parent="SoundEffects" index="2"]
+
+position = Vector2( 180, 632 )
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Punch4" type="AudioStreamPlayer2D" parent="SoundEffects" index="3"]
+
+position = Vector2( 180, 632 )
+stream = ExtResource( 6 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="SoundTimer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 0.06
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timeout"]
+
+[connection signal="timeout" from="SoundTimer" to="." method="_on_sound_timeout"]
 
 

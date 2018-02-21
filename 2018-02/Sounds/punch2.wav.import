@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/punch2.wav-38806d8a2c06aaae4f023911fbffbbc3.sample"
+
+[deps]
+
+source_file="res://Sounds/punch2.wav"
+source_md5="8297f2da35dd8b0d543c40859cf10b27"
+
+dest_files=[ "res://.import/punch2.wav-38806d8a2c06aaae4f023911fbffbbc3.sample" ]
+dest_md5="d67f958d328f9a854bc3e7c29c26c138"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
