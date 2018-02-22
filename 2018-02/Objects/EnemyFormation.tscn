@@ -103,118 +103,97 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
-[node name="SoundEffects" type="Node2D" parent="." index="3"]
+[node name="SoundEffects" type="Node" parent="." index="3"]
 
-position = Vector2( 114, 155 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="March01" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
+[node name="March01" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
 
 stream = ExtResource( 3 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 
-[node name="March02" type="AudioStreamPlayer2D" parent="SoundEffects" index="1"]
+[node name="March02" type="AudioStreamPlayer" parent="SoundEffects" index="1"]
 
 stream = ExtResource( 4 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March03" type="AudioStreamPlayer2D" parent="SoundEffects" index="2"]
+[node name="March03" type="AudioStreamPlayer" parent="SoundEffects" index="2"]
 
 stream = ExtResource( 5 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March04" type="AudioStreamPlayer2D" parent="SoundEffects" index="3"]
+[node name="March04" type="AudioStreamPlayer" parent="SoundEffects" index="3"]
 
 stream = ExtResource( 6 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March05" type="AudioStreamPlayer2D" parent="SoundEffects" index="4"]
+[node name="March05" type="AudioStreamPlayer" parent="SoundEffects" index="4"]
 
 stream = ExtResource( 7 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March06" type="AudioStreamPlayer2D" parent="SoundEffects" index="5"]
+[node name="March06" type="AudioStreamPlayer" parent="SoundEffects" index="5"]
 
 stream = ExtResource( 8 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March07" type="AudioStreamPlayer2D" parent="SoundEffects" index="6"]
+[node name="March07" type="AudioStreamPlayer" parent="SoundEffects" index="6"]
 
 stream = ExtResource( 9 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March08" type="AudioStreamPlayer2D" parent="SoundEffects" index="7"]
+[node name="March08" type="AudioStreamPlayer" parent="SoundEffects" index="7"]
 
 stream = ExtResource( 10 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March09" type="AudioStreamPlayer2D" parent="SoundEffects" index="8"]
+[node name="March09" type="AudioStreamPlayer" parent="SoundEffects" index="8"]
 
 stream = ExtResource( 11 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="March10" type="AudioStreamPlayer2D" parent="SoundEffects" index="9"]
+[node name="March10" type="AudioStreamPlayer" parent="SoundEffects" index="9"]
 
 stream = ExtResource( 12 )
 volume_db = -10.0
 autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
+mix_target = 0
 bus = "Master"
-area_mask = 1
 _sections_unfolded = [ "Transform" ]
 
 

@@ -286,7 +286,7 @@ _sections_unfolded = [ "Rect", "Textures" ]
 [node name="DeathSound" type="AudioStreamPlayer" parent="." index="5"]
 
 stream = ExtResource( 12 )
-volume_db = -10.0
+volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"

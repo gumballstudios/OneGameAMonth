@@ -11,7 +11,7 @@ func _ready():
 
 	var factory = factoryScene.instance()
 	$NinjaLauncher.RecruitNinja([ factory.GetNinja() ])
-	$NinjaLauncher.set_process_input(true)
+	$NinjaLauncher.ready = true
 
 	$EnemyFormation.ProcessRound()
 	$MoveTimer.start()
@@ -19,7 +19,7 @@ func _ready():
 
 func _on_move_timeout():
 	if !gameOver:
-		$NinjaLauncher.set_process_input(true)
+		$NinjaLauncher.ready = true
 	else:
 		$GameOver.show()
 

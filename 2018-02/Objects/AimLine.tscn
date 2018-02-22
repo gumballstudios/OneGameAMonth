@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/aim_line.png" type="Texture" id=1]
+
+[node name="AimLine" type="Sprite"]
+
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -8, -8 )
+region_enabled = true
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+

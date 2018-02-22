@@ -10,6 +10,8 @@ var direction
 var recruitCount = 0
 var factory
 var soundBuffer = true
+var aiming = false
+var ready = false
 
 var factoryScene = preload("res://Objects/Ninjas/NinjaFactory.tscn")
 
@@ -17,7 +19,6 @@ var factoryScene = preload("res://Objects/Ninjas/NinjaFactory.tscn")
 func _ready():
 	factory = factoryScene.instance()
 	startPosition = $NinjaHideout.position
-	set_process_input(false)
 
 
 func RecruitNinja(ninja_roster):
@@ -28,12 +29,32 @@ func RecruitNinja(ninja_roster):
 		$NinjaHideout.add_child(ninja)
 
 
+func _process(delta):
+	if !(ready && aiming):
+		return
+	
+	var b = get_local_mouse_position()
+	$AimLine.position = b
+	$AimLine.show()
+	var a = startPosition
+	var dir = (a - b)
+	$AimLine.region_rect.size = Vector2(round(dir.length()) + 16, 16)
+	$AimLine.rotation = dir.angle()
+
+
 func _input(event):
-	if event.is_action("fire") && event.is_pressed():
+	if event.is_action_pressed("fire"):
+		aiming = true
+	elif event.is_action_released("fire"):
+		if !(ready && aiming):
+			return
+		
+		ready = false
+		aiming = false
 		var a = startPosition
 		var b = get_local_mouse_position()
 		direction = (b - a).normalized()
-		set_process_input(false)
+		$AimLine.hide()
 		ninjaIndex = 0
 		ninjaReturned = 0
 		NinjaStrike()
