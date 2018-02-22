@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/NinjaLauncher.gd" type="Script" id=1]
 [ext_resource path="res://Objects/AimLine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/Ninjas/ninja.png" type="Texture" id=3]
-[ext_resource path="res://Sounds/punch1.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/punch2.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/punch3.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/punch4.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=4]
 
-[node name="NinjaLauncher" type="Node2D" index="0"]
+[node name="NinjaLauncher" type="Node2D"]
 
 position = Vector2( 180, 632 )
 script = ExtResource( 1 )
@@ -99,7 +96,7 @@ _sections_unfolded = [ "Margin", "Rect" ]
 position = Vector2( 0, -312 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Punch1" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
+[node name="Hit1" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
 
 stream = ExtResource( 4 )
 volume_db = 5.0
@@ -107,25 +104,25 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Punch2" type="AudioStreamPlayer" parent="SoundEffects" index="1"]
+[node name="Hit2" type="AudioStreamPlayer" parent="SoundEffects" index="1"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 volume_db = 5.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Punch3" type="AudioStreamPlayer" parent="SoundEffects" index="2"]
+[node name="Hit3" type="AudioStreamPlayer" parent="SoundEffects" index="2"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 4 )
 volume_db = 5.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Punch4" type="AudioStreamPlayer" parent="SoundEffects" index="3"]
+[node name="Hit4" type="AudioStreamPlayer" parent="SoundEffects" index="3"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 4 )
 volume_db = 5.0
 autoplay = false
 mix_target = 0
@@ -134,7 +131,7 @@ bus = "Master"
 [node name="SoundTimer" type="Timer" parent="." index="6"]
 
 process_mode = 1
-wait_time = 0.06
+wait_time = 0.05
 one_shot = true
 autostart = false
 

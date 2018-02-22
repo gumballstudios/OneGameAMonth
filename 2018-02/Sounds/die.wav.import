@@ -7,10 +7,10 @@ path="res://.import/die.wav-19cfd3d8cc26fc4261a4587e869440b2.sample"
 [deps]
 
 source_file="res://Sounds/die.wav"
-source_md5="2180787ed374966c79d9ef0f2a280518"
+source_md5="7b8fefaff29eb2792caab8f9d2044e9a"
 
 dest_files=[ "res://.import/die.wav-19cfd3d8cc26fc4261a4587e869440b2.sample" ]
-dest_md5="995a9ac240dd26c89622c30bf94ee452"
+dest_md5="d53bae1f4e6fb2789bfa33473d0b57f5"
 
 [params]
 

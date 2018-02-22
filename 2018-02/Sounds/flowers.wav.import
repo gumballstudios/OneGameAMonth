@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flowers.wav-58828e71e219030f2aee1d4f09cff6d5.sample"
+
+[deps]
+
+source_file="res://Sounds/flowers.wav"
+source_md5="f739e85ca073d6bec7f205a281e11615"
+
+dest_files=[ "res://.import/flowers.wav-58828e71e219030f2aee1d4f09cff6d5.sample" ]
+dest_md5="637e596121caaccd3e9af05ef2fbe453"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
