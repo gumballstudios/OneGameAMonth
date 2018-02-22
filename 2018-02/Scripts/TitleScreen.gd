@@ -22,6 +22,7 @@ func Launch():
 	ninjaRecruit.set_physics_process(true)
 	$Launcher/Timer.wait_time = rand_range(0.25, 1.5)
 	$Launcher/Timer.start()
+	$Launcher/LaunchSound.play()
 
 
 func _on_launch_timeout():
@@ -29,6 +30,7 @@ func _on_launch_timeout():
 
 
 func _on_play_pressed():
+	$Buttons/ClickSound.play()
 	SceneSwitch.ChangeScene(SceneSwitch.SCENE_GAME)
 
 

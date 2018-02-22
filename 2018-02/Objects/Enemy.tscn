@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Enemy/enemy.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Sprites/lifebar-blue.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/lifebar-yellow.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/lifebar-purple.png" type="Texture" id=11]
+[ext_resource path="res://Sounds/die.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -281,6 +282,14 @@ radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
 _sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 12 )
+volume_db = -10.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="tween_completed" from="Mover" to="." method="_on_Mover_tween_completed"]
 

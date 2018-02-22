@@ -50,6 +50,7 @@ func Hit(force):
 
 
 func Kill():
+	$DeathSound.play()
 	z_index = 10
 	layers = 0
 	$Sprite.animation = "grave"

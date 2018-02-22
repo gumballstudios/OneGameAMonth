@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/grass.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/title-bg.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/Kenney Blocks.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Fonts/Karate.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Sprites/UI/button_play.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/UI/button_pressed_play.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/whoosh.wav" type="AudioStream" id=4]
+[ext_resource path="res://Fonts/Kenney Blocks.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Fonts/Karate.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Sprites/UI/button_play.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/button_pressed_play.png" type="Texture" id=8]
+[ext_resource path="res://Sounds/button_click.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -24,7 +26,7 @@ size = 80
 use_mipmaps = false
 use_filter = false
 extra_spacing_char = 5
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -33,7 +35,7 @@ size = 112
 use_mipmaps = false
 use_filter = false
 extra_spacing_char = 5
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=5]
@@ -41,7 +43,7 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="TitleScreen" type="Node"]
@@ -103,6 +105,14 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="LaunchSound" type="AudioStreamPlayer" parent="Launcher" index="2"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [node name="Title" type="CanvasLayer" parent="." index="2"]
 
@@ -225,8 +235,8 @@ action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 _sections_unfolded = [ "Mouse", "Rect", "Textures" ]
 
 [node name="Action" type="Label" parent="Buttons" index="1"]
@@ -255,6 +265,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="Buttons" index="2"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="timeout" from="Launcher/Timer" to="." method="_on_launch_timeout"]
 

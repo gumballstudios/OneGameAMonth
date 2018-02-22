@@ -50,8 +50,10 @@ func _on_menu_mouse_exited():
 
 
 func _on_retry_pressed():
+	$GameOver/ClickSound.play()
 	SceneSwitch.ChangeScene(SceneSwitch.SCENE_GAME)
 
 
 func _on_menu_pressed():
+	$GameOver/ClickSound.play()
 	SceneSwitch.ChangeScene(SceneSwitch.SCENE_MENU)
