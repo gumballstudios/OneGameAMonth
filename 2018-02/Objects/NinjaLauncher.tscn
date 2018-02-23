@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/NinjaLauncher.gd" type="Script" id=1]
 [ext_resource path="res://Objects/AimLine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/Ninjas/ninja.png" type="Texture" id=3]
-[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=4]
+[ext_resource path="res://Fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="NinjaLauncher" type="Node2D"]
 
@@ -77,19 +86,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 40.0
-margin_right = 48.0
+margin_right = 52.0
 margin_bottom = 36.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
 text = "1"
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Margin", "Rect" ]
+_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
 
 [node name="SoundEffects" type="Node2D" parent="." index="5"]
 
@@ -98,7 +108,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Hit1" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 5.0
 autoplay = false
 mix_target = 0
@@ -106,7 +116,7 @@ bus = "Master"
 
 [node name="Hit2" type="AudioStreamPlayer" parent="SoundEffects" index="1"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 5.0
 autoplay = false
 mix_target = 0
@@ -114,7 +124,7 @@ bus = "Master"
 
 [node name="Hit3" type="AudioStreamPlayer" parent="SoundEffects" index="2"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 5.0
 autoplay = false
 mix_target = 0
@@ -122,7 +132,7 @@ bus = "Master"
 
 [node name="Hit4" type="AudioStreamPlayer" parent="SoundEffects" index="3"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 5.0
 autoplay = false
 mix_target = 0

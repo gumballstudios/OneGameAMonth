@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Castle.tscn" type="PackedScene" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://Sprites/UI/button_pressed_retry.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/UI/button_menu.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/UI/button_pressed_menu.png" type="Texture" id=10]
-[ext_resource path="res://Sounds/button_click.wav" type="AudioStream" id=11]
+[ext_resource path="res://Fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Sounds/button_click.wav" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -30,10 +31,10 @@ _sections_unfolded = [ "Font" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 6 )
+font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -223,8 +224,8 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 1, 0.501961, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 align = 1
 valign = 1
@@ -235,7 +236,7 @@ _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_font
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="GameOver" index="4"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
