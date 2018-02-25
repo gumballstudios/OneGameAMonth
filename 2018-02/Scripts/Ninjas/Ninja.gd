@@ -16,6 +16,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	velocity.y += 0.1
+	if abs(velocity.y) < 0.5:
+		velocity.y += 1
 	var motion = velocity * delta
 	# move the ball and get any remaining motion after a collision
 	var collision = move_and_collide(motion)
