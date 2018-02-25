@@ -10,12 +10,13 @@ config_version=3
 
 [application]
 
-config/name="2018-02"
+config/name="Many Mini Ninja"
 run/main_scene="res://Stages/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+Settings="*res://Scripts/Settings.gd"
 SceneSwitch="*res://Objects/SceneSwitch.tscn"
 
 [display]

@@ -22,6 +22,12 @@ func _on_move_timeout():
 		$NinjaLauncher.ready = true
 	else:
 		$GameOver.show()
+		if $EnemyFormation.deployRound > Settings.high_score:
+			Settings.high_score = $EnemyFormation.deployRound
+			$GameOver/HighScore.show()
+			$GameOver/HighScore/Animation.interpolate_property($GameOver/HighScore, "scale", Vector2(0, 0), Vector2(1, 1), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+			$GameOver/HighScore/Animation.start()
+			$GameOver/HighScore/SoundEffect.play()
 
 
 func _on_attack_complete():
@@ -33,22 +39,6 @@ func _on_zone_entered(area):
 	gameOver = true
 
 
-func _on_retry_mouse_entered():
-	$GameOver/Action.text = "retry"
-
-
-func _on_retry_mouse_exited():
-	$GameOver/Action.text = ""
-
-
-func _on_menu_mouse_entered():
-	$GameOver/Action.text = "menu"
-
-
-func _on_menu_mouse_exited():
-	$GameOver/Action.text = ""
-
-
 func _on_retry_pressed():
 	$GameOver/ClickSound.play()
 	SceneSwitch.ChangeScene(SceneSwitch.SCENE_GAME)
@@ -57,3 +47,11 @@ func _on_retry_pressed():
 func _on_menu_pressed():
 	$GameOver/ClickSound.play()
 	SceneSwitch.ChangeScene(SceneSwitch.SCENE_MENU)
+
+
+func _on_mouse_entered(hint):
+	$GameOver/Action.text = hint
+
+
+func _on_mouse_exited():
+	$GameOver/Action.text = ""

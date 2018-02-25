@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/high_score.wav-5116d941870f550cbf88aaae08ef6f03.sample"
+
+[deps]
+
+source_file="res://Sounds/high_score.wav"
+source_md5="01e8fc6ecc0baacbfc2294acc03a6560"
+
+dest_files=[ "res://.import/high_score.wav-5116d941870f550cbf88aaae08ef6f03.sample" ]
+dest_md5="4e16f29e745693062cc9986ccb0f1211"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
