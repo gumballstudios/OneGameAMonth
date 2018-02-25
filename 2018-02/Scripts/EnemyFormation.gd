@@ -34,7 +34,7 @@ func DeployNewEnemies():
 	deployRound += 1
 	var enemyChance = [2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6]
 	var enemyCount = enemyChance[randi() % enemyChance.size()]
-	var giveItem = (randf() <= 0.75)
+	var giveItem = (randf() <= 0.8)
 	if deployRound == 1:
 		giveItem = true
 	var columns = GetRandomColumns(enemyCount, giveItem)

@@ -6,17 +6,50 @@ signal killed
 var size = Vector2(38, 38)
 var strength = 1
 var lifebar_index = 0
+var hair_types = ["black", "blond", "brown", "red"]
 
 
 func Deploy(column, deployRound, strong):
+	SetupSprite(strong)
 	strength = deployRound
 	if strong:
 		strength *= 2
-		$Sprite.animation = "ogre"
 	InitializeLifeBars(strength)
 	var startPosition = Vector2((size.x * column), 0)
 	$Mover.interpolate_property(self, "position", position, startPosition, 0.6, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	$Mover.start()
+
+
+func SetupSprite(strong):
+	if strong:
+		$Body.animation = "ogre"
+		$Parts/Pants.animation = "ogre"
+		SetRandomFrame($Parts/Pants)
+		$Parts/Shirt.animation = "ogre"
+		SetRandomFrame($Parts/Shirt)
+		$Parts/Hair.hide()
+		$Parts/Weapon.hide()
+	else:
+		SetRandomFrame($Parts/Pants)
+		SetRandomFrame($Parts/Shirt)
+		var hair_index = randi() % hair_types.size()
+		if randf() <= 0.25:
+			$Parts/Hair.animation = "helm"
+		else:
+			$Parts/Hair.animation = hair_types[hair_index]
+		SetRandomFrame($Parts/Hair)
+		if randf() <= 0.25:
+			$Parts/Face.show()
+			$Parts/Face.animation = hair_types[hair_index]
+			SetRandomFrame($Parts/Face)
+		SetRandomFrame($Parts/Weapon)
+		if randf() <= 0.25:
+			$Parts/Shield.show()
+			SetRandomFrame($Parts/Shield)
+
+
+func SetRandomFrame(sprite):
+	sprite.frame = randi() % sprite.frames.get_frame_count(sprite.animation)
 
 
 func InitializeLifeBars(life):
@@ -53,7 +86,8 @@ func Kill():
 	$DeathSound.play()
 	z_index = 10
 	layers = 0
-	$Sprite.animation = "grave"
+	$Body.animation = "grave"
+	$Parts.hide()
 	$Hud.hide()
 	$Mover.connect("tween_completed", self, "_on_kill_complete")
 	$Mover.interpolate_property(self, "position", position, position + Vector2(0, -10), 0.2, Tween.TRANS_QUAD, Tween.EASE_IN)

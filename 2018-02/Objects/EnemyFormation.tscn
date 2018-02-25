@@ -30,7 +30,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="EnemyFormation" type="Node2D"]
+[node name="EnemyFormation" type="Node2D" index="0"]
 
 position = Vector2( 66, 165 )
 script = ExtResource( 1 )

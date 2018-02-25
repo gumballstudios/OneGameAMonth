@@ -25,10 +25,8 @@ func _ready():
 
 func FadeHints(outNode, inNode):
 	if outNode:
-		print("fade out: ", outNode)
 		$Hud/Fader.interpolate_property(outNode, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	if inNode:
-		print("fade in: ", inNode)
 		$Hud/Fader.interpolate_property(inNode, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	$Hud/Fader.start()
 

@@ -22,7 +22,7 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="NinjaLauncher" type="Node2D" index="0"]
+[node name="NinjaLauncher" type="Node2D"]
 
 position = Vector2( 180, 632 )
 script = ExtResource( 1 )
