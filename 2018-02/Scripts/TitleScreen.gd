@@ -15,7 +15,7 @@ func _ready():
 	SetSoundButtonTextures()
 	factory = factoryScene.instance()
 	Launch()
-	$Title/Many/Animation.interpolate_property($Title/Many, "rect_position", Vector2(0, -120), Vector2(0, 0), 1, Tween.TRANS_QUART, Tween.EASE_OUT, 1)
+	$Title/Many/Animation.interpolate_property($Title/Many, "rect_position", Vector2(0, -120), Vector2(0, 0), 0.8, Tween.TRANS_QUART, Tween.EASE_OUT, 1)
 	$Title/Many/Animation.start()
 	
 
@@ -67,7 +67,7 @@ func _on_mouse_entered(hint):
 
 
 func _on_many_tween_completed( object, key ):
-	$Title/Mini/Animation.interpolate_property($Title/Mini, "rect_position", Vector2(0, 0), Vector2(0, 85), 1, Tween.TRANS_QUART, Tween.EASE_OUT)
+	$Title/Mini/Animation.interpolate_property($Title/Mini, "rect_position", Vector2(0, 0), Vector2(0, 85), 0.8, Tween.TRANS_QUART, Tween.EASE_OUT)
 	$Title/Mini/Animation.start()
 
 
