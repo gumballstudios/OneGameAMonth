@@ -25,7 +25,7 @@ extents = Vector2( 8, 320 )
 custom_solver_bias = 0.0
 extents = Vector2( 180, 16 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 
 size = 48
 use_mipmaps = false
@@ -33,7 +33,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 
 size = 80
 use_mipmaps = false
@@ -42,7 +42,7 @@ extra_spacing_char = 5
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 
 size = 112
 use_mipmaps = false
@@ -51,7 +51,7 @@ extra_spacing_char = 5
 font_data = ExtResource( 9 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 
 size = 32
 use_mipmaps = false
@@ -59,7 +59,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="TitleScreen" type="Node"]
+[node name="TitleScreen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Margin" ]
@@ -154,7 +154,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -219,7 +219,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 5
@@ -255,7 +255,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 5
@@ -293,7 +293,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.501961, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -405,7 +405,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
