@@ -39,7 +39,7 @@ use_filter = false
 font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="PauseMenu" type="Panel" index="0"]
+[node name="PauseMenu" type="Panel"]
 
 pause_mode = 2
 visible = false

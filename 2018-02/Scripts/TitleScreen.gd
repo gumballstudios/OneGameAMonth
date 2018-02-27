@@ -12,12 +12,12 @@ var mute_pressed_sprite = preload("res://Sprites/UI/button_pressed_sound_off.png
 
 func _ready():
 	randomize()
-	if Settings.high_score > 0:
-		$HighScore.show()
-		$HighScore/Score.text = str(Settings.high_score)
 	SetSoundButtonTextures()
 	factory = factoryScene.instance()
 	Launch()
+	$Title/Many/Animation.interpolate_property($Title/Many, "rect_position", Vector2(0, -120), Vector2(0, 0), 1, Tween.TRANS_QUART, Tween.EASE_OUT, 1)
+	$Title/Many/Animation.start()
+	
 
 
 func Launch():
@@ -66,4 +66,22 @@ func _on_mouse_entered(hint):
 	$Buttons/Action.text = hint
 
 
+func _on_many_tween_completed( object, key ):
+	$Title/Mini/Animation.interpolate_property($Title/Mini, "rect_position", Vector2(0, 0), Vector2(0, 85), 1, Tween.TRANS_QUART, Tween.EASE_OUT)
+	$Title/Mini/Animation.start()
+
+
+func _on_mini_tween_completed( object, key ):
+	$Title/Ninja/Animation.interpolate_property($Title/Ninja, "rect_position", Vector2(0, 205), Vector2(0, 155), 0.2, Tween.TRANS_QUART, Tween.EASE_OUT)
+	$Title/Ninja/Animation.interpolate_property($Title/Ninja, "rect_scale", Vector2(1, 0), Vector2(1, 1), 0.2, Tween.TRANS_QUART, Tween.EASE_OUT)
+	$Title/Ninja/Animation.start()
+	$Title/Ninja.show()
+
+
+func _on_ninja_tween_completed( object, key ):
+	$Buttons/Container.show()
+	if Settings.high_score > 0:
+		$HighScore/Score.text = str(Settings.high_score)
+		$HighScore/Animation.interpolate_property($HighScore, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.4, Tween.TRANS_QUAD, Tween.EASE_IN)
+		$HighScore/Animation.start()
 

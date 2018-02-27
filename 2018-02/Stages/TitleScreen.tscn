@@ -59,12 +59,14 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="TitleScreen" type="Node"]
+[node name="TitleScreen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="Background" type="Node" parent="." index="0"]
+
+editor/display_folded = true
 
 [node name="Ground" type="Sprite" parent="Background" index="0"]
 
@@ -110,7 +112,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="HighScore" type="NinePatchRect" parent="." index="1"]
 
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -131,7 +133,7 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-_sections_unfolded = [ "Anchor", "Axis Stretch", "Margin", "Patch Margin", "Rect" ]
+_sections_unfolded = [ "Anchor", "Axis Stretch", "Margin", "Patch Margin", "Rect", "Visibility" ]
 
 [node name="Icon" type="Sprite" parent="HighScore" index="0"]
 
@@ -165,7 +167,18 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "custom_colors", "custom_constants", "custom_fonts" ]
 
+[node name="Animation" type="Tween" parent="HighScore" index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [node name="Launcher" type="Node" parent="." index="2"]
+
+editor/display_folded = true
 
 [node name="Container" type="Node" parent="Launcher" index="0"]
 
@@ -193,42 +206,14 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Many" type="Label" parent="Title" index="0"]
+[node name="Mini" type="Label" parent="Title" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = -120.0
 margin_right = 371.0
-margin_bottom = 120.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 5
-custom_constants/shadow_offset_y = 5
-custom_constants/shadow_as_outline = 5
-text = "many"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
-
-[node name="Mini" type="Label" parent="Title" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 85.0
-margin_right = 371.0
-margin_bottom = 205.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -248,8 +233,54 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
 
+[node name="Animation" type="Tween" parent="Title/Mini" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Many" type="Label" parent="Title" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = -120.0
+margin_right = 371.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_constants/shadow_as_outline = 5
+text = "many"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Animation" type="Tween" parent="Title/Many" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [node name="Ninja" type="Label" parent="Title" index="2"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -274,7 +305,16 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Animation" type="Tween" parent="Title/Ninja" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="Buttons" type="CanvasLayer" parent="." index="4"]
 
@@ -286,6 +326,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Container" type="HBoxContainer" parent="Buttons" index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -386,6 +427,12 @@ mix_target = 0
 bus = "Master"
 
 [connection signal="timeout" from="Launcher/Timer" to="." method="_on_launch_timeout"]
+
+[connection signal="tween_completed" from="Title/Mini/Animation" to="." method="_on_mini_tween_completed"]
+
+[connection signal="tween_completed" from="Title/Many/Animation" to="." method="_on_many_tween_completed"]
+
+[connection signal="tween_completed" from="Title/Ninja/Animation" to="." method="_on_ninja_tween_completed"]
 
 [connection signal="mouse_entered" from="Buttons/Container/ButtonPlay" to="." method="_on_mouse_entered" binds= [ "play" ]]
 
