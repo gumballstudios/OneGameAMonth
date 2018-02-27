@@ -1,0 +1,372 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Karate.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/UI/button_play.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/button_pressed_play.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/button_retry.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/button_pressed_retry.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/button_menu.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/button_pressed_menu.png" type="Texture" id=8]
+[ext_resource path="res://Fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Sprites/UI/panel.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/button_ok.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/button_pressed_ok.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/button_cancel.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/button_pressed_cancel.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 92
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 9 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 24
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 9 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="PauseMenu" type="Panel" index="0"]
+
+pause_mode = 2
+visible = false
+self_modulate = Color( 0.117647, 0.121569, 0.137255, 0.67451 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Visibility" ]
+
+[node name="Title" type="Label" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 64.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.501961, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "paused"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Buttons" type="Control" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 256.0
+margin_bottom = 448.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="Container" type="HBoxContainer" parent="Buttons" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -128.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 32
+alignment = 1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_constants" ]
+
+[node name="ButtonResume" type="TextureButton" parent="Buttons/Container" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 116.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="ButtonRestart" type="TextureButton" parent="Buttons/Container" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 148.0
+margin_right = 212.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="ButtonMenu" type="TextureButton" parent="Buttons/Container" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 244.0
+margin_right = 308.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Action" type="Label" parent="Buttons" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 64.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_fonts" ]
+
+[node name="ConfirmationDialog" type="NinePatchRect" parent="." index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 224.0
+margin_right = -32.0
+margin_bottom = 416.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 10 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+_sections_unfolded = [ "Anchor", "Axis Stretch", "Grow Direction", "Margin", "Mouse", "Patch Margin", "Rect" ]
+
+[node name="Title" type="Label" parent="ConfirmationDialog" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "quit to menu?"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Warning" type="Label" parent="ConfirmationDialog" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 64.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "all progress
+will be lost"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Buttons" type="HBoxContainer" parent="ConfirmationDialog" index="2"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -48.0
+margin_bottom = -160.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 32
+alignment = 1
+_sections_unfolded = [ "Anchor", "Margin", "custom_constants" ]
+
+[node name="ButtonOk" type="TextureButton" parent="ConfirmationDialog/Buttons" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_right = 132.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="ButtonCancel" type="TextureButton" parent="ConfirmationDialog/Buttons" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 164.0
+margin_right = 196.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+_sections_unfolded = [ "Textures" ]
+
+[connection signal="mouse_entered" from="Buttons/Container/ButtonResume" to="." method="_on_mouse_entered" binds= [ "Resume" ]]
+
+[connection signal="mouse_exited" from="Buttons/Container/ButtonResume" to="." method="_on_mouse_exited"]
+
+[connection signal="pressed" from="Buttons/Container/ButtonResume" to="." method="_on_resume_pressed"]
+
+[connection signal="mouse_entered" from="Buttons/Container/ButtonRestart" to="." method="_on_mouse_entered" binds= [ "restart" ]]
+
+[connection signal="mouse_exited" from="Buttons/Container/ButtonRestart" to="." method="_on_mouse_exited"]
+
+[connection signal="pressed" from="Buttons/Container/ButtonRestart" to="." method="_on_restart_pressed"]
+
+[connection signal="mouse_entered" from="Buttons/Container/ButtonMenu" to="." method="_on_mouse_entered" binds= [ "menu" ]]
+
+[connection signal="mouse_exited" from="Buttons/Container/ButtonMenu" to="." method="_on_mouse_exited"]
+
+[connection signal="pressed" from="Buttons/Container/ButtonMenu" to="." method="_on_menu_pressed"]
+
+[connection signal="pressed" from="ConfirmationDialog/Buttons/ButtonOk" to="." method="_on_ok_pressed"]
+
+[connection signal="pressed" from="ConfirmationDialog/Buttons/ButtonCancel" to="." method="_on_cancel_pressed"]
+
+

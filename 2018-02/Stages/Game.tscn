@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Castle.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Sprites/UI/star.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/UI/high_score.png" type="Texture" id=14]
 [ext_resource path="res://Sounds/high_score.wav" type="AudioStream" id=15]
+[ext_resource path="res://Objects/PauseMenu.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -27,7 +28,7 @@ size = 92
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 6 )
-_sections_unfolded = [ "Font" ]
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
 
@@ -37,7 +38,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -51,6 +52,7 @@ script = ExtResource( 1 )
 "Ground",
 ]]
 
+editor/display_folded = true
 position = Vector2( 0, 639 )
 input_pickable = false
 collision_layer = 3
@@ -69,6 +71,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="EndZone" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 0, 626 )
 input_pickable = false
 gravity_vec = Vector2( 0, 1 )
@@ -96,6 +99,7 @@ autostart = false
 
 [node name="GameOver" type="Node2D" parent="." index="6"]
 
+editor/display_folded = true
 visible = false
 position = Vector2( 31, 36 )
 _sections_unfolded = [ "Transform" ]
@@ -273,6 +277,8 @@ volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="PauseMenu" parent="." index="7" instance=ExtResource( 16 )]
 
 [connection signal="attack_complete" from="NinjaLauncher" to="." method="_on_attack_complete"]
 
