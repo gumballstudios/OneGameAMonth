@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ShortCutButton.gd" type="Script" id=1]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="ShortCutButton" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+shortcut = null
+normal = null
+pressed = null
+mask = null
+
+[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "normal"
+
+[node name="Shape" type="CollisionShape2D" parent="." index="1"]
+
+[connection signal="input_event" from="." to="." method="_on_area_input_event"]
+
+
