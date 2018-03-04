@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Sprites/screen.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/screen.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node2D"]
 
+position = Vector2( -198.958, -26.352 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
@@ -15,15 +20,38 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 544.0
-margin_bottom = 424.0
+margin_right = 480.0
+margin_bottom = 360.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect", "Visibility", "custom_styles" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 240, 330 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Blockers" type="Node2D" parent="." index="2"]
+
+position = Vector2( 0, 330 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Left" parent="Blockers" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 40, 0 )
+
+[node name="Safe" parent="Blockers" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 120, 0 )
+
+[node name="Right" parent="Blockers" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 440, 0 )
+facing = "Right"
 
 

@@ -47,10 +47,11 @@ func HandleEvent(event):
 			if $Sprite.animation == "pressed":
 				return
 			$Sprite.animation = "pressed"
-			print("down")
+			emit_signal("button_down")
+			emit_signal("pressed")
 		else:
 			if $Sprite.animation == "normal":
 				return
 			$Sprite.animation = "normal"
-			print("up")
+			emit_signal("button_up")
 
