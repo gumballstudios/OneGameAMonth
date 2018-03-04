@@ -6,6 +6,6 @@ var direction = 1
 
 func Toggle():
 	$Sprite.frame += direction
-	$Blocker.position.y = 32 * $Sprite.frame
+	$Blocker.position.y += 32 * direction
 	direction *= -1
 

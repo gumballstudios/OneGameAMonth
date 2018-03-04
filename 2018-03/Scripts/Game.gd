@@ -33,7 +33,6 @@ func _on_gate_timeout():
 
 func _on_respawn_timeout():
 	var player = playerScene.instance()
-	player.position = Vector2(240, 330)
 	add_child(player)
 	active = true
 	set_physics_process(true)
