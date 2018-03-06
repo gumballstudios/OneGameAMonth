@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/screen.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Gate.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=6]
 
-[node name="Game" type="Node2D" index="0"]
+[node name="Game" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -71,9 +72,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Gate" parent="." index="4" instance=ExtResource( 5 )]
 
-[node name="Timers" type="Node" parent="." index="5"]
+[node name="ProjectileContainer" parent="." index="5" instance=ExtResource( 6 )]
 
 editor/display_folded = true
+
+[node name="Timers" type="Node" parent="." index="6"]
 
 [node name="Gate" type="Timer" parent="Timers" index="0"]
 
@@ -89,8 +92,18 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
+[node name="Projectile" type="Timer" parent="Timers" index="2"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = true
+
 [connection signal="timeout" from="Timers/Gate" to="." method="_on_gate_timeout"]
 
 [connection signal="timeout" from="Timers/Respawn" to="." method="_on_respawn_timeout"]
 
+[connection signal="timeout" from="Timers/Projectile" to="." method="_on_projectile_timeout"]
 
+
+[editable path="ProjectileContainer"]

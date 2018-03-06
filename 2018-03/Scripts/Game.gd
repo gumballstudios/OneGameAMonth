@@ -2,7 +2,8 @@ extends Node2D
 
 
 var score = 0
-var active = true
+var playerActive = true
+var projectileCounter = 0
 
 var playerScene = preload("res://Objects/Player.tscn")
 
@@ -14,7 +15,7 @@ func _ready():
 func _physics_process(delta):
 	if $ScoreCheck/Detector.is_colliding():
 		set_physics_process(false)
-		active = false
+		playerActive = false
 		$Player.queue_free()
 		$Timers/Respawn.start()
 		score += 1
@@ -23,7 +24,7 @@ func _physics_process(delta):
 
 
 func MovePlayer(direction):
-	if active:
+	if playerActive:
 		$Player.Move(direction)
 
 
@@ -34,5 +35,10 @@ func _on_gate_timeout():
 func _on_respawn_timeout():
 	var player = playerScene.instance()
 	add_child(player)
-	active = true
+	playerActive = true
 	set_physics_process(true)
+
+
+func _on_projectile_timeout():
+	$ProjectileContainer.Tick(projectileCounter)
+	projectileCounter += 1
