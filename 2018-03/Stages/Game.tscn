@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/screen.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Objects/Gate.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Gate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=5]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -32,58 +31,39 @@ texture = ExtResource( 2 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect", "Visibility", "custom_styles" ]
 
-[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
-
-_sections_unfolded = [ "Transform" ]
-
-[node name="Blockers" type="Node2D" parent="." index="2"]
+[node name="Blockers" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
 position = Vector2( 0, 328 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Left" parent="Blockers" index="0" instance=ExtResource( 4 )]
+[node name="Left" parent="Blockers" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 0 )
 
-[node name="Safe" parent="Blockers" index="1" instance=ExtResource( 4 )]
+[node name="Safe" parent="Blockers" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 96, 0 )
 
-[node name="Right" parent="Blockers" index="2" instance=ExtResource( 4 )]
+[node name="Right" parent="Blockers" index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 352, 0 )
+position = Vector2( 416, 0 )
 facing = "Right"
 
-[node name="ScoreCheck" type="Node2D" parent="." index="3"]
+[node name="Gate" parent="." index="2" instance=ExtResource( 4 )]
 
-editor/display_folded = true
-position = Vector2( 352, 328 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Detector" type="RayCast2D" parent="ScoreCheck" index="0"]
-
-position = Vector2( 20, -4 )
-enabled = true
-exclude_parent = true
-cast_to = Vector2( -12, 0 )
-collision_mask = 1
-_sections_unfolded = [ "Transform" ]
-
-[node name="Gate" parent="." index="4" instance=ExtResource( 5 )]
-
-[node name="ProjectileContainer" parent="." index="5" instance=ExtResource( 6 )]
+[node name="ProjectileContainer" parent="." index="3" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 
-[node name="Timers" type="Node" parent="." index="6"]
+[node name="Timers" type="Node" parent="." index="4"]
 
 [node name="Gate" type="Timer" parent="Timers" index="0"]
 
 process_mode = 1
 wait_time = 5.0
-one_shot = false
-autostart = true
+one_shot = true
+autostart = false
 
 [node name="Respawn" type="Timer" parent="Timers" index="1"]
 
@@ -95,7 +75,7 @@ autostart = false
 [node name="Projectile" type="Timer" parent="Timers" index="2"]
 
 process_mode = 1
-wait_time = 0.5
+wait_time = 0.4
 one_shot = false
 autostart = true
 
