@@ -20,7 +20,7 @@ func _physics_process(delta):
 		if collider.is_in_group("Exit"):
 			emit_signal("score")
 		if collider.is_in_group("Projectile"):
-			emit_signal("hit")
+			emit_signal("hit", $Sprite.frame)
 
 
 func Move(direction):
