@@ -7,10 +7,10 @@ path="res://.import/button-down.png-fbf39be70089ccf5cd0bf209114b738a.stex"
 [deps]
 
 source_file="res://Sprites/button-down.png"
-source_md5="4324a324dec934a2e035844df98a1e5b"
+source_md5="63852a46f48d8aa9a6b5ebbb0c99b563"
 
 dest_files=[ "res://.import/button-down.png-fbf39be70089ccf5cd0bf209114b738a.stex" ]
-dest_md5="7a4600fe52b5e4627699bbf49fe2dcee"
+dest_md5="2715b0792e365cf8d330220b521e16f5"
 
 [params]
 

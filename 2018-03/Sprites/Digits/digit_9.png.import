@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button-up.png-029d23b8c14824c845ee06b624f7c89e.stex"
+path="res://.import/digit_9.png-69af8d7317984d744b081131d73903be.stex"
 
 [deps]
 
-source_file="res://Sprites/button-up.png"
-source_md5="ff4fde5bcbda99f5a7a7356fc3e01b5d"
+source_file="res://Sprites/Digits/digit_9.png"
+source_md5="fe3df4df7902806e09278d6d543ea938"
 
-dest_files=[ "res://.import/button-up.png-029d23b8c14824c845ee06b624f7c89e.stex" ]
-dest_md5="8881bd3f05ec6d8d2fc0635359e97901"
+dest_files=[ "res://.import/digit_9.png-69af8d7317984d744b081131d73903be.stex" ]
+dest_md5="355c2c05072dd831322e37e800d7d2b0"
 
 [params]
 
