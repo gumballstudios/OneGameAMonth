@@ -16,6 +16,7 @@ var playerScene = preload("res://Objects/Player.tscn")
 
 func _ready():
 	randomize()
+	$Hud.mode = $Hud.ModeType.SCORE
 	CreatePlayer()
 	SetGateTimer()
 
