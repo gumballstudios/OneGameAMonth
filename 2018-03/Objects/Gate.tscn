@@ -19,7 +19,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Gate" type="Node2D"]
+[node name="Gate" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

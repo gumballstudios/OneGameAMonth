@@ -4,7 +4,6 @@ extends Node2D
 var miss = 0
 
 var playerActive = false
-var playerHitSprite
 
 var projectileCounter = 1
 
@@ -54,20 +53,24 @@ func _on_score_timeout():
 
 
 func _on_player_hit(position):
-	$Hud.miss += 1
 	playerActive = false
-	$Player.queue_free()
 	$Timers/Projectile.paused = true
 	$Timers/Gate.paused = true
-	playerHitSprite = $EventSprites.get_child(position)
-	playerHitSprite.frame = 0
+	$EventSprites/HitPositions.frame = -1
+	$EventSprites/BeamSprite.show()
 	$SoundEffects/Hit.play()
 	$Timers/HitAnimation.start()
 
 
 func _on_hit_timeout():
-	if playerHitSprite.frame == playerHitSprite.get_child_count() - 1:
-		playerHitSprite.frame = -1
+	if $EventSprites/HitPositions.frame < 0:
+		$Player.queue_free()
+	
+	if $EventSprites/HitPositions.frame == $EventSprites/HitPositions.get_child_count() - 1:
+		$EventSprites/HitPositions.frame = -1
+		$EventSprites/BeamSprite.hide()
+		
+		$Hud.miss += 1
 		if $Hud.miss == 3:
 			print("Game Over")
 			return
@@ -77,7 +80,7 @@ func _on_hit_timeout():
 		$Timers/Respawn.start()
 		return
 	
-	playerHitSprite.frame += 1
+	$EventSprites/HitPositions.frame += 1
 	$SoundEffects/Hit.play()
 	$Timers/HitAnimation.start()
 

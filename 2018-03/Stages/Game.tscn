@@ -1,17 +1,22 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/screen.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Gate.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/player_small.png" type="Texture" id=5]
-[ext_resource path="res://Objects/PositionedSprite.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Objects/Hud.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Sounds/score.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sprites/ground.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Ufo/mothership.png" type="Texture" id=4]
+[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Gate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/player_small.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Ufo/beam.png" type="Texture" id=8]
+[ext_resource path="res://Objects/PositionedSprite.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sprites/Cows/cow.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Cows/cow-50.png" type="Texture" id=11]
+[ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Objects/Hud.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sounds/score.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=15]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -36,175 +41,87 @@ texture = ExtResource( 2 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect", "Visibility", "custom_styles" ]
 
+[node name="Ground" type="Sprite" parent="Screen" index="0"]
+
+position = Vector2( 0, 255 )
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Mothership" type="Sprite" parent="Screen" index="1"]
+
+position = Vector2( 240, 68 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
 [node name="Blockers" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
 position = Vector2( 0, 328 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Left" parent="Blockers" index="0" instance=ExtResource( 3 )]
+[node name="Left" parent="Blockers" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 32, 0 )
 
-[node name="Safe" parent="Blockers" index="1" instance=ExtResource( 3 )]
+[node name="Safe" parent="Blockers" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 96, 0 )
 
-[node name="Right" parent="Blockers" index="2" instance=ExtResource( 3 )]
+[node name="Right" parent="Blockers" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 416, 0 )
 facing = "Right"
 
-[node name="Gate" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Gate" parent="." index="2" instance=ExtResource( 6 )]
 
 [node name="EventSprites" type="Node2D" parent="." index="3"]
-
-editor/display_folded = true
 
 [node name="ScoreSprite" type="Sprite" parent="EventSprites" index="0"]
 
 visible = false
 position = Vector2( 442, 282 )
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HitPosition01" parent="EventSprites" index="1" instance=ExtResource( 6 )]
-
-editor/display_folded = true
-position = Vector2( 102, 234 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite01" type="Sprite" parent="EventSprites/HitPosition01" index="0"]
+[node name="BeamSprite" type="Sprite" parent="EventSprites" index="1"]
 
 visible = false
-position = Vector2( 0, 96 )
-texture = ExtResource( 5 )
+position = Vector2( 238, 131 )
+texture = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Sprite02" type="Sprite" parent="EventSprites/HitPosition01" index="1"]
+[node name="HitPositions" parent="EventSprites" index="2" instance=ExtResource( 9 )]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite01" type="Sprite" parent="EventSprites/HitPositions" index="0"]
 
 visible = false
-position = Vector2( 0, 48 )
-texture = ExtResource( 5 )
+position = Vector2( 238, 132 )
+texture = ExtResource( 10 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Sprite03" type="Sprite" parent="EventSprites/HitPosition01" index="2"]
+[node name="Sprite02" type="Sprite" parent="EventSprites/HitPositions" index="1"]
 
 visible = false
-texture = ExtResource( 5 )
+position = Vector2( 238, 110 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HitPosition02" parent="EventSprites" index="2" instance=ExtResource( 6 )]
-
-editor/display_folded = true
-position = Vector2( 170, 186 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite01" type="Sprite" parent="EventSprites/HitPosition02" index="0"]
+[node name="Sprite03" type="Sprite" parent="EventSprites/HitPositions" index="2"]
 
 visible = false
-position = Vector2( 0, 144 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Sprite02" type="Sprite" parent="EventSprites/HitPosition02" index="1"]
-
-visible = false
-position = Vector2( 0, 96 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite03" type="Sprite" parent="EventSprites/HitPosition02" index="2"]
-
-visible = false
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="HitPosition03" parent="EventSprites" index="3" instance=ExtResource( 6 )]
-
-editor/display_folded = true
-position = Vector2( 238, 138 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite01" type="Sprite" parent="EventSprites/HitPosition03" index="0"]
-
-visible = false
-position = Vector2( 0, 192 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite02" type="Sprite" parent="EventSprites/HitPosition03" index="1"]
-
-visible = false
-position = Vector2( 0, 96 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite03" type="Sprite" parent="EventSprites/HitPosition03" index="2"]
-
-visible = false
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="HitPosition04" parent="EventSprites" index="4" instance=ExtResource( 6 )]
-
-editor/display_folded = true
-position = Vector2( 306, 186 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite01" type="Sprite" parent="EventSprites/HitPosition04" index="0"]
-
-visible = false
-position = Vector2( 0, 144 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite02" type="Sprite" parent="EventSprites/HitPosition04" index="1"]
-
-visible = false
-position = Vector2( 0, 96 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite03" type="Sprite" parent="EventSprites/HitPosition04" index="2"]
-
-visible = false
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="HitPosition05" parent="EventSprites" index="5" instance=ExtResource( 6 )]
-
-editor/display_folded = true
-position = Vector2( 374, 234 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite01" type="Sprite" parent="EventSprites/HitPosition05" index="0"]
-
-visible = false
-position = Vector2( 0, 96 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite02" type="Sprite" parent="EventSprites/HitPosition05" index="1"]
-
-visible = false
-position = Vector2( 0, 48 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite03" type="Sprite" parent="EventSprites/HitPosition05" index="2"]
-
-visible = false
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="ProjectileContainer" parent="." index="4" instance=ExtResource( 7 )]
+[node name="ProjectileContainer" parent="." index="4" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 
-[node name="Hud" parent="." index="5" instance=ExtResource( 8 )]
+[node name="Hud" parent="." index="5" instance=ExtResource( 13 )]
 
 [node name="Timers" type="Node" parent="." index="6"]
+
+editor/display_folded = true
 
 [node name="Gate" type="Timer" parent="Timers" index="0"]
 
@@ -247,7 +164,7 @@ editor/display_folded = true
 
 [node name="Score" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 14 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -255,7 +172,7 @@ bus = "Master"
 
 [node name="Hit" type="AudioStreamPlayer" parent="SoundEffects" index="1"]
 
-stream = ExtResource( 10 )
+stream = ExtResource( 15 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
