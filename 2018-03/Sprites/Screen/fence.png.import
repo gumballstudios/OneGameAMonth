@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/beam01.png-aba69585a86fe9456e7009788f333889.stex"
+path="res://.import/fence.png-73378164c34dae768dbc06d17f755e11.stex"
 
 [deps]
 
-source_file="res://Sprites/beam01.png"
-source_md5="efe6fe2780c2a0b178d169d9ff1c212c"
+source_file="res://Sprites/Screen/fence.png"
+source_md5="dee61656b7307516d0510c654b4aa290"
 
-dest_files=[ "res://.import/beam01.png-aba69585a86fe9456e7009788f333889.stex" ]
-dest_md5="64b893d38296153e5b837a4442fc7905"
+dest_files=[ "res://.import/fence.png-73378164c34dae768dbc06d17f755e11.stex" ]
+dest_md5="b951eaa6cef55cbb807f2e7cc30f66f4"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

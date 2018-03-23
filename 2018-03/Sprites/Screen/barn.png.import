@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/beam03.png-afb5d75b978a577967d498d08920f6bc.stex"
+path="res://.import/barn.png-8b33e5015cf7eb7a7a9e1f13d8fc6bae.stex"
 
 [deps]
 
-source_file="res://Sprites/beam03.png"
-source_md5="3511af649a75b59452702ff64546397a"
+source_file="res://Sprites/Screen/barn.png"
+source_md5="8b0cf86dd254fa913b905b03344258d0"
 
-dest_files=[ "res://.import/beam03.png-afb5d75b978a577967d498d08920f6bc.stex" ]
-dest_md5="393024165c48aecee12253262096ef4a"
+dest_files=[ "res://.import/barn.png-8b33e5015cf7eb7a7a9e1f13d8fc6bae.stex" ]
+dest_md5="766696a8109e35c29c0b46fe690f5785"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

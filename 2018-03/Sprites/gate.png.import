@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ground.png-4d287241cc8465d158252ec59f984725.stex"
+path="res://.import/gate.png-359f388b12bba97732fb3e6ac840d607.stex"
 
 [deps]
 
-source_file="res://Sprites/ground.png"
-source_md5="0d2ba8f4b334a7e862c269d6ac47a3d5"
+source_file="res://Sprites/gate.png"
+source_md5="707e1bf40f6b48b461bec6aba177ae2e"
 
-dest_files=[ "res://.import/ground.png-4d287241cc8465d158252ec59f984725.stex" ]
-dest_md5="a2697b69a0422587c476c73c30469783"
+dest_files=[ "res://.import/gate.png-359f388b12bba97732fb3e6ac840d607.stex" ]
+dest_md5="9185d83acd3253cd690b091b2b5ec089"
 
 [params]
 

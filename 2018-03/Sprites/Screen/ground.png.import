@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/saucer.png-05505b5e65c7378c49eb3f7200ea8a2b.stex"
+path="res://.import/ground.png-6788f8c0c5599de779a14128659bb244.stex"
 
 [deps]
 
-source_file="res://Sprites/saucer.png"
-source_md5="50da00438478b5faf80aed7f85172b6f"
+source_file="res://Sprites/Screen/ground.png"
+source_md5="7f255de7a85b4b28854e7b4e597855ee"
 
-dest_files=[ "res://.import/saucer.png-05505b5e65c7378c49eb3f7200ea8a2b.stex" ]
-dest_md5="91a5d1bc1444bbeb34365a10d207e2e9"
+dest_files=[ "res://.import/ground.png-6788f8c0c5599de779a14128659bb244.stex" ]
+dest_md5="ad0d86d938d06cb4f7d5c186365bfa35"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

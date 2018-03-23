@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Gate.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/gate_closed.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/gate_open.png" type="Texture" id=3]
-[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/gate.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ), null ],
 "loop": false,
 "name": "default",
 "speed": 5.0
@@ -26,12 +25,12 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
-position = Vector2( 442, 330 )
+position = Vector2( 450, 310 )
 frames = SubResource( 1 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
-[node name="Blocker" parent="." index="1" instance=ExtResource( 4 )]
+[node name="Blocker" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 352, 328 )
 facing = "Right"

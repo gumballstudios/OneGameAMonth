@@ -94,7 +94,6 @@ func GetMode():
 
 func SetScore(value):
 	score = value
-	print(score)
 	if mode != ModeType.SCORE:
 		print("no update")
 		return

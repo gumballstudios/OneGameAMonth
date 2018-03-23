@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/beam02.png-021c89274a61c9abc5c4f9b0165cd7d4.stex"
+path="res://.import/trees.png-21e1f61275816e9fc75982899b7b1d02.stex"
 
 [deps]
 
-source_file="res://Sprites/beam02.png"
-source_md5="aac549f0e981df58462f04db297192c6"
+source_file="res://Sprites/Screen/trees.png"
+source_md5="e94701baa980f70b419b53da2812bcc2"
 
-dest_files=[ "res://.import/beam02.png-021c89274a61c9abc5c4f9b0165cd7d4.stex" ]
-dest_md5="89b01987cbd70648c6ab8c74ed73851c"
+dest_files=[ "res://.import/trees.png-21e1f61275816e9fc75982899b7b1d02.stex" ]
+dest_md5="c498f136f36d6b445f912902e698af1e"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

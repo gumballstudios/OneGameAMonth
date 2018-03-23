@@ -36,16 +36,14 @@ func MovePlayer(direction):
 func _on_player_score():
 	$Hud.score += 1
 	playerActive = false
-	$Player.queue_free()
 	$Timers/Projectile.paused = true
 	$Timers/Gate.paused = true
-	$EventSprites.get_child(0).show()
 	$SoundEffects/Score.play()
 	$Timers/ScoreAnimation.start()
 
 
 func _on_score_timeout():
-	$EventSprites.get_child(0).hide()
+	$Player.queue_free()
 	$Timers/Projectile.paused = false
 	$Timers/Gate.paused = false
 	$Timers/Respawn.start()
