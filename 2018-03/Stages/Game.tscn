@@ -1,24 +1,20 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Screen/screen.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Screen/trees.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Screen/ground.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Ufo/mothership.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Screen/barn.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Screen/fence.png" type="Texture" id=7]
-[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Objects/Gate.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sprites/Ufo/beam.png" type="Texture" id=10]
-[ext_resource path="res://Objects/PositionedSprite.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Sprites/Cows/cow.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Cows/cow-50.png" type="Texture" id=13]
-[ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Objects/Hud.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Sounds/score.wav" type="AudioStream" id=16]
-[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=17]
+[ext_resource path="res://Objects/Screen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Blocker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Gate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Ufo/beam.png" type="Texture" id=5]
+[ext_resource path="res://Objects/PositionedSprite.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/Cows/cow.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Cows/cow-50.png" type="Texture" id=8]
+[ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/Hud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sounds/score.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/drop.wav" type="AudioStream" id=13]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -26,53 +22,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Screen" type="TextureRect" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 480.0
-margin_bottom = 360.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 2 )
-stretch_mode = 2
-_sections_unfolded = [ "Rect", "Visibility", "custom_styles" ]
-
-[node name="Trees" type="Sprite" parent="Screen" index="0"]
-
-position = Vector2( 30, 264 )
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Ground" type="Sprite" parent="Screen" index="1"]
-
-position = Vector2( 0, 265 )
-texture = ExtResource( 4 )
-centered = false
-_sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="Mothership" type="Sprite" parent="Screen" index="2"]
-
-position = Vector2( 240, 68 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Barn" type="Sprite" parent="Screen" index="3"]
-
-position = Vector2( 480, 255 )
-texture = ExtResource( 6 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Fence" type="Sprite" parent="Screen" index="4"]
-
-position = Vector2( 450, 310 )
-texture = ExtResource( 7 )
-_sections_unfolded = [ "Transform" ]
+[node name="Screen" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="Blockers" type="Node2D" parent="." index="1"]
 
@@ -80,31 +30,33 @@ editor/display_folded = true
 position = Vector2( 0, 328 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Left" parent="Blockers" index="0" instance=ExtResource( 8 )]
+[node name="Left" parent="Blockers" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 0 )
 
-[node name="Safe" parent="Blockers" index="1" instance=ExtResource( 8 )]
+[node name="Safe" parent="Blockers" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 96, 0 )
 
-[node name="Right" parent="Blockers" index="2" instance=ExtResource( 8 )]
+[node name="Right" parent="Blockers" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 416, 0 )
 facing = "Right"
 
-[node name="Gate" parent="." index="2" instance=ExtResource( 9 )]
+[node name="Gate" parent="." index="2" instance=ExtResource( 4 )]
 
 [node name="EventSprites" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
 
 [node name="BeamSprite" type="Sprite" parent="EventSprites" index="0"]
 
 visible = false
 position = Vector2( 238, 131 )
-texture = ExtResource( 10 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HitPositions" parent="EventSprites" index="1" instance=ExtResource( 11 )]
+[node name="HitPositions" parent="EventSprites" index="1" instance=ExtResource( 6 )]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -112,25 +64,25 @@ _sections_unfolded = [ "Transform" ]
 
 visible = false
 position = Vector2( 238, 132 )
-texture = ExtResource( 12 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite02" type="Sprite" parent="EventSprites/HitPositions" index="1"]
 
 visible = false
 position = Vector2( 238, 110 )
-texture = ExtResource( 13 )
+texture = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite03" type="Sprite" parent="EventSprites/HitPositions" index="2"]
 
 visible = false
 
-[node name="ProjectileContainer" parent="." index="4" instance=ExtResource( 14 )]
+[node name="ProjectileContainer" parent="." index="4" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 
-[node name="Hud" parent="." index="5" instance=ExtResource( 15 )]
+[node name="Hud" parent="." index="5" instance=ExtResource( 10 )]
 
 [node name="Timers" type="Node" parent="." index="6"]
 
@@ -171,11 +123,9 @@ autostart = false
 
 [node name="SoundEffects" type="Node" parent="." index="7"]
 
-editor/display_folded = true
-
 [node name="Score" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
 
-stream = ExtResource( 16 )
+stream = ExtResource( 11 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -183,7 +133,15 @@ bus = "Master"
 
 [node name="Hit" type="AudioStreamPlayer" parent="SoundEffects" index="1"]
 
-stream = ExtResource( 17 )
+stream = ExtResource( 12 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Tick" type="AudioStreamPlayer" parent="SoundEffects" index="2"]
+
+stream = ExtResource( 13 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -198,8 +156,6 @@ bus = "Master"
 [connection signal="timeout" from="Timers/HitAnimation" to="." method="_on_hit_timeout"]
 
 [connection signal="timeout" from="Timers/ScoreAnimation" to="." method="_on_score_timeout"]
-
-[connection signal="finished" from="SoundEffects/Hit" to="." method="_on_hit_finished"]
 
 
 [editable path="ProjectileContainer"]

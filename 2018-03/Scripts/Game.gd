@@ -1,8 +1,8 @@
 extends Node2D
 
+enum ModeType { DEMO, GAME, FREEZE }
 
-var miss = 0
-
+var mode = ModeType.GAME
 var playerActive = false
 
 var projectileCounter = 1
@@ -15,7 +15,20 @@ var playerScene = preload("res://Objects/Player.tscn")
 
 func _ready():
 	randomize()
+	StartGame()
+
+
+func PlaySound(sound):
+	if mode == ModeType.GAME:
+		var sound_node = $SoundEffects.get_node(sound)
+		if sound_node:
+			sound_node.play()
+
+
+func StartGame():
 	$Hud.mode = $Hud.ModeType.SCORE
+	$Hud.score = 0
+	$Hud.miss = 0
 	CreatePlayer()
 	SetGateTimer()
 
@@ -29,16 +42,18 @@ func CreatePlayer():
 
 
 func MovePlayer(direction):
-	if playerActive:
+	if mode == ModeType.GAME && playerActive:
 		$Player.Move(direction)
 
 
 func _on_player_score():
-	$Hud.score += 1
+	if mode == ModeType.GAME:
+		$Hud.score += 1
+	
+	PlaySound("Score")
 	playerActive = false
 	$Timers/Projectile.paused = true
 	$Timers/Gate.paused = true
-	$SoundEffects/Score.play()
 	$Timers/ScoreAnimation.start()
 
 
@@ -49,15 +64,14 @@ func _on_score_timeout():
 	$Timers/Respawn.start()
 
 
-
 func _on_player_hit(position):
 	playerActive = false
 	$Timers/Projectile.paused = true
 	$Timers/Gate.paused = true
 	$EventSprites/HitPositions.frame = -1
 	$EventSprites/BeamSprite.show()
-	$SoundEffects/Hit.play()
 	$Timers/HitAnimation.start()
+	PlaySound("Hit")
 
 
 func _on_hit_timeout():
@@ -68,10 +82,11 @@ func _on_hit_timeout():
 		$EventSprites/HitPositions.frame = -1
 		$EventSprites/BeamSprite.hide()
 		
-		$Hud.miss += 1
-		if $Hud.miss == 3:
-			print("Game Over")
-			return
+		if mode == ModeType.GAME:
+			$Hud.miss += 1
+			if $Hud.miss == 3:
+				mode = ModeType.FREEZE
+				return
 		
 		$Timers/Projectile.paused = false
 		$Timers/Gate.paused = false
@@ -79,8 +94,8 @@ func _on_hit_timeout():
 		return
 	
 	$EventSprites/HitPositions.frame += 1
-	$SoundEffects/Hit.play()
 	$Timers/HitAnimation.start()
+	PlaySound("Hit")
 
 
 func SetGateTimer():
@@ -101,5 +116,6 @@ func _on_respawn_timeout():
 
 func _on_projectile_timeout():
 	$ProjectileContainer.Tick(projectileCounter)
+	PlaySound("Tick")
 	projectileCounter += 1
 

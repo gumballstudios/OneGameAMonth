@@ -13,7 +13,6 @@ func _ready():
 func Tick():
 	$Sprite.frame += direction
 	$Controller.position += controllerOffset * direction
-	$SoundEffects/Tick.play()
 	
 	if $Sprite.frame < 0 || $Sprite.frame + 1 >= $Sprite.get_child_count():
 		direction *= -1

@@ -125,7 +125,10 @@ func GetDigits(number, pad):
 
 func SetMiss(value):
 	miss = value
-	$Miss/Value.text = str(miss)
+	
+	for icon in $Miss/Markers.get_children():
+		var opacity = icon.get_index() < miss
+		icon.modulate = Color(1, 1, 1, opacity)
 
 
 func GetMiss():
