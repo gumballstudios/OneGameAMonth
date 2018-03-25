@@ -15,7 +15,7 @@ var playerScene = preload("res://Objects/Player.tscn")
 
 func _ready():
 	randomize()
-	StartGame()
+	StartDemo()
 
 
 func PlaySound(sound):
@@ -25,12 +25,30 @@ func PlaySound(sound):
 			sound_node.play()
 
 
+func StartDemo():
+	mode = ModeType.DEMO
+	$Hud.mode = $Hud.ModeType.TIME
+	CommonSetup()
+	$Timers/DemoPlayer.start()
+	for i in range((randi() % 16) + 5):
+		_on_projectile_timeout()
+
+
 func StartGame():
+	mode = ModeType.GAME
 	$Hud.mode = $Hud.ModeType.SCORE
 	$Hud.score = 0
+	$Timers/DemoPlayer.stop()
+	CommonSetup()
+
+
+func CommonSetup():
+	$ProjectileContainer.Reset()
 	$Hud.miss = 0
+	projectileCounter = 1
 	CreatePlayer()
 	SetGateTimer()
+	$Timers/Projectile.start()
 
 
 func CreatePlayer():
@@ -118,4 +136,9 @@ func _on_projectile_timeout():
 	$ProjectileContainer.Tick(projectileCounter)
 	PlaySound("Tick")
 	projectileCounter += 1
+
+
+func _on_demo_timeout():
+	if playerActive:
+		$Player.Move((randi() % 3) - 1)
 

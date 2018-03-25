@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gate_open.png-1128e00f530ba535fe65c9a1b6344598.stex"
+path="res://.import/select-up.png-d0c884292de791eaa4e5c68eed846ec5.stex"
 
 [deps]
 
-source_file="res://Sprites/gate_open.png"
-source_md5="b70535d11f9e28c2325250afead51de6"
+source_file="res://Sprites/Frame/select-up.png"
+source_md5="99438dbe5d7b1aef4cb39c8745fdee03"
 
-dest_files=[ "res://.import/gate_open.png-1128e00f530ba535fe65c9a1b6344598.stex" ]
-dest_md5="23e915acb31cae11867505176a100774"
+dest_files=[ "res://.import/select-up.png-d0c884292de791eaa4e5c68eed846ec5.stex" ]
+dest_md5="eff3396b217a014b7e86d7b43af31d43"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

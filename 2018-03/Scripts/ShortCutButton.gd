@@ -16,8 +16,11 @@ var buttonClickEvent
 func _ready():
 	buttonClickEvent = InputEventMouseButton.new()
 	buttonClickEvent.button_index = BUTTON_LEFT
-	SetFrameTexture(normal, "normal")
-	SetFrameTexture(pressed, "pressed")
+	#SetFrameTexture(normal, "normal_" + str(get_index()))
+	#SetFrameTexture(pressed, "pressed_" + str(get_index()))
+	#$Sprite.animation == "normal_" + str(get_index())
+	$Normal.texture = normal
+	$Pressed.texture = pressed
 	$Shape.shape = mask
 
 
@@ -44,14 +47,16 @@ func _on_area_input_event(viewport, event, shape_idx):
 func HandleEvent(event):
 	if !event.is_echo():
 		if event.is_pressed():
-			if $Sprite.animation == "pressed":
+			if $Pressed.visible:
 				return
-			$Sprite.animation = "pressed"
+			$Normal.hide()
+			$Pressed.show()
 			emit_signal("button_down")
 			emit_signal("pressed")
 		else:
-			if $Sprite.animation == "normal":
+			if $Normal.visible:
 				return
-			$Sprite.animation = "normal"
+			$Normal.show()
+			$Pressed.hide()
 			emit_signal("button_up")
 

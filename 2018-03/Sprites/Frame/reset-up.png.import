@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button-down.png-fbf39be70089ccf5cd0bf209114b738a.stex"
+path="res://.import/reset-up.png-e5913280a0630de05fd0515fd030e167.stex"
 
 [deps]
 
-source_file="res://Sprites/button-down.png"
-source_md5="63852a46f48d8aa9a6b5ebbb0c99b563"
+source_file="res://Sprites/Frame/reset-up.png"
+source_md5="d29e4e24bcabf4727b3bd5862d2902b0"
 
-dest_files=[ "res://.import/button-down.png-fbf39be70089ccf5cd0bf209114b738a.stex" ]
-dest_md5="2715b0792e365cf8d330220b521e16f5"
+dest_files=[ "res://.import/reset-up.png-e5913280a0630de05fd0515fd030e167.stex" ]
+dest_md5="2d6f1a9d5dfd769474433fed5134d3b5"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

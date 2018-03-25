@@ -24,6 +24,9 @@ func _physics_process(delta):
 
 
 func Move(direction):
+	if abs(direction) != 1:
+		return
+	
 	var detector = detectorDirection[direction]
 	if detector.is_colliding():
 		return

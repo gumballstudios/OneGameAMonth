@@ -30,12 +30,22 @@ normal = null
 pressed = null
 mask = null
 
-[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
+[node name="Normal" type="Sprite" parent="." index="0"]
 
+_sections_unfolded = [ "Transform" ]
+
+[node name="Pressed" type="Sprite" parent="." index="1"]
+
+visible = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="AnimatedSprite" parent="." index="2"]
+
+visible = false
 frames = SubResource( 1 )
 animation = "normal"
 
-[node name="Shape" type="CollisionShape2D" parent="." index="1"]
+[node name="Shape" type="CollisionShape2D" parent="." index="3"]
 
 [connection signal="input_event" from="." to="." method="_on_area_input_event"]
 

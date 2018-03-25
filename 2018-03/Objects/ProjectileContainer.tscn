@@ -55,10 +55,6 @@ _sections_unfolded = [ "Offset", "Transform" ]
 position = Vector2( 96, 256 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="SoundEffects" parent="Container/VariableProjectile/SubProjectiles/SubProjectile01" index="2"]
-
-editor/display_folded = true
-
 [node name="SubProjectile02" parent="Container/VariableProjectile/SubProjectiles" index="1" instance=ExtResource( 3 )]
 
 _sections_unfolded = [ "Transform" ]
@@ -100,10 +96,6 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 position = Vector2( 160, 240 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="SoundEffects" parent="Container/VariableProjectile/SubProjectiles/SubProjectile02" index="2"]
-
-editor/display_folded = true
 
 [node name="Projectile03" parent="Container" index="1" instance=ExtResource( 3 )]
 

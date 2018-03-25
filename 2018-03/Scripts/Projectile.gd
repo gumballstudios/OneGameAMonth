@@ -10,6 +10,10 @@ func _ready():
 	$Sprite.frame = -1
 
 
+func Reset():
+	$Sprite.frame = -1
+
+
 func Tick():
 	$Sprite.frame += direction
 	$Controller.position += controllerOffset * direction

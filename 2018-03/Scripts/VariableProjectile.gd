@@ -9,6 +9,11 @@ func _ready():
 	ChooseProjectile()
 
 
+func Reset():
+	for projectile in $SubProjectiles.get_children():
+		projectile.Reset()
+
+
 func ConnectProjectiles():
 	for projectile in $SubProjectiles.get_children():
 		projectile.connect("finished", self, "_on_projectile_finished")

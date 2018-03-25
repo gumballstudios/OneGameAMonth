@@ -14,7 +14,7 @@
 [ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=12]
 [ext_resource path="res://Sounds/drop.wav" type="AudioStream" id=13]
 
-[node name="Game" type="Node2D" index="0"]
+[node name="Game" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -105,7 +105,7 @@ autostart = false
 process_mode = 1
 wait_time = 0.4
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="HitAnimation" type="Timer" parent="Timers" index="3"]
 
@@ -119,6 +119,13 @@ autostart = false
 process_mode = 1
 wait_time = 1.0
 one_shot = true
+autostart = false
+
+[node name="DemoPlayer" type="Timer" parent="Timers" index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
 autostart = false
 
 [node name="SoundEffects" type="Node" parent="." index="7"]
@@ -156,6 +163,8 @@ bus = "Master"
 [connection signal="timeout" from="Timers/HitAnimation" to="." method="_on_hit_timeout"]
 
 [connection signal="timeout" from="Timers/ScoreAnimation" to="." method="_on_score_timeout"]
+
+[connection signal="timeout" from="Timers/DemoPlayer" to="." method="_on_demo_timeout"]
 
 
 [editable path="ProjectileContainer"]

@@ -1,11 +1,103 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scripts/Frame.gd" type="Script" id=1]
 [ext_resource path="res://Stages/Game.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/frame.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Frame/frame.png" type="Texture" id=3]
 [ext_resource path="res://Objects/ShortCutButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/button-up.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/button-down.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Frame/select-up.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Frame/select-down.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Frame/reset-up.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Frame/reset-down.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Frame/button-up.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Frame/button-down.png" type="Texture" id=10]
+
+[sub_resource type="InputEventKey" id=6]
+
+device = 0
+alt = false
+shift = false
+control = false
+meta = false
+command = false
+pressed = false
+scancode = 49
+unicode = 0
+echo = false
+
+[sub_resource type="ShortCut" id=7]
+
+shortcut = SubResource( 6 )
+
+[sub_resource type="CircleShape2D" id=12]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="InputEventKey" id=8]
+
+device = 0
+alt = false
+shift = false
+control = false
+meta = false
+command = false
+pressed = false
+scancode = 50
+unicode = 0
+echo = false
+
+[sub_resource type="ShortCut" id=9]
+
+shortcut = SubResource( 8 )
+
+[sub_resource type="CircleShape2D" id=13]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="InputEventKey" id=10]
+
+device = 0
+alt = false
+shift = false
+control = false
+meta = false
+command = false
+pressed = false
+scancode = 51
+unicode = 0
+echo = false
+
+[sub_resource type="ShortCut" id=11]
+
+shortcut = SubResource( 10 )
+
+[sub_resource type="CircleShape2D" id=14]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="InputEventKey" id=15]
+
+device = 0
+alt = false
+shift = false
+control = false
+meta = false
+command = false
+pressed = false
+scancode = 57
+unicode = 0
+echo = false
+
+[sub_resource type="ShortCut" id=16]
+
+shortcut = SubResource( 15 )
+
+[sub_resource type="CircleShape2D" id=17]
+
+custom_solver_bias = 0.0
+radius = 5.0
 
 [sub_resource type="InputEventKey" id=1]
 
@@ -46,7 +138,7 @@ echo = false
 
 shortcut = SubResource( 4 )
 
-[node name="Frame" type="Node"]
+[node name="Frame" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -61,20 +153,52 @@ texture = ExtResource( 3 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 
-[node name="LeftButton" parent="." index="2" instance=ExtResource( 4 )]
+[node name="ModeButton" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 87, 80 )
+shortcut = SubResource( 7 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+mask = SubResource( 12 )
+
+[node name="GameButton" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 87, 170 )
+shortcut = SubResource( 9 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+mask = SubResource( 13 )
+
+[node name="SoundButton" parent="." index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 87, 260 )
+shortcut = SubResource( 11 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+mask = SubResource( 14 )
+
+[node name="ResetButton" parent="." index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 105, 317 )
+shortcut = SubResource( 16 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+mask = SubResource( 17 )
+
+[node name="LeftButton" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 86, 490 )
 shortcut = SubResource( 2 )
-normal = ExtResource( 5 )
-pressed = ExtResource( 6 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 10 )
 mask = SubResource( 3 )
 
-[node name="RightButton" parent="." index="3" instance=ExtResource( 4 )]
+[node name="RightButton" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 938, 490 )
 shortcut = SubResource( 5 )
-normal = ExtResource( 5 )
-pressed = ExtResource( 6 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 10 )
 mask = SubResource( 3 )
 
 [connection signal="button_down" from="LeftButton" to="." method="_on_movement_button_down"]
