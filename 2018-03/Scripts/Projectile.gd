@@ -5,13 +5,18 @@ signal finished
 
 var direction = 1
 var controllerOffset = Vector2(0, 16)
+var controllerOrigin
+
 
 func _ready():
 	$Sprite.frame = -1
+	controllerOrigin = $Controller.position
 
 
 func Reset():
 	$Sprite.frame = -1
+	direction = 1
+	$Controller.position = controllerOrigin
 
 
 func Tick():

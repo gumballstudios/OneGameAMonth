@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Frame.gd" type="Script" id=1]
 [ext_resource path="res://Stages/Game.tscn" type="PackedScene" id=2]
@@ -6,12 +6,10 @@
 [ext_resource path="res://Objects/ShortCutButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/Frame/select-up.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Frame/select-down.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Frame/reset-up.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Frame/reset-down.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Frame/button-up.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Frame/button-down.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Frame/button-up.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Frame/button-down.png" type="Texture" id=8]
 
-[sub_resource type="InputEventKey" id=6]
+[sub_resource type="InputEventKey" id=1]
 
 device = 0
 alt = false
@@ -24,16 +22,16 @@ scancode = 49
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=7]
+[sub_resource type="ShortCut" id=2]
 
-shortcut = SubResource( 6 )
+shortcut = SubResource( 1 )
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="InputEventKey" id=8]
+[sub_resource type="InputEventKey" id=4]
 
 device = 0
 alt = false
@@ -46,16 +44,16 @@ scancode = 50
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=9]
+[sub_resource type="ShortCut" id=5]
 
-shortcut = SubResource( 8 )
+shortcut = SubResource( 4 )
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=6]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="InputEventKey" id=10]
+[sub_resource type="InputEventKey" id=7]
 
 device = 0
 alt = false
@@ -68,38 +66,16 @@ scancode = 51
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=11]
+[sub_resource type="ShortCut" id=8]
 
-shortcut = SubResource( 10 )
+shortcut = SubResource( 7 )
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=9]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="InputEventKey" id=15]
-
-device = 0
-alt = false
-shift = false
-control = false
-meta = false
-command = false
-pressed = false
-scancode = 57
-unicode = 0
-echo = false
-
-[sub_resource type="ShortCut" id=16]
-
-shortcut = SubResource( 15 )
-
-[sub_resource type="CircleShape2D" id=17]
-
-custom_solver_bias = 0.0
-radius = 5.0
-
-[sub_resource type="InputEventKey" id=1]
+[sub_resource type="InputEventKey" id=13]
 
 device = 0
 alt = false
@@ -112,16 +88,16 @@ scancode = 83
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=2]
+[sub_resource type="ShortCut" id=14]
 
-shortcut = SubResource( 1 )
+shortcut = SubResource( 13 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 16 )
 
-[sub_resource type="InputEventKey" id=4]
+[sub_resource type="InputEventKey" id=16]
 
 device = 0
 alt = false
@@ -134,9 +110,9 @@ scancode = 75
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=5]
+[sub_resource type="ShortCut" id=17]
 
-shortcut = SubResource( 4 )
+shortcut = SubResource( 16 )
 
 [node name="Frame" type="Node" index="0"]
 
@@ -156,50 +132,46 @@ _sections_unfolded = [ "Offset" ]
 [node name="ModeButton" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 87, 80 )
-shortcut = SubResource( 7 )
+shortcut = SubResource( 2 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
-mask = SubResource( 12 )
+mask = SubResource( 3 )
 
 [node name="GameButton" parent="." index="3" instance=ExtResource( 4 )]
 
-position = Vector2( 87, 170 )
-shortcut = SubResource( 9 )
+position = Vector2( 87, 180 )
+shortcut = SubResource( 5 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
-mask = SubResource( 13 )
+mask = SubResource( 6 )
 
 [node name="SoundButton" parent="." index="4" instance=ExtResource( 4 )]
 
-position = Vector2( 87, 260 )
-shortcut = SubResource( 11 )
+position = Vector2( 87, 280 )
+shortcut = SubResource( 8 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
-mask = SubResource( 14 )
+mask = SubResource( 9 )
 
-[node name="ResetButton" parent="." index="5" instance=ExtResource( 4 )]
-
-position = Vector2( 105, 317 )
-shortcut = SubResource( 16 )
-normal = ExtResource( 7 )
-pressed = ExtResource( 8 )
-mask = SubResource( 17 )
-
-[node name="LeftButton" parent="." index="6" instance=ExtResource( 4 )]
+[node name="LeftButton" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 86, 490 )
-shortcut = SubResource( 2 )
-normal = ExtResource( 9 )
-pressed = ExtResource( 10 )
-mask = SubResource( 3 )
+shortcut = SubResource( 14 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+mask = SubResource( 15 )
 
-[node name="RightButton" parent="." index="7" instance=ExtResource( 4 )]
+[node name="RightButton" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 938, 490 )
-shortcut = SubResource( 5 )
-normal = ExtResource( 9 )
-pressed = ExtResource( 10 )
-mask = SubResource( 3 )
+shortcut = SubResource( 17 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+mask = SubResource( 15 )
+
+[connection signal="pressed" from="ModeButton" to="." method="_on_mode_pressed"]
+
+[connection signal="pressed" from="GameButton" to="." method="_on_game_pressed"]
 
 [connection signal="button_down" from="LeftButton" to="." method="_on_movement_button_down"]
 

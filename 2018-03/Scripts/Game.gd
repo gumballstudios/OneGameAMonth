@@ -1,8 +1,8 @@
 extends Node2D
 
-enum ModeType { DEMO, GAME, FREEZE }
+enum ModeType { DEMO, GAME, END }
 
-var mode = ModeType.GAME
+var mode = ModeType.DEMO
 var playerActive = false
 
 var projectileCounter = 1
@@ -15,7 +15,7 @@ var playerScene = preload("res://Objects/Player.tscn")
 
 func _ready():
 	randomize()
-	StartDemo()
+	SetupDemo()
 
 
 func PlaySound(sound):
@@ -25,36 +25,53 @@ func PlaySound(sound):
 			sound_node.play()
 
 
-func StartDemo():
+func SetupDemo():
 	mode = ModeType.DEMO
 	$Hud.mode = $Hud.ModeType.TIME
-	CommonSetup()
-	$Timers/DemoPlayer.start()
+	# set high score
+	$Hud.miss = 0
+	CreatePlayer()
+	SetGateTimer()
 	for i in range((randi() % 16) + 5):
 		_on_projectile_timeout()
+	$Timers/Projectile.start()
+	$Timers/Projectile.paused = false
+	$Timers/DemoPlayer.start()
+
+
+func ChangeMode():
+	if mode == ModeType.DEMO:
+		$Hud.ToggleMode()
+	if mode == ModeType.END:
+		SetupDemo()
 
 
 func StartGame():
+	if mode == ModeType.GAME:
+		return
+	
+	if $Player:
+		$Player.queue_free()
+	
 	mode = ModeType.GAME
 	$Hud.mode = $Hud.ModeType.SCORE
 	$Hud.score = 0
-	$Timers/DemoPlayer.stop()
-	CommonSetup()
-
-
-func CommonSetup():
-	$ProjectileContainer.Reset()
 	$Hud.miss = 0
+	$Timers/DemoPlayer.stop()
+	$ProjectileContainer.Reset()
 	projectileCounter = 1
-	CreatePlayer()
 	SetGateTimer()
+	$Timers/Respawn.start()
 	$Timers/Projectile.start()
+	$Timers/Projectile.paused = false
+
 
 
 func CreatePlayer():
 	var player = playerScene.instance()
-	player.connect("score", self, "_on_player_score")
-	player.connect("hit", self, "_on_player_hit")
+	if mode == ModeType.GAME:
+		player.connect("score", self, "_on_player_score")
+		player.connect("hit", self, "_on_player_hit")
 	add_child(player)
 	playerActive = true
 
@@ -103,7 +120,7 @@ func _on_hit_timeout():
 		if mode == ModeType.GAME:
 			$Hud.miss += 1
 			if $Hud.miss == 3:
-				mode = ModeType.FREEZE
+				mode = ModeType.END
 				return
 		
 		$Timers/Projectile.paused = false
@@ -120,6 +137,8 @@ func SetGateTimer():
 	var timerRange = gateTimerRange[gateOpen]
 	$Timers/Gate.wait_time = 1 + rand_range(timerRange.x, timerRange.y)
 	$Timers/Gate.start()
+	$Timers/Gate.paused = false
+
 
 
 func _on_gate_timeout():

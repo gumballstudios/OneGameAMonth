@@ -21,3 +21,11 @@ func _on_left_pressed():
 
 func _on_right_pressed():
 	$Game.MovePlayer(1)
+
+
+func _on_mode_pressed():
+	$Game.ChangeMode()
+
+
+func _on_game_pressed():
+	$Game.StartGame()

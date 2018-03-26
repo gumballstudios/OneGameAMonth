@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="2018-03"
+config/name="UFO LCD"
 run/main_scene="res://Stages/Frame.tscn"
 config/icon="res://icon.png"
 

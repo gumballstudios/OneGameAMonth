@@ -31,12 +31,16 @@ func _ready():
 # Test code
 func _input(event):
 	if event.is_action_pressed("ui_select"):
-		if mode == ModeType.TIME:
-			SetMode(ModeType.DATE)
-		elif mode == ModeType.DATE:
-			SetMode(ModeType.SCORE)
-		else:
-			SetMode(ModeType.TIME)
+		ToggleMode()
+
+
+func ToggleMode():
+	if mode == ModeType.TIME:
+		SetMode(ModeType.DATE)
+	elif mode == ModeType.DATE:
+		SetMode(ModeType.SCORE)
+	else:
+		SetMode(ModeType.TIME)
 
 
 func _process(delta):
@@ -95,7 +99,6 @@ func GetMode():
 func SetScore(value):
 	score = value
 	if mode != ModeType.SCORE:
-		print("no update")
 		return
 	
 	var digits = GetDigits(score, 4)

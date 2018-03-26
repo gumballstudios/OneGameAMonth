@@ -86,6 +86,8 @@ editor/display_folded = true
 
 [node name="Timers" type="Node" parent="." index="6"]
 
+editor/display_folded = true
+
 [node name="Gate" type="Timer" parent="Timers" index="0"]
 
 process_mode = 1
@@ -129,6 +131,8 @@ one_shot = false
 autostart = false
 
 [node name="SoundEffects" type="Node" parent="." index="7"]
+
+editor/display_folded = true
 
 [node name="Score" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
 

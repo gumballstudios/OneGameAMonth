@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 4, 4 )
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -62,7 +62,7 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 position = Vector2( 442, 285 )
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Controller" type="Node2D" parent="." index="1"]
 
