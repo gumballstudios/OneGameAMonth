@@ -15,11 +15,19 @@ var playerScene = preload("res://Objects/Player.tscn")
 
 func _ready():
 	randomize()
+	$AudioIcon/Sound.visible = Settings.audio
 	SetupDemo()
 
 
+func ToggleSound():
+	Settings.audio = !Settings.audio
+	$AudioIcon/Sound.visible = Settings.audio
+	$AudioIcon.show()
+	$Timers/AudioDisplay.start()
+
+
 func PlaySound(sound):
-	if mode == ModeType.GAME:
+	if mode == ModeType.GAME && Settings.audio:
 		var sound_node = $SoundEffects.get_node(sound)
 		if sound_node:
 			sound_node.play()
@@ -28,7 +36,7 @@ func PlaySound(sound):
 func SetupDemo():
 	mode = ModeType.DEMO
 	$Hud.mode = $Hud.ModeType.TIME
-	# set high score
+	$Hud.score = Settings.high_score
 	$Hud.miss = 0
 	CreatePlayer()
 	SetGateTimer()
@@ -120,6 +128,8 @@ func _on_hit_timeout():
 		if mode == ModeType.GAME:
 			$Hud.miss += 1
 			if $Hud.miss == 3:
+				if $Hud.score > Settings.high_score:
+					Settings.high_score = $Hud.score
 				mode = ModeType.END
 				return
 		
@@ -160,4 +170,8 @@ func _on_projectile_timeout():
 func _on_demo_timeout():
 	if playerActive:
 		$Player.Move((randi() % 3) - 1)
+
+
+func _on_audio_timeout():
+	$AudioIcon.hide()
 

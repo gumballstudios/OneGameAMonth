@@ -29,3 +29,8 @@ func _on_mode_pressed():
 
 func _on_game_pressed():
 	$Game.StartGame()
+
+
+func _on_sound_pressed():
+	$Game.ToggleSound()
+

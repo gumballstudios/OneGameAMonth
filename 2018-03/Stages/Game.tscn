@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Screen.tscn" type="PackedScene" id=2]
@@ -10,11 +10,13 @@
 [ext_resource path="res://Sprites/Cows/cow-50.png" type="Texture" id=8]
 [ext_resource path="res://Objects/ProjectileContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/Hud.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sounds/score.wav" type="AudioStream" id=11]
-[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=12]
-[ext_resource path="res://Sounds/drop.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sprites/speaker.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/sound.png" type="Texture" id=12]
+[ext_resource path="res://Sounds/score.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/drop.wav" type="AudioStream" id=15]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -84,9 +86,23 @@ editor/display_folded = true
 
 [node name="Hud" parent="." index="5" instance=ExtResource( 10 )]
 
-[node name="Timers" type="Node" parent="." index="6"]
+[node name="AudioIcon" type="Node2D" parent="." index="6"]
 
 editor/display_folded = true
+visible = false
+position = Vector2( 310, 24 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Speaker" type="Sprite" parent="AudioIcon" index="0"]
+
+texture = ExtResource( 11 )
+
+[node name="Sound" type="Sprite" parent="AudioIcon" index="1"]
+
+texture = ExtResource( 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Timers" type="Node" parent="." index="7"]
 
 [node name="Gate" type="Timer" parent="Timers" index="0"]
 
@@ -130,13 +146,20 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="SoundEffects" type="Node" parent="." index="7"]
+[node name="AudioDisplay" type="Timer" parent="Timers" index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="SoundEffects" type="Node" parent="." index="8"]
 
 editor/display_folded = true
 
 [node name="Score" type="AudioStreamPlayer" parent="SoundEffects" index="0"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 13 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -144,7 +167,7 @@ bus = "Master"
 
 [node name="Hit" type="AudioStreamPlayer" parent="SoundEffects" index="1"]
 
-stream = ExtResource( 12 )
+stream = ExtResource( 14 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -152,7 +175,7 @@ bus = "Master"
 
 [node name="Tick" type="AudioStreamPlayer" parent="SoundEffects" index="2"]
 
-stream = ExtResource( 13 )
+stream = ExtResource( 15 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -169,6 +192,8 @@ bus = "Master"
 [connection signal="timeout" from="Timers/ScoreAnimation" to="." method="_on_score_timeout"]
 
 [connection signal="timeout" from="Timers/DemoPlayer" to="." method="_on_demo_timeout"]
+
+[connection signal="timeout" from="Timers/AudioDisplay" to="." method="_on_audio_timeout"]
 
 
 [editable path="ProjectileContainer"]

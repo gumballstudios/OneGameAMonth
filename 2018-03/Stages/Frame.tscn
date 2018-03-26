@@ -114,7 +114,7 @@ echo = false
 
 shortcut = SubResource( 16 )
 
-[node name="Frame" type="Node" index="0"]
+[node name="Frame" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -172,6 +172,8 @@ mask = SubResource( 15 )
 [connection signal="pressed" from="ModeButton" to="." method="_on_mode_pressed"]
 
 [connection signal="pressed" from="GameButton" to="." method="_on_game_pressed"]
+
+[connection signal="pressed" from="SoundButton" to="." method="_on_sound_pressed"]
 
 [connection signal="button_down" from="LeftButton" to="." method="_on_movement_button_down"]
 

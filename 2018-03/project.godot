@@ -14,6 +14,10 @@ config/name="UFO LCD"
 run/main_scene="res://Stages/Frame.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Settings="*res://Scripts/Settings.gd"
+
 [display]
 
 window/size/height=576
