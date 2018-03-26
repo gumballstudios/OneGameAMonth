@@ -24,14 +24,7 @@ const digitSprites = [
 
 func _ready():
 	set_process(false)
-	#set_process_input(false)
 	pass
-
-
-# Test code
-func _input(event):
-	if event.is_action_pressed("ui_select"):
-		ToggleMode()
 
 
 func ToggleMode():

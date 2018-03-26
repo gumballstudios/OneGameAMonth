@@ -5,6 +5,17 @@ func _ready():
 	pass
 
 
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		if $Tooltips.visible:
+			$Tooltips.hide()
+			return
+		
+		for tip in $Tooltips.get_children():
+			tip.ShowTooltip()
+		$Tooltips.show()
+
+
 func _on_movement_button_down():
 	#play sound
 	pass # replace with function body

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Frame.gd" type="Script" id=1]
 [ext_resource path="res://Stages/Game.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Sprites/Frame/select-down.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Frame/button-up.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Frame/button-down.png" type="Texture" id=8]
+[ext_resource path="res://Objects/Tooltip.tscn" type="PackedScene" id=9]
 
 [sub_resource type="InputEventKey" id=1]
 
@@ -29,7 +30,7 @@ shortcut = SubResource( 1 )
 [sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 20.0
 
 [sub_resource type="InputEventKey" id=4]
 
@@ -51,7 +52,7 @@ shortcut = SubResource( 4 )
 [sub_resource type="CircleShape2D" id=6]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 20.0
 
 [sub_resource type="InputEventKey" id=7]
 
@@ -73,7 +74,7 @@ shortcut = SubResource( 7 )
 [sub_resource type="CircleShape2D" id=9]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 20.0
 
 [sub_resource type="InputEventKey" id=10]
 
@@ -95,7 +96,7 @@ shortcut = SubResource( 10 )
 [sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 16 )
+extents = Vector2( 48, 32 )
 
 [sub_resource type="InputEventKey" id=13]
 
@@ -114,7 +115,7 @@ echo = false
 
 shortcut = SubResource( 13 )
 
-[node name="Frame" type="Node"]
+[node name="Frame" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -168,6 +169,39 @@ shortcut = SubResource( 14 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
 mask = SubResource( 12 )
+
+[node name="Tooltips" type="Node2D" parent="." index="7"]
+
+visible = false
+
+[node name="Mode" parent="Tooltips" index="0" instance=ExtResource( 9 )]
+
+position = Vector2( 87, 80 )
+Offset = Vector2( 80, 24 )
+
+[node name="Game" parent="Tooltips" index="1" instance=ExtResource( 9 )]
+
+position = Vector2( 87, 180 )
+Text = "2"
+Offset = Vector2( 80, 24 )
+
+[node name="Sound" parent="Tooltips" index="2" instance=ExtResource( 9 )]
+
+position = Vector2( 87, 280 )
+Text = "3"
+Offset = Vector2( 80, 24 )
+
+[node name="Left" parent="Tooltips" index="3" instance=ExtResource( 9 )]
+
+position = Vector2( 86, 490 )
+Text = "S"
+Offset = Vector2( 80, -32 )
+
+[node name="Right" parent="Tooltips" index="4" instance=ExtResource( 9 )]
+
+position = Vector2( 938, 490 )
+Text = "K"
+Offset = Vector2( -80, -32 )
 
 [connection signal="pressed" from="ModeButton" to="." method="_on_mode_pressed"]
 

@@ -1,17 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scripts/ShortCutButton.gd" type="Script" id=1]
 
-[sub_resource type="SpriteFrames" id=1]
-
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[node name="ShortCutButton" type="Area2D"]
+[node name="ShortCutButton" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -39,13 +30,7 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="Sprite" type="AnimatedSprite" parent="." index="2"]
-
-visible = false
-frames = SubResource( 1 )
-animation = "normal"
-
-[node name="Shape" type="CollisionShape2D" parent="." index="3"]
+[node name="Shape" type="CollisionShape2D" parent="." index="2"]
 
 [connection signal="input_event" from="." to="." method="_on_area_input_event"]
 
