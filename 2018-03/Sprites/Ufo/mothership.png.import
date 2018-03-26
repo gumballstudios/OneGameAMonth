@@ -7,10 +7,10 @@ path="res://.import/mothership.png-7b2352a5259dcaf2505069a84afeda25.stex"
 [deps]
 
 source_file="res://Sprites/Ufo/mothership.png"
-source_md5="b24f3073d07b74e78c49c23ef8900319"
+source_md5="c84ec313632f53765972d13b560a549b"
 
 dest_files=[ "res://.import/mothership.png-7b2352a5259dcaf2505069a84afeda25.stex" ]
-dest_md5="63ef7e22543789f10ffec5816691b2ae"
+dest_md5="92740e0baf2da926ae6b1d6075d6bf9b"
 
 [params]
 

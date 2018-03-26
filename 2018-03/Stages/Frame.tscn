@@ -75,7 +75,7 @@ shortcut = SubResource( 7 )
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="InputEventKey" id=13]
+[sub_resource type="InputEventKey" id=10]
 
 device = 0
 alt = false
@@ -88,16 +88,16 @@ scancode = 83
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=14]
+[sub_resource type="ShortCut" id=11]
 
-shortcut = SubResource( 13 )
+shortcut = SubResource( 10 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 16 )
 
-[sub_resource type="InputEventKey" id=16]
+[sub_resource type="InputEventKey" id=13]
 
 device = 0
 alt = false
@@ -110,9 +110,9 @@ scancode = 75
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=17]
+[sub_resource type="ShortCut" id=14]
 
-shortcut = SubResource( 16 )
+shortcut = SubResource( 13 )
 
 [node name="Frame" type="Node"]
 
@@ -156,18 +156,18 @@ mask = SubResource( 9 )
 [node name="LeftButton" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 86, 490 )
-shortcut = SubResource( 14 )
+shortcut = SubResource( 11 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
-mask = SubResource( 15 )
+mask = SubResource( 12 )
 
 [node name="RightButton" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 938, 490 )
-shortcut = SubResource( 17 )
+shortcut = SubResource( 14 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
-mask = SubResource( 15 )
+mask = SubResource( 12 )
 
 [connection signal="pressed" from="ModeButton" to="." method="_on_mode_pressed"]
 

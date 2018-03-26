@@ -7,10 +7,10 @@ path="res://.import/fence.png-73378164c34dae768dbc06d17f755e11.stex"
 [deps]
 
 source_file="res://Sprites/Screen/fence.png"
-source_md5="dee61656b7307516d0510c654b4aa290"
+source_md5="a5636431672f6c8f25dd6fff378a697c"
 
 dest_files=[ "res://.import/fence.png-73378164c34dae768dbc06d17f755e11.stex" ]
-dest_md5="b951eaa6cef55cbb807f2e7cc30f66f4"
+dest_md5="aa0e75d2ea76be5b15aa54ff1a8428e8"
 
 [params]
 

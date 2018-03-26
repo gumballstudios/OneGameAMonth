@@ -7,10 +7,10 @@ path="res://.import/trees.png-21e1f61275816e9fc75982899b7b1d02.stex"
 [deps]
 
 source_file="res://Sprites/Screen/trees.png"
-source_md5="e94701baa980f70b419b53da2812bcc2"
+source_md5="fd8ebc24e3e9fe7c9de0a4cd2e3bea0d"
 
 dest_files=[ "res://.import/trees.png-21e1f61275816e9fc75982899b7b1d02.stex" ]
-dest_md5="c498f136f36d6b445f912902e698af1e"
+dest_md5="0636dd50e44ba1822b3ea4f9598f3ef0"
 
 [params]
 

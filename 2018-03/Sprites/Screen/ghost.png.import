@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barn.png-8b33e5015cf7eb7a7a9e1f13d8fc6bae.stex"
+path="res://.import/ghost.png-588feb1fc39f5235af061fba80a37995.stex"
 
 [deps]
 
-source_file="res://Sprites/Screen/barn.png"
-source_md5="dd00fa7fdae95848856e4a9597c3d96f"
+source_file="res://Sprites/Screen/ghost.png"
+source_md5="d2bb3037f49d5219bfe7c44a1691c4f8"
 
-dest_files=[ "res://.import/barn.png-8b33e5015cf7eb7a7a9e1f13d8fc6bae.stex" ]
-dest_md5="998e8fc97d601935c319b533561de54e"
+dest_files=[ "res://.import/ghost.png-588feb1fc39f5235af061fba80a37995.stex" ]
+dest_md5="aa21cdd36310990413b8528e3c50980d"
 
 [params]
 
