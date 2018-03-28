@@ -6,9 +6,16 @@ var mode = ModeType.DEMO
 var playerActive = false
 
 var projectileCounter = 1
+var projectileTime = 0.4
+
+var timeDecrease = 0.02
+var timeDecreaseScore = 5
+var timeIncrease = 0.1
+var timeIncreaseScore = 50
+var lifeScore = 100
 
 var gateOpen = false
-var gateTimerRange = {false: Vector2(1, 4), true: Vector2(1, 3)}
+var gateTimerRange = {false: Vector2(2, 5), true: Vector2(0.5, 1.5)}
 
 var playerScene = preload("res://Objects/Player.tscn")
 
@@ -42,8 +49,9 @@ func SetupDemo():
 	SetGateTimer()
 	for i in range((randi() % 16) + 5):
 		_on_projectile_timeout()
-	$Timers/Projectile.start()
+	$Timers/Projectile.wait_time = projectileTime
 	$Timers/Projectile.paused = false
+	$Timers/Projectile.start()
 	$Timers/DemoPlayer.start()
 
 
@@ -70,8 +78,9 @@ func StartGame():
 	projectileCounter = 1
 	SetGateTimer()
 	$Timers/Respawn.start()
-	$Timers/Projectile.start()
+	$Timers/Projectile.wait_time = projectileTime
 	$Timers/Projectile.paused = false
+	$Timers/Projectile.start()
 
 
 
@@ -92,6 +101,12 @@ func MovePlayer(direction):
 func _on_player_score():
 	if mode == ModeType.GAME:
 		$Hud.score += 1
+		if $Hud.score % timeDecreaseScore == 0:
+			$Timers/Projectile.wait_time -= timeDecrease
+		if $Hud.score % timeIncreaseScore == 0:
+			$Timers/Projectile.wait_time += timeIncrease
+		if $Hud.score % lifeScore == 0 && $Hud.miss > 0:
+			$Hud.miss -= 1
 	
 	PlaySound("Score")
 	playerActive = false

@@ -12,6 +12,7 @@ config_version=3
 
 config/name="UFO LCD"
 run/main_scene="res://Stages/Frame.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [autoload]
@@ -21,6 +22,7 @@ Settings="*res://Scripts/Settings.gd"
 [display]
 
 window/size/height=576
+window/size/resizable=false
 
 [importer_defaults]
 

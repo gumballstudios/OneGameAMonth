@@ -115,7 +115,7 @@ echo = false
 
 shortcut = SubResource( 13 )
 
-[node name="Frame" type="Node" index="0"]
+[node name="Frame" type="Node"]
 
 script = ExtResource( 1 )
 
