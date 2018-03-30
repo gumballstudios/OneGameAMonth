@@ -1,7 +1,7 @@
 extends Node
 
 
-const config_path = "res://ufo.cfg"
+const config_path = "user://ufo.cfg"
 
 var config_file = ConfigFile.new()
 var high_score = 0 setget set_high_score, get_high_score

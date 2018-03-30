@@ -7,10 +7,10 @@ path="res://.import/frame.png-8cbd93696309e3a5d1b353f0ccdbfd49.stex"
 [deps]
 
 source_file="res://Sprites/Frame/frame.png"
-source_md5="6ee768c31f4588ee42524f4c91681325"
+source_md5="17b2b9cce4e94542114638061e8101af"
 
 dest_files=[ "res://.import/frame.png-8cbd93696309e3a5d1b353f0ccdbfd49.stex" ]
-dest_md5="1f1f5595bfd8e80c2cf20974349a0bd2"
+dest_md5="8c6852e638540450ba86d23d76c5b74b"
 
 [params]
 
