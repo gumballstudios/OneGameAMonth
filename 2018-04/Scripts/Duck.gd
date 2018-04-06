@@ -1,8 +1,8 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+
+signal target_hit
+
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -20,6 +20,7 @@ func _on_shot():
 	var pos = $Body.get_local_mouse_position() - $Body/Target.position
 	
 	if pos.length() <= 20:
-		print(" - target")
-	else:
-		print(" - body")
+		emit_signal("target_hit")
+	
+	queue_free()
+

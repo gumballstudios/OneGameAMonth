@@ -2,10 +2,14 @@ extends Node
 
 var angle = 0
 var shots = 3
-var start_x
+
+var moverScene = preload("res://Objects/Mover.tscn")
+var duckScene = preload("res://Objects/Duck.tscn")
+
 
 func _ready():
-	start_x = $Duck.position.x
+	randomize()
+	SendDuck()
 
 
 func _input(event):
@@ -15,7 +19,7 @@ func _input(event):
 			return
 		
 		shots -= 1
-		$Label.text = str(shots)
+		$Hud/Label.text = str(shots)
 	
 	if event.is_action_pressed("reload"):
 		print("reload")
@@ -23,10 +27,29 @@ func _input(event):
 			return
 		
 		shots += 1
-		$Label.text = str(shots)
+		$Hud/Label.text = str(shots)
 
 
+func SendDuck():
+	var duck = duckScene.instance()
+	duck.connect("target_hit", self, "_on_target_hit")
+	
+	var mover = moverScene.instance()
+	mover.add_child(duck)
+	
+	var index = randi() % $Sections.get_child_count()
+	var section = $Sections.get_child(index)
+	section.get_node("Rail").add_child(mover)
 
-func _process(delta):
-	angle = fmod(angle + 90 * delta, 360.0)
-	$Duck.position.x = start_x + sin(deg2rad(angle)) * 100
+
+func _on_target_hit():
+	print("score")
+
+
+#func _process(delta):
+#	angle = fmod(angle + 90 * delta, 360.0)
+#	$Duck.position.x = start_x + sin(deg2rad(angle)) * 100
+
+
+func _on_Timer_timeout():
+	SendDuck()
