@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Gallery.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/temp.png" type="Texture" id=2]
+[ext_resource path="res://Objects/WaterSection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/temp.png" type="Texture" id=3]
 
 [node name="Gallery" type="Node" index="0"]
 
@@ -9,89 +10,20 @@ script = ExtResource( 1 )
 
 [node name="Sections" type="Node" parent="." index="0"]
 
-[node name="Ground" type="Node2D" parent="Sections" index="0"]
+[node name="WaterSection3" parent="Sections" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 320 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Transform" ]
 
-[node name="Rail" type="Node2D" parent="Sections/Ground" index="0"]
-
-position = Vector2( -49, -63 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Grass" type="TextureRect" parent="Sections/Ground" index="1"]
-
-modulate = Color( 0.239216, 0.627451, 0.262745, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 96.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 2 )
-stretch_mode = 2
-_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Visibility" ]
-
-[node name="WaterBack" type="Node2D" parent="Sections" index="1"]
+[node name="WaterSection2" parent="Sections" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 384 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Transform" ]
 
-[node name="Rail" type="Node2D" parent="Sections/WaterBack" index="0"]
-
-position = Vector2( -49, -63 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Waves" type="TextureRect" parent="Sections/WaterBack" index="1"]
-
-modulate = Color( 0.317647, 0.705882, 0.933333, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 96.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 2 )
-stretch_mode = 2
-_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Visibility" ]
-
-[node name="WaterFront" type="Node2D" parent="Sections" index="2"]
+[node name="WaterSection1" parent="Sections" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 448 )
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="Rail" type="Node2D" parent="Sections/WaterFront" index="0"]
-
-position = Vector2( -49, -63 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Waves" type="TextureRect" parent="Sections/WaterFront" index="1"]
-
-modulate = Color( 0.247059, 0.647059, 0.878431, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 96.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 2 )
-stretch_mode = 2
-_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Visibility" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Transform" ]
 
 [node name="Hud" type="CanvasLayer" parent="." index="1"]
 
@@ -115,7 +47,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Visibility" ]
 
@@ -133,7 +65,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Visibility" ]
 
@@ -151,7 +83,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Visibility" ]
 
@@ -168,7 +100,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Visibility" ]
 

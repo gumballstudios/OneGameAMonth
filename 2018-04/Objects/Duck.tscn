@@ -1,23 +1,53 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Duck.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/duck.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Masks/duck_mask.png" type="BitMap" id=3]
+[ext_resource path="res://Sprites/stick_wood.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/duck.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Masks/duck_mask.png" type="BitMap" id=4]
 
-[node name="Duck" type="Node2D"]
+[node name="Duck" type="PathFollow2D"]
 
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = false
+lookahead = 4.0
 script = ExtResource( 1 )
 
-[node name="Body" type="TextureButton" parent="." index="0"]
+[node name="Stick" type="TextureButton" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = -123.0
+margin_right = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 2 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="Body" type="TextureButton" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -49.0
-margin_top = -47.0
+margin_top = -216.0
 margin_right = 50.0
-margin_bottom = 48.0
+margin_bottom = -121.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
@@ -29,23 +59,14 @@ action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 2 )
-texture_click_mask = ExtResource( 3 )
+texture_normal = ExtResource( 3 )
+texture_click_mask = ExtResource( 4 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Target" type="Position2D" parent="Body" index="0"]
 
 position = Vector2( 47, 68 )
 _sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="Mover" type="Tween" parent="." index="1"]
-
-repeat = false
-playback_process_mode = 1
-playback_speed = 1.0
-playback/active = false
-playback/repeat = false
-playback/speed = 1.0
 
 [connection signal="pressed" from="Body" to="." method="_on_shot"]
 

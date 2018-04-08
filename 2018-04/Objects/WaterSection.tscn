@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/WaterSection.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 64.2128, 0, -32, 48, 0, 30.9508, 0, 31.2428, 170, 16, -34.4405, 0.174825, 44.0558, 0, 340, 48, 0.174825, 32.4216, 0.174825, 32.2467, 510, 16, 0, 0, 0, 0, 679, 48, 0, 31.874, 0.0626722, 31.9163, 850, 16, -64.2542, 0.463929, 0, 0, 1056, 48 )
+}
+_sections_unfolded = [ "Resource" ]
+
+[node name="WaterSection" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin" ]
+
+[node name="Path2D" type="Path2D" parent="." index="0"]
+
+visible = false
+curve = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Paths" type="Node2D" parent="." index="1"]
+
+[node name="Path2D2" type="Path2D" parent="Paths" index="0"]
+
+position = Vector2( 1, 48 )
+curve = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Water" type="Node2D" parent="." index="2"]
+
+_sections_unfolded = [ "Anchor", "Mouse" ]
+
+

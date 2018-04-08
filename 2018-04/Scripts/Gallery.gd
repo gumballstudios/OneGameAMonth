@@ -3,7 +3,6 @@ extends Node
 var angle = 0
 var shots = 3
 
-var moverScene = preload("res://Objects/Mover.tscn")
 var duckScene = preload("res://Objects/Duck.tscn")
 
 
@@ -34,12 +33,9 @@ func SendDuck():
 	var duck = duckScene.instance()
 	duck.connect("target_hit", self, "_on_target_hit")
 	
-	var mover = moverScene.instance()
-	mover.add_child(duck)
-	
 	var index = randi() % $Sections.get_child_count()
 	var section = $Sections.get_child(index)
-	section.get_node("Rail").add_child(mover)
+	section.AddDuck(duck)
 
 
 func _on_target_hit():
