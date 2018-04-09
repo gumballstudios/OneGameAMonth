@@ -1,0 +1,18 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/duck2_mask.png-8a6b72700ff08eb4083ac8a77a7e6c3a.res"
+
+[deps]
+
+source_file="res://Sprites/Masks/duck2_mask.png"
+source_md5="8b864fa34bd115ba4b5230ae78efe41d"
+
+dest_files=[ "res://.import/duck2_mask.png-8a6b72700ff08eb4083ac8a77a7e6c3a.res" ]
+dest_md5="c035741b470dd354d6946dfec46a118f"
+
+[params]
+
+create_from=1
+threshold=0.5

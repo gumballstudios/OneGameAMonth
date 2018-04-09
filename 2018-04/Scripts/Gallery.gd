@@ -49,3 +49,4 @@ func _on_target_hit():
 
 func _on_Timer_timeout():
 	SendDuck()
+	pass

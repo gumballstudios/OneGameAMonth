@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Duck.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/stick_wood.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/duck.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Masks/duck_mask.png" type="BitMap" id=4]
+[ext_resource path="res://Sprites/duck2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Masks/duck2_mask.png" type="BitMap" id=6]
 
 [node name="Duck" type="PathFollow2D"]
 
+position = Vector2( 112.78, 270.672 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -15,6 +18,10 @@ cubic_interp = true
 loop = false
 lookahead = 4.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Stick" type="TextureButton" parent="." index="0"]
 
@@ -38,8 +45,11 @@ group = null
 texture_normal = ExtResource( 2 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Body" type="TextureButton" parent="." index="1"]
+[node name="Body" type="Node2D" parent="." index="1"]
 
+[node name="Right" type="TextureButton" parent="Body" index="0"]
+
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -63,11 +73,44 @@ texture_normal = ExtResource( 3 )
 texture_click_mask = ExtResource( 4 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Target" type="Position2D" parent="Body" index="0"]
+[node name="Target" type="Position2D" parent="Body/Right" index="0"]
 
 position = Vector2( 47, 68 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[connection signal="pressed" from="Body" to="." method="_on_shot"]
+[node name="Left" type="TextureButton" parent="Body" index="1"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -49.0
+margin_top = -216.0
+margin_right = 50.0
+margin_bottom = -121.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+texture_click_mask = ExtResource( 6 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="Target" type="Position2D" parent="Body/Left" index="0"]
+
+position = Vector2( 52, 68 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[connection signal="pressed" from="Body/Right" to="." method="_on_shot" binds= [ "Right" ]]
+
+[connection signal="pressed" from="Body/Left" to="." method="_on_shot" binds= [ "Left" ]]
 
 
