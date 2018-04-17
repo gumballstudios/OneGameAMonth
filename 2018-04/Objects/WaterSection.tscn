@@ -1,6 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/WaterSection.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=2]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -30, 129, -32.5823, 0, 17.837, -0.475654, 175, 108, -15.9344, -0.475654, 32.1066, -0.475654, 210, 128, -31.631, 0, 17.3614, 0.237827, 366, 108, -19.7396, 0, 31.631, 0.713481, 403, 126, -36.1497, -0.237827, 15.9344, -0.237827, 560, 108, -17.837, 0, 30.9175, 0.237827, 593, 129, -34.4849, -0.475654, 17.3614, -0.475654, 751, 109, -14.9831, 0.713481, 32.5823, -0.237827, 784, 128, -33.7714, -1.42696, 16.1722, -0.237827, 942, 109, -12.1292, -0.475654, 28.7771, -0.237827, 973, 128, 0, 0, 0, 0, 1055, 114 )
+}
 
 [sub_resource type="Curve2D" id=1]
 
@@ -15,21 +22,19 @@ _sections_unfolded = [ "Resource" ]
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin" ]
 
-[node name="Path2D" type="Path2D" parent="." index="0"]
+[node name="Paths" type="Node2D" parent="." index="0"]
 
-visible = false
-curve = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+[node name="DropRight" type="Path2D" parent="Paths" index="0"]
 
-[node name="Paths" type="Node2D" parent="." index="1"]
+curve = SubResource( 2 )
 
-[node name="Bounce" type="Path2D" parent="Paths" index="0"]
+[node name="Bounce" type="Path2D" parent="Paths" index="1"]
 
 position = Vector2( 1, 80 )
 curve = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Water" type="Node2D" parent="." index="2"]
+[node name="Water" type="Node2D" parent="." index="1"]
 
 _sections_unfolded = [ "Anchor", "Mouse" ]
 

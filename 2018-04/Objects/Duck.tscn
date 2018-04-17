@@ -9,7 +9,6 @@
 
 [node name="Duck" type="PathFollow2D"]
 
-position = Vector2( 112.78, 270.672 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -109,8 +108,19 @@ _sections_unfolded = [ "Rect", "Textures" ]
 position = Vector2( 52, 68 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
+[node name="DeathAnimation" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="pressed" from="Body/Right" to="." method="_on_shot" binds= [ "Right" ]]
 
 [connection signal="pressed" from="Body/Left" to="." method="_on_shot" binds= [ "Left" ]]
+
+[connection signal="tween_completed" from="DeathAnimation" to="." method="_on_death_completed"]
 
 
