@@ -1,0 +1,18 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/stall_mask.png-72b50da33830b52806bc3d3b5688b4ce.res"
+
+[deps]
+
+source_file="res://Sprites/Masks/stall_mask.png"
+source_md5="0a9751b0b87e97352b4e130e2bb8da37"
+
+dest_files=[ "res://.import/stall_mask.png-72b50da33830b52806bc3d3b5688b4ce.res" ]
+dest_md5="cf222154fecea667490d5e44be1dae75"
+
+[params]
+
+create_from=1
+threshold=0.5
